@@ -1,4 +1,4 @@
-using eAgenda.WinApp.Compartilhado;
+using FestasInfantis.WinApp.Compartilhado;
 
 namespace FestasInfantis.WinApp
 {

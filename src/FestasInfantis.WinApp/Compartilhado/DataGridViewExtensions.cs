@@ -1,4 +1,4 @@
-﻿namespace eAgenda.WinApp.Compartilhado
+﻿namespace FestasInfantis.WinApp.Compartilhado
 {
     public static class DataGridViewExtensions
     {

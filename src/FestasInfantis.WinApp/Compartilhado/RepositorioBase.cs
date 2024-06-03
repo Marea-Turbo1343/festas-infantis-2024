@@ -1,4 +1,4 @@
-﻿namespace eAgenda.ConsoleApp.Compartilhado
+﻿namespace FestasInfantis.ConsoleApp.Compartilhado
 {
     public abstract class RepositorioBase<T> where T : EntidadeBase
     {
