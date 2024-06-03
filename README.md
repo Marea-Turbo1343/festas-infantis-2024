@@ -41,7 +41,7 @@ Rafaela possui um negócio de festas infantis. Ela precisa controlar os aluguéi
 	- tema
 	- porcentagem de entrada
 	- porcentagem de desconto
-	- data do pagamento (caso conclúido)
+	- data do pagamento (caso concluído)
 	- status
 	- festa
 
