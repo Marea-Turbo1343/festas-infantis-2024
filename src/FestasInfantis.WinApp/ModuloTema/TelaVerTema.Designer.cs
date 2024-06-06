@@ -28,35 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupTemas = new GroupBox();
+            gpTema = new GroupBox();
+            txtValorTotal = new TextBox();
+            txtTema = new TextBox();
             listBoxItensTema = new ListBox();
-            label2 = new Label();
-            label1 = new Label();
+            lblValorTotal = new Label();
+            lblId = new Label();
             txtId = new TextBox();
-            labelNome = new Label();
-            txtNr = new TextBox();
-            txtPreco = new TextBox();
+            lblTema = new Label();
             btnFechar = new Button();
-            groupTemas.SuspendLayout();
+            gpTema.SuspendLayout();
             SuspendLayout();
             // 
-            // groupTemas
+            // gpTema
             // 
-            groupTemas.Controls.Add(txtPreco);
-            groupTemas.Controls.Add(txtNr);
-            groupTemas.Controls.Add(listBoxItensTema);
-            groupTemas.Controls.Add(label2);
-            groupTemas.Controls.Add(label1);
-            groupTemas.Controls.Add(txtId);
-            groupTemas.Controls.Add(labelNome);
-            groupTemas.Location = new Point(12, 11);
-            groupTemas.Margin = new Padding(3, 2, 3, 2);
-            groupTemas.Name = "groupTemas";
-            groupTemas.Padding = new Padding(3, 2, 3, 2);
-            groupTemas.Size = new Size(382, 294);
-            groupTemas.TabIndex = 11;
-            groupTemas.TabStop = false;
-            groupTemas.Text = "Tema";
+            gpTema.Controls.Add(txtValorTotal);
+            gpTema.Controls.Add(txtTema);
+            gpTema.Controls.Add(listBoxItensTema);
+            gpTema.Controls.Add(lblValorTotal);
+            gpTema.Controls.Add(lblId);
+            gpTema.Controls.Add(txtId);
+            gpTema.Controls.Add(lblTema);
+            gpTema.Location = new Point(12, 11);
+            gpTema.Margin = new Padding(3, 2, 3, 2);
+            gpTema.Name = "gpTema";
+            gpTema.Padding = new Padding(3, 2, 3, 2);
+            gpTema.Size = new Size(382, 294);
+            gpTema.TabIndex = 11;
+            gpTema.TabStop = false;
+            gpTema.Text = "Tema";
+            // 
+            // txtValorTotal
+            // 
+            txtValorTotal.Location = new Point(88, 75);
+            txtValorTotal.Margin = new Padding(3, 2, 3, 2);
+            txtValorTotal.Name = "txtValorTotal";
+            txtValorTotal.ReadOnly = true;
+            txtValorTotal.Size = new Size(110, 23);
+            txtValorTotal.TabIndex = 2;
+            txtValorTotal.TabStop = false;
+            // 
+            // txtTema
+            // 
+            txtTema.Location = new Point(88, 48);
+            txtTema.Margin = new Padding(3, 2, 3, 2);
+            txtTema.Name = "txtTema";
+            txtTema.ReadOnly = true;
+            txtTema.Size = new Size(110, 23);
+            txtTema.TabIndex = 1;
+            txtTema.TabStop = false;
             // 
             // listBoxItensTema
             // 
@@ -65,70 +85,50 @@
             listBoxItensTema.Location = new Point(6, 103);
             listBoxItensTema.Name = "listBoxItensTema";
             listBoxItensTema.Size = new Size(370, 184);
-            listBoxItensTema.TabIndex = 30;
+            listBoxItensTema.TabIndex = 3;
             // 
-            // label2
+            // lblValorTotal
             // 
-            label2.AutoSize = true;
-            label2.BackColor = SystemColors.ButtonFace;
-            label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(6, 76);
-            label2.Name = "label2";
-            label2.Size = new Size(46, 19);
-            label2.TabIndex = 28;
-            label2.Text = "Preço:";
+            lblValorTotal.AutoSize = true;
+            lblValorTotal.BackColor = SystemColors.ButtonFace;
+            lblValorTotal.Font = new Font("Segoe UI", 10F);
+            lblValorTotal.Location = new Point(6, 76);
+            lblValorTotal.Name = "lblValorTotal";
+            lblValorTotal.Size = new Size(76, 19);
+            lblValorTotal.TabIndex = 28;
+            lblValorTotal.Text = "Valor Total:";
             // 
-            // label1
+            // lblId
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(28, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(24, 19);
-            label1.TabIndex = 26;
-            label1.Text = "Id:";
+            lblId.AutoSize = true;
+            lblId.Font = new Font("Segoe UI", 10F);
+            lblId.Location = new Point(58, 22);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(24, 19);
+            lblId.TabIndex = 26;
+            lblId.Text = "Id:";
             // 
             // txtId
             // 
             txtId.Enabled = false;
-            txtId.Location = new Point(54, 20);
+            txtId.Location = new Point(88, 21);
             txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(79, 23);
-            txtId.TabIndex = 25;
+            txtId.TabIndex = 0;
             txtId.TabStop = false;
             // 
-            // labelNome
+            // lblTema
             // 
-            labelNome.AutoSize = true;
-            labelNome.BackColor = SystemColors.ButtonFace;
-            labelNome.Font = new Font("Segoe UI", 10F);
-            labelNome.Location = new Point(8, 48);
-            labelNome.Name = "labelNome";
-            labelNome.Size = new Size(44, 19);
-            labelNome.TabIndex = 27;
-            labelNome.Text = "Tema:";
-            // 
-            // txtNr
-            // 
-            txtNr.Location = new Point(54, 47);
-            txtNr.Margin = new Padding(3, 2, 3, 2);
-            txtNr.Name = "txtNr";
-            txtNr.ReadOnly = true;
-            txtNr.Size = new Size(110, 23);
-            txtNr.TabIndex = 31;
-            txtNr.TabStop = false;
-            // 
-            // txtPreco
-            // 
-            txtPreco.Location = new Point(54, 75);
-            txtPreco.Margin = new Padding(3, 2, 3, 2);
-            txtPreco.Name = "txtPreco";
-            txtPreco.ReadOnly = true;
-            txtPreco.Size = new Size(110, 23);
-            txtPreco.TabIndex = 32;
-            txtPreco.TabStop = false;
+            lblTema.AutoSize = true;
+            lblTema.BackColor = SystemColors.ButtonFace;
+            lblTema.Font = new Font("Segoe UI", 10F);
+            lblTema.Location = new Point(38, 49);
+            lblTema.Name = "lblTema";
+            lblTema.Size = new Size(44, 19);
+            lblTema.TabIndex = 27;
+            lblTema.Text = "Tema:";
             // 
             // btnFechar
             // 
@@ -137,7 +137,7 @@
             btnFechar.Margin = new Padding(3, 2, 3, 2);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(82, 34);
-            btnFechar.TabIndex = 12;
+            btnFechar.TabIndex = 4;
             btnFechar.Text = "Fechar";
             btnFechar.UseVisualStyleBackColor = true;
             // 
@@ -147,27 +147,27 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(404, 351);
             Controls.Add(btnFechar);
-            Controls.Add(groupTemas);
+            Controls.Add(gpTema);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaVerTema";
             ShowIcon = false;
             Text = "Visualizando Tema";
-            groupTemas.ResumeLayout(false);
-            groupTemas.PerformLayout();
+            gpTema.ResumeLayout(false);
+            gpTema.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupTemas;
+        private GroupBox gpTema;
         private ListBox listBoxItensTema;
-        private Label label2;
-        private Label label1;
+        private Label lblValorTotal;
+        private Label lblId;
         private TextBox txtId;
-        private Label labelNome;
-        private TextBox txtPreco;
-        private TextBox txtNr;
+        private Label lblTema;
+        private TextBox txtValorTotal;
+        private TextBox txtTema;
         private Button btnFechar;
     }
 }

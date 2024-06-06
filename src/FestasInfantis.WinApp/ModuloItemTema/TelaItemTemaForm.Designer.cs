@@ -57,7 +57,7 @@
             groupTemas.Margin = new Padding(3, 2, 3, 2);
             groupTemas.Name = "groupTemas";
             groupTemas.Padding = new Padding(3, 2, 3, 2);
-            groupTemas.Size = new Size(240, 157);
+            groupTemas.Size = new Size(240, 128);
             groupTemas.TabIndex = 6;
             groupTemas.TabStop = false;
             groupTemas.Text = "Temas";
@@ -65,7 +65,7 @@
             // lblAtivo
             // 
             lblAtivo.AutoSize = true;
-            lblAtivo.Location = new Point(17, 133);
+            lblAtivo.Location = new Point(18, 100);
             lblAtivo.Name = "lblAtivo";
             lblAtivo.Size = new Size(38, 15);
             lblAtivo.TabIndex = 19;
@@ -73,17 +73,17 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(68, 25);
+            txtId.Location = new Point(62, 20);
             txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
-            txtId.Size = new Size(71, 23);
-            txtId.TabIndex = 18;
+            txtId.Size = new Size(60, 23);
+            txtId.TabIndex = 0;
             // 
             // lblId
             // 
             lblId.AutoSize = true;
-            lblId.Location = new Point(35, 28);
+            lblId.Location = new Point(36, 23);
             lblId.Name = "lblId";
             lblId.Size = new Size(20, 15);
             lblId.TabIndex = 17;
@@ -91,44 +91,44 @@
             // 
             // txtPreco
             // 
-            txtPreco.Location = new Point(68, 97);
+            txtPreco.Location = new Point(62, 74);
             txtPreco.Margin = new Padding(3, 2, 3, 2);
             txtPreco.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             txtPreco.Name = "txtPreco";
             txtPreco.Size = new Size(72, 23);
-            txtPreco.TabIndex = 14;
+            txtPreco.TabIndex = 2;
             // 
             // txtTitulo
             // 
-            txtTitulo.Location = new Point(68, 60);
+            txtTitulo.Location = new Point(62, 47);
             txtTitulo.Margin = new Padding(3, 2, 3, 2);
             txtTitulo.Name = "txtTitulo";
-            txtTitulo.Size = new Size(165, 23);
-            txtTitulo.TabIndex = 13;
+            txtTitulo.Size = new Size(166, 23);
+            txtTitulo.TabIndex = 1;
             // 
             // chkAtivo
             // 
             chkAtivo.AutoSize = true;
-            chkAtivo.Location = new Point(68, 134);
+            chkAtivo.Location = new Point(62, 101);
             chkAtivo.Margin = new Padding(3, 2, 3, 2);
             chkAtivo.Name = "chkAtivo";
             chkAtivo.Size = new Size(15, 14);
-            chkAtivo.TabIndex = 12;
+            chkAtivo.TabIndex = 3;
             chkAtivo.UseVisualStyleBackColor = true;
             // 
             // lblPreco
             // 
             lblPreco.AutoSize = true;
-            lblPreco.Location = new Point(15, 99);
+            lblPreco.Location = new Point(16, 76);
             lblPreco.Name = "lblPreco";
-            lblPreco.Size = new Size(56, 15);
+            lblPreco.Size = new Size(40, 15);
             lblPreco.TabIndex = 11;
-            lblPreco.Text = "Preço: R$";
+            lblPreco.Text = "Preço:";
             // 
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Location = new Point(15, 63);
+            lblTitulo.Location = new Point(16, 50);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(40, 15);
             lblTitulo.TabIndex = 10;
@@ -137,20 +137,20 @@
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(177, 173);
+            btnCancelar.Location = new Point(177, 144);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 35);
-            btnCancelar.TabIndex = 8;
+            btnCancelar.TabIndex = 5;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnSalvar
             // 
             btnSalvar.DialogResult = DialogResult.OK;
-            btnSalvar.Location = new Point(96, 173);
+            btnSalvar.Location = new Point(96, 144);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 35);
-            btnSalvar.TabIndex = 7;
+            btnSalvar.TabIndex = 4;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
@@ -159,7 +159,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(259, 214);
+            ClientSize = new Size(259, 187);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             Controls.Add(groupTemas);

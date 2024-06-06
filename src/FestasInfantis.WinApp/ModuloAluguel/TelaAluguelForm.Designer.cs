@@ -407,7 +407,7 @@
             MinimizeBox = false;
             Name = "TelaAluguelForm";
             ShowIcon = false;
-            Text = "TelaAluguelForm";
+            Text = "Cadastrar Aluguel";
             groupAlugueis.ResumeLayout(false);
             groupAlugueis.PerformLayout();
             ResumeLayout(false);

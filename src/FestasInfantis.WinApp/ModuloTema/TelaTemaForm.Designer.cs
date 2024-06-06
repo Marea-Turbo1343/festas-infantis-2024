@@ -28,45 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupTemas = new GroupBox();
+            gpTema = new GroupBox();
             btnDeletarItem = new Button();
             btnAdicionarItem = new Button();
             numValor = new NumericUpDown();
             txtTema = new TextBox();
             cmbItens = new ComboBox();
             listBoxItensTema = new ListBox();
-            label4 = new Label();
-            label2 = new Label();
-            label1 = new Label();
+            lblValor = new Label();
+            lblItem = new Label();
+            lblId = new Label();
             txtId = new TextBox();
-            labelNome = new Label();
+            lblTema = new Label();
             btnCancelar = new Button();
             btnSalvar = new Button();
-            groupTemas.SuspendLayout();
+            gpTema.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numValor).BeginInit();
             SuspendLayout();
             // 
-            // groupTemas
+            // gpTema
             // 
-            groupTemas.Controls.Add(btnDeletarItem);
-            groupTemas.Controls.Add(btnAdicionarItem);
-            groupTemas.Controls.Add(numValor);
-            groupTemas.Controls.Add(txtTema);
-            groupTemas.Controls.Add(cmbItens);
-            groupTemas.Controls.Add(listBoxItensTema);
-            groupTemas.Controls.Add(label4);
-            groupTemas.Controls.Add(label2);
-            groupTemas.Controls.Add(label1);
-            groupTemas.Controls.Add(txtId);
-            groupTemas.Controls.Add(labelNome);
-            groupTemas.Location = new Point(11, 12);
-            groupTemas.Margin = new Padding(3, 2, 3, 2);
-            groupTemas.Name = "groupTemas";
-            groupTemas.Padding = new Padding(3, 2, 3, 2);
-            groupTemas.Size = new Size(397, 267);
-            groupTemas.TabIndex = 8;
-            groupTemas.TabStop = false;
-            groupTemas.Text = "Tema";
+            gpTema.Controls.Add(btnDeletarItem);
+            gpTema.Controls.Add(btnAdicionarItem);
+            gpTema.Controls.Add(numValor);
+            gpTema.Controls.Add(txtTema);
+            gpTema.Controls.Add(cmbItens);
+            gpTema.Controls.Add(listBoxItensTema);
+            gpTema.Controls.Add(lblValor);
+            gpTema.Controls.Add(lblItem);
+            gpTema.Controls.Add(lblId);
+            gpTema.Controls.Add(txtId);
+            gpTema.Controls.Add(lblTema);
+            gpTema.Location = new Point(11, 12);
+            gpTema.Margin = new Padding(3, 2, 3, 2);
+            gpTema.Name = "gpTema";
+            gpTema.Padding = new Padding(3, 2, 3, 2);
+            gpTema.Size = new Size(397, 267);
+            gpTema.TabIndex = 8;
+            gpTema.TabStop = false;
+            gpTema.Text = "Tema";
             // 
             // btnDeletarItem
             // 
@@ -74,7 +74,7 @@
             btnDeletarItem.Margin = new Padding(3, 2, 3, 2);
             btnDeletarItem.Name = "btnDeletarItem";
             btnDeletarItem.Size = new Size(72, 22);
-            btnDeletarItem.TabIndex = 37;
+            btnDeletarItem.TabIndex = 5;
             btnDeletarItem.Text = "Deletar";
             btnDeletarItem.UseVisualStyleBackColor = true;
             // 
@@ -84,7 +84,7 @@
             btnAdicionarItem.Margin = new Padding(3, 2, 3, 2);
             btnAdicionarItem.Name = "btnAdicionarItem";
             btnAdicionarItem.Size = new Size(72, 22);
-            btnAdicionarItem.TabIndex = 36;
+            btnAdicionarItem.TabIndex = 4;
             btnAdicionarItem.Text = "Adicionar";
             btnAdicionarItem.UseVisualStyleBackColor = true;
             // 
@@ -97,7 +97,7 @@
             numValor.Name = "numValor";
             numValor.ReadOnly = true;
             numValor.Size = new Size(78, 23);
-            numValor.TabIndex = 35;
+            numValor.TabIndex = 3;
             // 
             // txtTema
             // 
@@ -105,7 +105,7 @@
             txtTema.Margin = new Padding(3, 2, 3, 2);
             txtTema.Name = "txtTema";
             txtTema.Size = new Size(243, 23);
-            txtTema.TabIndex = 34;
+            txtTema.TabIndex = 1;
             // 
             // cmbItens
             // 
@@ -114,7 +114,7 @@
             cmbItens.Margin = new Padding(3, 2, 3, 2);
             cmbItens.Name = "cmbItens";
             cmbItens.Size = new Size(243, 23);
-            cmbItens.TabIndex = 33;
+            cmbItens.TabIndex = 2;
             // 
             // listBoxItensTema
             // 
@@ -123,39 +123,39 @@
             listBoxItensTema.Location = new Point(85, 136);
             listBoxItensTema.Name = "listBoxItensTema";
             listBoxItensTema.Size = new Size(305, 124);
-            listBoxItensTema.TabIndex = 30;
+            listBoxItensTema.TabIndex = 6;
             // 
-            // label4
+            // lblValor
             // 
-            label4.AutoSize = true;
-            label4.BackColor = SystemColors.ButtonFace;
-            label4.Font = new Font("Segoe UI", 10F);
-            label4.Location = new Point(6, 103);
-            label4.Name = "label4";
-            label4.Size = new Size(43, 19);
-            label4.TabIndex = 29;
-            label4.Text = "Valor:";
+            lblValor.AutoSize = true;
+            lblValor.BackColor = SystemColors.ButtonFace;
+            lblValor.Font = new Font("Segoe UI", 10F);
+            lblValor.Location = new Point(6, 103);
+            lblValor.Name = "lblValor";
+            lblValor.Size = new Size(43, 19);
+            lblValor.TabIndex = 29;
+            lblValor.Text = "Valor:";
             // 
-            // label2
+            // lblItem
             // 
-            label2.AutoSize = true;
-            label2.BackColor = SystemColors.ButtonFace;
-            label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(9, 77);
-            label2.Name = "label2";
-            label2.Size = new Size(40, 19);
-            label2.TabIndex = 28;
-            label2.Text = "Item:";
+            lblItem.AutoSize = true;
+            lblItem.BackColor = SystemColors.ButtonFace;
+            lblItem.Font = new Font("Segoe UI", 10F);
+            lblItem.Location = new Point(9, 77);
+            lblItem.Name = "lblItem";
+            lblItem.Size = new Size(40, 19);
+            lblItem.TabIndex = 28;
+            lblItem.Text = "Item:";
             // 
-            // label1
+            // lblId
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(25, 21);
-            label1.Name = "label1";
-            label1.Size = new Size(24, 19);
-            label1.TabIndex = 26;
-            label1.Text = "Id:";
+            lblId.AutoSize = true;
+            lblId.Font = new Font("Segoe UI", 10F);
+            lblId.Location = new Point(25, 21);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(24, 19);
+            lblId.TabIndex = 26;
+            lblId.Text = "Id:";
             // 
             // txtId
             // 
@@ -165,19 +165,19 @@
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(79, 23);
-            txtId.TabIndex = 25;
+            txtId.TabIndex = 0;
             txtId.TabStop = false;
             // 
-            // labelNome
+            // lblTema
             // 
-            labelNome.AutoSize = true;
-            labelNome.BackColor = SystemColors.ButtonFace;
-            labelNome.Font = new Font("Segoe UI", 10F);
-            labelNome.Location = new Point(5, 48);
-            labelNome.Name = "labelNome";
-            labelNome.Size = new Size(44, 19);
-            labelNome.TabIndex = 27;
-            labelNome.Text = "Tema:";
+            lblTema.AutoSize = true;
+            lblTema.BackColor = SystemColors.ButtonFace;
+            lblTema.Font = new Font("Segoe UI", 10F);
+            lblTema.Location = new Point(5, 48);
+            lblTema.Name = "lblTema";
+            lblTema.Size = new Size(44, 19);
+            lblTema.TabIndex = 27;
+            lblTema.Text = "Tema:";
             // 
             // btnCancelar
             // 
@@ -204,7 +204,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(418, 327);
-            Controls.Add(groupTemas);
+            Controls.Add(gpTema);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             MaximizeBox = false;
@@ -212,26 +212,26 @@
             Name = "TelaTemaForm";
             ShowIcon = false;
             Text = "Cadastro de Tema";
-            groupTemas.ResumeLayout(false);
-            groupTemas.PerformLayout();
+            gpTema.ResumeLayout(false);
+            gpTema.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numValor).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupTemas;
+        private GroupBox gpTema;
         private Button btnDeletarItem;
         private Button btnAdicionarItem;
         private NumericUpDown numValor;
         private TextBox txtTema;
         private ComboBox cmbItens;
         private ListBox listBoxItensTema;
-        private Label label4;
-        private Label label2;
-        private Label label1;
+        private Label lblValor;
+        private Label lblItem;
+        private Label lblId;
         private TextBox txtId;
-        private Label labelNome;
+        private Label lblTema;
         private Button btnCancelar;
         private Button btnSalvar;
     }

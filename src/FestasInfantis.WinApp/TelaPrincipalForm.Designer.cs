@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             menuStrip1 = new MenuStrip();
-            MenuToolStripMenuItem = new ToolStripMenuItem();
+            menuToolStripMenuItem = new ToolStripMenuItem();
             clientesToolStripMenuItem = new ToolStripMenuItem();
             temasToolStripMenuItem = new ToolStripMenuItem();
             itensToolStripMenuItem = new ToolStripMenuItem();
@@ -59,19 +59,19 @@
             // menuStrip1
             // 
             menuStrip1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { MenuToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { menuToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 28);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
-            // MenuToolStripMenuItem
+            // menuToolStripMenuItem
             // 
-            MenuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesToolStripMenuItem, temasToolStripMenuItem, itensToolStripMenuItem, alugueisToolStripMenuItem });
-            MenuToolStripMenuItem.Name = "MenuToolStripMenuItem";
-            MenuToolStripMenuItem.Size = new Size(58, 24);
-            MenuToolStripMenuItem.Text = "Menu";
+            menuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesToolStripMenuItem, temasToolStripMenuItem, itensToolStripMenuItem, alugueisToolStripMenuItem });
+            menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            menuToolStripMenuItem.Size = new Size(58, 24);
+            menuToolStripMenuItem.Text = "Menu";
             // 
             // clientesToolStripMenuItem
             // 
@@ -274,7 +274,7 @@
         #endregion
 
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem MenuToolStripMenuItem;
+        private ToolStripMenuItem menuToolStripMenuItem;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel statusLabelPrincipal;
         private ToolStrip toolStrip1;
