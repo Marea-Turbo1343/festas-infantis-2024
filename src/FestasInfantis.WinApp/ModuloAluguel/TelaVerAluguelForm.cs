@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FestasInfantis.WinApp.ModuloTema
+namespace FestasInfantis.WinApp.ModuloAluguel
 {
-    public partial class TabelaTemaControl : UserControl
+    public partial class TelaVerAluguelForm : Form
     {
-        public TabelaTemaControl()
+        public TelaVerAluguelForm()
         {
             InitializeComponent();
         }

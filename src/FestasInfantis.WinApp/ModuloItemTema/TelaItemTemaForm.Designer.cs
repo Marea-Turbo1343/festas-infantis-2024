@@ -1,4 +1,4 @@
-﻿namespace FestasInfantis.WinApp.ModuloItem
+﻿namespace FestasInfantis.WinApp.ModuloItemTema
 {
     partial class TelaItemTemaForm
     {
@@ -153,8 +153,9 @@
             btnSalvar.TabIndex = 7;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
-            // TelaItemForm
+            // TelaItemTemaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -164,7 +165,7 @@
             Controls.Add(groupTemas);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "TelaItemForm";
+            Name = "TelaItemTemaForm";
             ShowIcon = false;
             Text = "Cadastro de Item";
             groupTemas.ResumeLayout(false);

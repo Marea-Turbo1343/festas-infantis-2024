@@ -110,8 +110,8 @@
             // statusLabelPrincipal
             // 
             statusLabelPrincipal.Name = "statusLabelPrincipal";
-            statusLabelPrincipal.Size = new Size(185, 20);
-            statusLabelPrincipal.Text = "Visualizando 0 registro(s)...";
+            statusLabelPrincipal.Size = new Size(118, 20);
+            statusLabelPrincipal.Text = "Seja bem-vindo!";
             // 
             // toolStrip1
             // 
@@ -255,6 +255,7 @@
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaPrincipalForm";
             ShowIcon = false;

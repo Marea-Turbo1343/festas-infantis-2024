@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace FestasInfantis.WinApp.ModuloCliente
 {
-    public partial class TelaClienteForm : Form
+    public partial class TelaVerAlugueisForm : Form
     {
-        public TelaClienteForm()
+        public TelaVerAlugueisForm()
         {
             InitializeComponent();
-        }
-
-        private void TelaClienteForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

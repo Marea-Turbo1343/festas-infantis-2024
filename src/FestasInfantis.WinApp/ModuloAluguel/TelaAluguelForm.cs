@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FestasInfantis.WinApp.ModuloCliente
+namespace FestasInfantis.WinApp.ModuloAluguel
 {
-    public partial class TelaClienteForm : Form
+    public partial class TelaAluguelForm : Form
     {
-        public TelaClienteForm()
+        public TelaAluguelForm()
         {
             InitializeComponent();
-        }
-
-        private void TelaClienteForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

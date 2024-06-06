@@ -1,10 +1,10 @@
-﻿namespace FestasInfantis.WinApp.ModuloItem
+﻿namespace FestasInfantis.WinApp.ModuloItemTema
 {
     public partial class TelaItemTemaForm : Form
     {
-        private ItemTema item;
+        private ItemTema itemTema;
 
-        public ItemTema Item
+        public ItemTema ItemTema
         {
             set
             {
@@ -13,9 +13,9 @@
                 txtPreco.Value = value.Valor;
                 chkAtivo.Checked = value.Ativo;
             }
-        get
+            get
             {
-                return item;
+                return itemTema;
             }
         }
 
@@ -27,33 +27,18 @@
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            item = new Item
-            {
-                Id = Convert.ToInt32(txtId.Text),
-                Titulo = txtTitulo.Text,
-                Valor = txtPreco.Value,
-                Ativo = chkAtivo.Checked
-            };
-
-            this.DialogResult = DialogResult.OK;
-        }
-
-        private void ButtonSalvar_Click(object sender, EventArgs e)
-        {
             string titulo = txtTitulo.Text;
             decimal preco = txtPreco.Value;
             bool ativo = chkAtivo.Checked;
 
-            item = new Item(titulo, preco, ativo);
+            itemTema = new ItemTema(titulo, preco, ativo);
 
-            var erros = itemTema.Validar();
+            List<string> erros = itemTema.Validar();
 
-            if (txtId.Text != "")
-                itemTema.Id = Convert.ToInt32(txtId.Text);
-
-            if (erros.Any())
+            if (erros.Count > 0)
             {
-                TelaPrincipalForm.TelaPrincipal!.AlterarLabelRodape(erros[0]);
+                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
                 DialogResult = DialogResult.None;
             }
         }

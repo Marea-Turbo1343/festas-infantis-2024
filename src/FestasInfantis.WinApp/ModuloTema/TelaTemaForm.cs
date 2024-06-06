@@ -6,7 +6,7 @@ namespace FestasInfantis.WinApp.ModuloTema
     {
         Tema tema;
 
-        private List<Item> itens;
+        private List<ItemTema> itemTema;
 
         public TelaTemaForm()
         {

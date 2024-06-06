@@ -63,27 +63,27 @@
             groupTemas.Margin = new Padding(3, 2, 3, 2);
             groupTemas.Name = "groupTemas";
             groupTemas.Padding = new Padding(3, 2, 3, 2);
-            groupTemas.Size = new Size(455, 310);
+            groupTemas.Size = new Size(397, 267);
             groupTemas.TabIndex = 8;
             groupTemas.TabStop = false;
-            groupTemas.Text = "Temas";
+            groupTemas.Text = "Tema";
             // 
             // btnDeletarItem
             // 
-            btnDeletarItem.Location = new Point(18, 176);
+            btnDeletarItem.Location = new Point(7, 162);
             btnDeletarItem.Margin = new Padding(3, 2, 3, 2);
             btnDeletarItem.Name = "btnDeletarItem";
-            btnDeletarItem.Size = new Size(82, 22);
+            btnDeletarItem.Size = new Size(72, 22);
             btnDeletarItem.TabIndex = 37;
             btnDeletarItem.Text = "Deletar";
             btnDeletarItem.UseVisualStyleBackColor = true;
             // 
             // btnAdicionarItem
             // 
-            btnAdicionarItem.Location = new Point(18, 149);
+            btnAdicionarItem.Location = new Point(7, 136);
             btnAdicionarItem.Margin = new Padding(3, 2, 3, 2);
             btnAdicionarItem.Name = "btnAdicionarItem";
-            btnAdicionarItem.Size = new Size(82, 22);
+            btnAdicionarItem.Size = new Size(72, 22);
             btnAdicionarItem.TabIndex = 36;
             btnAdicionarItem.Text = "Adicionar";
             btnAdicionarItem.UseVisualStyleBackColor = true;
@@ -91,7 +91,7 @@
             // numValor
             // 
             numValor.Enabled = false;
-            numValor.Location = new Point(107, 112);
+            numValor.Location = new Point(51, 103);
             numValor.Margin = new Padding(3, 2, 3, 2);
             numValor.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             numValor.Name = "numValor";
@@ -101,28 +101,28 @@
             // 
             // txtTema
             // 
-            txtTema.Location = new Point(107, 56);
+            txtTema.Location = new Point(51, 47);
             txtTema.Margin = new Padding(3, 2, 3, 2);
             txtTema.Name = "txtTema";
-            txtTema.Size = new Size(330, 23);
+            txtTema.Size = new Size(243, 23);
             txtTema.TabIndex = 34;
             // 
             // cmbItens
             // 
             cmbItens.FormattingEnabled = true;
-            cmbItens.Location = new Point(106, 85);
+            cmbItens.Location = new Point(51, 76);
             cmbItens.Margin = new Padding(3, 2, 3, 2);
             cmbItens.Name = "cmbItens";
-            cmbItens.Size = new Size(330, 23);
+            cmbItens.Size = new Size(243, 23);
             cmbItens.TabIndex = 33;
             // 
             // listBoxItensTema
             // 
             listBoxItensTema.FormattingEnabled = true;
             listBoxItensTema.ItemHeight = 15;
-            listBoxItensTema.Location = new Point(105, 149);
+            listBoxItensTema.Location = new Point(85, 136);
             listBoxItensTema.Name = "listBoxItensTema";
-            listBoxItensTema.Size = new Size(331, 139);
+            listBoxItensTema.Size = new Size(305, 124);
             listBoxItensTema.TabIndex = 30;
             // 
             // label4
@@ -130,7 +130,7 @@
             label4.AutoSize = true;
             label4.BackColor = SystemColors.ButtonFace;
             label4.Font = new Font("Segoe UI", 10F);
-            label4.Location = new Point(37, 112);
+            label4.Location = new Point(6, 103);
             label4.Name = "label4";
             label4.Size = new Size(43, 19);
             label4.TabIndex = 29;
@@ -141,7 +141,7 @@
             label2.AutoSize = true;
             label2.BackColor = SystemColors.ButtonFace;
             label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(40, 86);
+            label2.Location = new Point(9, 77);
             label2.Name = "label2";
             label2.Size = new Size(40, 19);
             label2.TabIndex = 28;
@@ -151,7 +151,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(56, 24);
+            label1.Location = new Point(25, 21);
             label1.Name = "label1";
             label1.Size = new Size(24, 19);
             label1.TabIndex = 26;
@@ -160,7 +160,7 @@
             // txtId
             // 
             txtId.Enabled = false;
-            txtId.Location = new Point(106, 23);
+            txtId.Location = new Point(51, 20);
             txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
@@ -173,7 +173,7 @@
             labelNome.AutoSize = true;
             labelNome.BackColor = SystemColors.ButtonFace;
             labelNome.Font = new Font("Segoe UI", 10F);
-            labelNome.Location = new Point(36, 57);
+            labelNome.Location = new Point(5, 48);
             labelNome.Name = "labelNome";
             labelNome.Size = new Size(44, 19);
             labelNome.TabIndex = 27;
@@ -182,7 +182,7 @@
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(391, 327);
+            btnCancelar.Location = new Point(333, 284);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 35);
             btnCancelar.TabIndex = 7;
@@ -192,26 +192,26 @@
             // btnSalvar
             // 
             btnSalvar.DialogResult = DialogResult.OK;
-            btnSalvar.Location = new Point(310, 327);
+            btnSalvar.Location = new Point(252, 284);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 35);
             btnSalvar.TabIndex = 6;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             // 
-            // TelaTema
+            // TelaTemaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(475, 374);
+            ClientSize = new Size(418, 327);
             Controls.Add(groupTemas);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "TelaTema";
+            Name = "TelaTemaForm";
             ShowIcon = false;
-            Text = "TelaTema";
+            Text = "Cadastro de Tema";
             groupTemas.ResumeLayout(false);
             groupTemas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numValor).EndInit();

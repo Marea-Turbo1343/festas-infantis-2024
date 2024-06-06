@@ -1,54 +1,46 @@
 ﻿using FestasInfantis.ConsoleApp.Compartilhado;
 
-namespace FestasInfantis.WinApp.ModuloItem
+namespace FestasInfantis.WinApp.ModuloItemTema
 {
-    internal class ItemTema : EntidadeBase<ItemTema>
+    public class ItemTema : EntidadeBase
     {
-        public decimal Valor { get; set; }
         public string Titulo { get; set; }
+        public decimal Valor { get; set; }
         public bool Ativo { get; set; }
 
 
-        public ItemTema(decimal valor, string titulo, bool ativo)
+        public ItemTema(string titulo, decimal valor, bool ativo)
         {
             Valor = valor;
             Titulo = titulo;
             Ativo = ativo;
         }
 
-        public override string[] Validar()
+        public override List<string> Validar()
         {
-            List<string> erros = new();
+            List<string> erros = new List<string>();
 
-            if (Titulo!.Trim().Length < 3)
-            {
-                erros.Add("Por gentileza, informe um titulo maior do que três caracteres!");
-            }
+            if (string.IsNullOrEmpty(Titulo.Trim()))
+                erros.Add("O campo \"nome\" é obrigatório");
+
             if (Valor < 0)
-            {
                 erros.Add("Por gentileza, informe um valor positivo!");
-            }
 
-            return erros.ToArray();
+            return erros;
+        }
+
+        public override void AtualizarRegistro(EntidadeBase novoRegistro)
+        {
+            ItemTema atualizado = (ItemTema)novoRegistro;
+
+            Titulo = atualizado.Titulo;
+            Valor = atualizado.Valor;
+            Ativo = atualizado.Ativo;
         }
 
         public override string ToString()
         {
             return $"{Titulo} R${Valor}";
-        }
-
-        public override bool Equals(object? obj)
-        {
-            return obj is ItemTema tema &&
-                   Valor == tema.Valor &&
-                   Titulo == tema.Titulo;
-        }
-
-        public override void Editar(ItemTema entidade)
-        {
-            Valor = entidade.Valor;
-            Titulo = entidade.Titulo;
-            Ativo = entidade.Ativo;
         }
     }
 }

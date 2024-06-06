@@ -1,6 +1,6 @@
-﻿namespace FestasInfantis.WinApp.ModuloTema
+﻿namespace FestasInfantis.WinApp.ModuloItemTema
 {
-    partial class TabelaTemaControl
+    partial class ListagemItemTemaControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,35 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            gridTema = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)gridTema).BeginInit();
+            listItemTema = new ListBox();
             SuspendLayout();
             // 
-            // gridTema
+            // listItemTema
             // 
-            gridTema.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridTema.Dock = DockStyle.Fill;
-            gridTema.Location = new Point(0, 0);
-            gridTema.Margin = new Padding(3, 2, 3, 2);
-            gridTema.Name = "gridTema";
-            gridTema.RowHeadersWidth = 51;
-            gridTema.RowTemplate.Height = 29;
-            gridTema.Size = new Size(356, 280);
-            gridTema.TabIndex = 2;
+            listItemTema.FormattingEnabled = true;
+            listItemTema.ItemHeight = 15;
+            listItemTema.Location = new Point(0, 0);
+            listItemTema.Name = "listItemTema";
+            listItemTema.Size = new Size(382, 244);
+            listItemTema.TabIndex = 0;
             // 
-            // TabelaTemaControl
+            // ListagemItemTemaControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(gridTema);
-            Name = "TabelaTemaControl";
-            Size = new Size(356, 280);
-            ((System.ComponentModel.ISupportInitialize)gridTema).EndInit();
+            Controls.Add(listItemTema);
+            Name = "ListagemItemTemaControl";
+            Size = new Size(382, 243);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView gridTema;
+        private ListBox listItemTema;
     }
 }

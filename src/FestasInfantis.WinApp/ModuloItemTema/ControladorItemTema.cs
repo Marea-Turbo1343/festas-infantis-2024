@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FestasInfantis.WinApp.Compartilhado;
 
-namespace FestasInfantis.WinApp.ModuloItem
+namespace FestasInfantis.WinApp.ModuloItemTema
 {
-    internal class ControladorItemTema
+    public class ControladorItemTema : ControladorBase
     {
-        private readonly TelaItemTema telaItemTema;
-        private readonly RepositorioItem repositorioItem;
+        private RepositorioItemTema RepositorioItemTema;
+        private TabelaItemTemaControl tabelaItemTema;
 
         public ControladorItemTema(TelaItemTema telaItemTema, RepositorioItem repositorioItem)
         {
