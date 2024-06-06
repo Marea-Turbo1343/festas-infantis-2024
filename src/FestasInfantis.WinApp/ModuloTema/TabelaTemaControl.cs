@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
-    public partial class TelaTema : Form
+    public partial class TabelaTemaControl : UserControl
     {
-        public TelaTema()
+        public TabelaTemaControl()
         {
             InitializeComponent();
         }

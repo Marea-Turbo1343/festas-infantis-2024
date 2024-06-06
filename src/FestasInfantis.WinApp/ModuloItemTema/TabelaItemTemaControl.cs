@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FestasInfantis.WinApp.ModuloItem
+namespace FestasInfantis.WinApp.ModuloItemTema
 {
-    public partial class TelaItem : Form
+    public partial class TabelaItemTemaControl : UserControl
     {
-        public TelaItem()
+        public TabelaItemTemaControl()
         {
             InitializeComponent();
         }
