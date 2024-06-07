@@ -1,6 +1,6 @@
-﻿namespace FestasInfantis.WinApp.ModuloItemTema
+﻿namespace FestasInfantis.WinApp.ModuloItem
 {
-    partial class TelaItemTemaForm
+    partial class TelaItemForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,51 +29,37 @@
         private void InitializeComponent()
         {
             gpItem = new GroupBox();
-            lblAtivo = new Label();
             txtId = new TextBox();
             lblId = new Label();
-            txtPreco = new NumericUpDown();
-            txtTitulo = new TextBox();
-            chkAtivo = new CheckBox();
-            lblPreco = new Label();
-            lblTitulo = new Label();
+            txtValor = new TextBox();
+            txtDescricao = new TextBox();
+            lblValor = new Label();
+            lblDescricao = new Label();
             btnCancelar = new Button();
             btnSalvar = new Button();
             gpItem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)txtPreco).BeginInit();
             SuspendLayout();
             // 
             // gpItem
             // 
-            gpItem.Controls.Add(lblAtivo);
             gpItem.Controls.Add(txtId);
             gpItem.Controls.Add(lblId);
-            gpItem.Controls.Add(txtPreco);
-            gpItem.Controls.Add(txtTitulo);
-            gpItem.Controls.Add(chkAtivo);
-            gpItem.Controls.Add(lblPreco);
-            gpItem.Controls.Add(lblTitulo);
+            gpItem.Controls.Add(txtValor);
+            gpItem.Controls.Add(txtDescricao);
+            gpItem.Controls.Add(lblValor);
+            gpItem.Controls.Add(lblDescricao);
             gpItem.Location = new Point(12, 11);
             gpItem.Margin = new Padding(3, 2, 3, 2);
             gpItem.Name = "gpItem";
             gpItem.Padding = new Padding(3, 2, 3, 2);
-            gpItem.Size = new Size(240, 128);
+            gpItem.Size = new Size(247, 107);
             gpItem.TabIndex = 6;
             gpItem.TabStop = false;
             gpItem.Text = "Item";
             // 
-            // lblAtivo
-            // 
-            lblAtivo.AutoSize = true;
-            lblAtivo.Location = new Point(18, 100);
-            lblAtivo.Name = "lblAtivo";
-            lblAtivo.Size = new Size(38, 15);
-            lblAtivo.TabIndex = 19;
-            lblAtivo.Text = "Ativo:";
-            // 
             // txtId
             // 
-            txtId.Location = new Point(62, 20);
+            txtId.Location = new Point(72, 20);
             txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
@@ -83,61 +69,50 @@
             // lblId
             // 
             lblId.AutoSize = true;
-            lblId.Location = new Point(36, 23);
+            lblId.Location = new Point(46, 23);
             lblId.Name = "lblId";
             lblId.Size = new Size(20, 15);
             lblId.TabIndex = 17;
             lblId.Text = "Id:";
             // 
-            // txtPreco
+            // txtValor
             // 
-            txtPreco.Location = new Point(62, 74);
-            txtPreco.Margin = new Padding(3, 2, 3, 2);
-            txtPreco.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            txtPreco.Name = "txtPreco";
-            txtPreco.Size = new Size(72, 23);
-            txtPreco.TabIndex = 2;
+            txtValor.Location = new Point(72, 74);
+            txtValor.Margin = new Padding(3, 2, 3, 2);
+            txtValor.Name = "txtValor";
+            txtValor.Size = new Size(166, 23);
+            txtValor.TabIndex = 1;
             // 
-            // txtTitulo
+            // txtDescricao
             // 
-            txtTitulo.Location = new Point(62, 47);
-            txtTitulo.Margin = new Padding(3, 2, 3, 2);
-            txtTitulo.Name = "txtTitulo";
-            txtTitulo.Size = new Size(166, 23);
-            txtTitulo.TabIndex = 1;
+            txtDescricao.Location = new Point(72, 47);
+            txtDescricao.Margin = new Padding(3, 2, 3, 2);
+            txtDescricao.Name = "txtDescricao";
+            txtDescricao.Size = new Size(166, 23);
+            txtDescricao.TabIndex = 1;
             // 
-            // chkAtivo
+            // lblValor
             // 
-            chkAtivo.AutoSize = true;
-            chkAtivo.Location = new Point(62, 101);
-            chkAtivo.Margin = new Padding(3, 2, 3, 2);
-            chkAtivo.Name = "chkAtivo";
-            chkAtivo.Size = new Size(15, 14);
-            chkAtivo.TabIndex = 3;
-            chkAtivo.UseVisualStyleBackColor = true;
+            lblValor.AutoSize = true;
+            lblValor.Location = new Point(30, 77);
+            lblValor.Name = "lblValor";
+            lblValor.Size = new Size(36, 15);
+            lblValor.TabIndex = 11;
+            lblValor.Text = "Valor:";
             // 
-            // lblPreco
+            // lblDescricao
             // 
-            lblPreco.AutoSize = true;
-            lblPreco.Location = new Point(16, 76);
-            lblPreco.Name = "lblPreco";
-            lblPreco.Size = new Size(40, 15);
-            lblPreco.TabIndex = 11;
-            lblPreco.Text = "Preço:";
-            // 
-            // lblTitulo
-            // 
-            lblTitulo.AutoSize = true;
-            lblTitulo.Location = new Point(16, 50);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(40, 15);
-            lblTitulo.TabIndex = 10;
-            lblTitulo.Text = "Titulo:";
+            lblDescricao.AutoSize = true;
+            lblDescricao.Location = new Point(5, 50);
+            lblDescricao.Name = "lblDescricao";
+            lblDescricao.Size = new Size(61, 15);
+            lblDescricao.TabIndex = 10;
+            lblDescricao.Text = "Descricao:";
             // 
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(177, 144);
+            btnCancelar.Location = new Point(184, 123);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 35);
             btnCancelar.TabIndex = 5;
@@ -147,7 +122,7 @@
             // btnSalvar
             // 
             btnSalvar.DialogResult = DialogResult.OK;
-            btnSalvar.Location = new Point(96, 144);
+            btnSalvar.Location = new Point(103, 123);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 35);
             btnSalvar.TabIndex = 4;
@@ -155,22 +130,22 @@
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
-            // TelaItemTemaForm
+            // TelaItemForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(259, 187);
+            ClientSize = new Size(270, 169);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             Controls.Add(gpItem);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "TelaItemTemaForm";
+            Name = "TelaItemForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Item";
             gpItem.ResumeLayout(false);
             gpItem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)txtPreco).EndInit();
             ResumeLayout(false);
         }
 
@@ -181,11 +156,9 @@
         private Button btnSalvar;
         private TextBox txtId;
         private Label lblId;
-        private NumericUpDown txtPreco;
-        private TextBox txtTitulo;
-        private CheckBox chkAtivo;
-        private Label lblPreco;
-        private Label lblTitulo;
-        private Label lblAtivo;
+        private TextBox txtDescricao;
+        private Label lblValor;
+        private Label lblDescricao;
+        private TextBox txtValor;
     }
 }

@@ -1,12 +1,10 @@
-﻿using FestasInfantis.WinApp.ModuloItemTema;
-
-namespace FestasInfantis.WinApp.ModuloTema
+﻿namespace FestasInfantis.WinApp.ModuloTema
 {
     public partial class TelaTemaForm : Form
     {
         Tema tema;
 
-        private List<ItemTema> itemTema;
+        //private List<Item> item;
 
         public TelaTemaForm()
         {

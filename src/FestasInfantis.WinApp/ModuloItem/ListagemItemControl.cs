@@ -1,13 +1,13 @@
-﻿namespace FestasInfantis.WinApp.ModuloItemTema
+﻿namespace FestasInfantis.WinApp.ModuloItem
 {
-    public partial class ListagemItemTemaControl : UserControl
+    public partial class ListagemItemControl : UserControl
     {
-        public ListagemItemTemaControl()
+        public ListagemItemControl()
         {
             InitializeComponent();
         }
 
-        public void AtualizarRegistros(List<ItemTema> itemTema)
+        public void AtualizarRegistros(List<Item> itemTema)
         {
             //listItemTema.Items.Clear();
 
@@ -15,12 +15,12 @@
             //    listItemTema.Items.Add(itemTema);
         }
 
-        public ItemTema ObterRegistroSelecionado()
+        public Item ObterRegistroSelecionado()
         {
             if (listItemTema.SelectedItem == null)
                 return null;
 
-            return (ItemTema)listItemTema.SelectedItem;
+            return (Item)listItemTema.SelectedItem;
         }
     }
 }

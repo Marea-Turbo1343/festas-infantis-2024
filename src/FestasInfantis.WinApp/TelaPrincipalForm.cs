@@ -1,5 +1,6 @@
 using FestasInfantis.WinApp.Compartilhado;
 using FestasInfantis.WinApp.ModuloCliente;
+using FestasInfantis.WinApp.ModuloItem;
 
 namespace FestasInfantis.WinApp
 {
@@ -8,6 +9,7 @@ namespace FestasInfantis.WinApp
         ControladorBase controlador;
 
         IRepositorioCliente repositorioCliente;
+        IRepositorioItem repositorioItem;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -19,11 +21,41 @@ namespace FestasInfantis.WinApp
             Instancia = this;
 
             repositorioCliente = new RepositorioClienteEmMemoria();
+            repositorioItem = new RepositorioItemEmMemoria();
         }
 
         public void AtualizarRodape(string texto)
         {
             statusLabelPrincipal.Text = texto;
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorCliente(repositorioCliente);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void itensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorItem(repositorioItem);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            controlador.Adicionar();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            controlador.Editar();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            controlador.Excluir();
         }
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
@@ -62,18 +94,6 @@ namespace FestasInfantis.WinApp
 
             pnlRegistros.Controls.Clear();
             pnlRegistros.Controls.Add(listagemContato);
-        }
-
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            controlador = new ControladorCliente(repositorioCliente);
-
-            ConfigurarTelaPrincipal(controlador);
-        }
-
-        private void btnAdicionar_Click(object sender, EventArgs e)
-        {
-            controlador.Adicionar();
         }
     }
 }

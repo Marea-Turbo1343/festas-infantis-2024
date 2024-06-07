@@ -1,34 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using FestasInfantis.WinApp.ModuloCliente;
+using FestasInfantis.WinApp.ModuloItem;
+using FestasInfantis.WinApp.ModuloTema;
+using FestasInfantis.WinApp.ModuloAluguel;
 using System.Text.Json.Serialization;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace FestasInfantis.WinApp.Compartilhado
 {
     public class ContextoDados
     {
-        public List<Contato> Contatos { get; set; }
-        public List<Compromisso> Compromissos { get; set; }
-        public List<Tarefa> Tarefas { get; set; }
-        public List<Categoria> Categorias { get; set; }
-        public List<Despesa> Despesas { get; set; }
+        public List<Cliente> Clientes { get; set; }
+        //public List<Compromisso> Compromissos { get; set; }
+        //public List<Tarefa> Tarefas { get; set; }
+        //public List<Categoria> Categorias { get; set; }
+        //public List<Despesa> Despesas { get; set; }
 
         private string caminho = $"C:\\temp\\eAgenda\\dados.json";
 
         public ContextoDados()
         {
-            Contatos = new List<Contato>();
+            Clientes = new List<Cliente>();
 
-            Compromissos = new List<Compromisso>();
+            //Compromissos = new List<Compromisso>();
 
-            Tarefas = new List<Tarefa>();
+            //Tarefas = new List<Tarefa>();
 
-            Categorias = new List<Categoria>();
+            //Categorias = new List<Categoria>();
 
-            Despesas = new List<Despesa>();
+            //Despesas = new List<Despesa>();
         }
 
         public ContextoDados(bool carregarDados) : this()
@@ -72,15 +71,15 @@ namespace FestasInfantis.WinApp.Compartilhado
 
             if (ctx == null) return;
 
-            Contatos = ctx.Contatos;
+            Clientes = ctx.Clientes;
 
-            Compromissos = ctx.Compromissos;
+            //Compromissos = ctx.Compromissos;
 
-            Tarefas = ctx.Tarefas;
+            //Tarefas = ctx.Tarefas;
 
-            Categorias = ctx.Categorias;
+            //Categorias = ctx.Categorias;
 
-            Despesas = ctx.Despesas;
+            //Despesas = ctx.Despesas;
         }
     }
 }

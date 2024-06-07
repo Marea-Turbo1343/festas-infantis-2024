@@ -52,7 +52,7 @@
             gpCliente.Controls.Add(lblCpf);
             gpCliente.Controls.Add(txtId);
             gpCliente.Controls.Add(lblNome);
-            gpCliente.Location = new Point(12, 11);
+            gpCliente.Location = new Point(9, 11);
             gpCliente.Margin = new Padding(3, 2, 3, 2);
             gpCliente.Name = "gpCliente";
             gpCliente.Padding = new Padding(3, 2, 3, 2);
@@ -139,29 +139,10 @@
             lblNome.TabIndex = 27;
             lblNome.Text = "Nome:";
             // 
-            // lblEndereco
-            // 
-            lblEndereco.AutoSize = true;
-            lblEndereco.BackColor = SystemColors.ButtonFace;
-            lblEndereco.Font = new Font("Segoe UI", 10F);
-            lblEndereco.Location = new Point(4, 127);
-            lblEndereco.Name = "lblEndereco";
-            lblEndereco.Size = new Size(68, 19);
-            lblEndereco.TabIndex = 27;
-            lblEndereco.Text = "Endereço:";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(73, 126);
-            textBox3.Margin = new Padding(3, 2, 3, 2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(324, 23);
-            textBox3.TabIndex = 34;
-            // 
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(343, 176);
+            btnCancelar.Location = new Point(340, 149);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 35);
             btnCancelar.TabIndex = 13;
@@ -171,7 +152,7 @@
             // btnSalvar
             // 
             btnSalvar.DialogResult = DialogResult.OK;
-            btnSalvar.Location = new Point(262, 176);
+            btnSalvar.Location = new Point(259, 149);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 35);
             btnSalvar.TabIndex = 12;
@@ -183,11 +164,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(427, 195);
+            ClientSize = new Size(424, 191);
             Controls.Add(gpCliente);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
-            Controls.Add(groupTemas);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaClienteForm";

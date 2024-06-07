@@ -1,27 +1,25 @@
 ﻿using FestasInfantis.WinApp.Compartilhado;
 
-namespace FestasInfantis.WinApp.ModuloItemTema
+namespace FestasInfantis.WinApp.ModuloItem
 {
-    public partial class TabelaItemTemaControl : UserControl
+    public partial class TabelaItemControl : UserControl
     {
-        public TabelaItemTemaControl()
+        public TabelaItemControl()
         {
             InitializeComponent();
 
             grid.Columns.AddRange(ObterColunas());
-
             grid.ConfigurarGridSomenteLeitura();
             grid.ConfigurarGridZebrado();
         }
 
-        public void AtualizarRegistros(List<ItemTema> itemTema)
+        internal void AtualizarRegistros(List<Item> itens)
         {
             grid.Rows.Clear();
 
-            foreach (ItemTema c in itemTema)
-                grid.Rows.Add(c.Id, c.Titulo.ToTitleCase(), c.Ativo);
+            foreach (Item c in itens)
+                grid.Rows.Add(c.Id, c.Descricao.ToTitleCase(), c.Valor);
         }
-
         public int ObterRegistroSelecionado()
         {
             return grid.SelecionarId();
@@ -32,9 +30,8 @@ namespace FestasInfantis.WinApp.ModuloItemTema
             return new DataGridViewColumn[]
                         {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Titulo", HeaderText = "Titulo" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Descricao", HeaderText = "Descrição" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Ativo", HeaderText = "Ativo" },
                         };
         }
     }

@@ -1,6 +1,6 @@
-﻿namespace FestasInfantis.WinApp.ModuloItemTema
+﻿namespace FestasInfantis.WinApp.ModuloItem
 {
-    partial class ListagemItemTemaControl
+    partial class ListagemItemControl
     {
         /// <summary> 
         /// Required designer variable.
