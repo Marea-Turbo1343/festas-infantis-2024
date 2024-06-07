@@ -28,94 +28,94 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupTemas = new GroupBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            txtTema = new TextBox();
-            label3 = new Label();
-            label1 = new Label();
-            label2 = new Label();
+            gpCliente = new GroupBox();
+            txtTelefone = new TextBox();
+            txtCpf = new TextBox();
+            txtNome = new TextBox();
+            lblTelefone = new Label();
+            lblId = new Label();
+            lblCpf = new Label();
             txtId = new TextBox();
-            labelNome = new Label();
+            lblNome = new Label();
             btnCancelar = new Button();
             btnSalvar = new Button();
-            groupTemas.SuspendLayout();
+            gpCliente.SuspendLayout();
             SuspendLayout();
             // 
-            // groupTemas
+            // gpCliente
             // 
-            groupTemas.Controls.Add(textBox2);
-            groupTemas.Controls.Add(textBox1);
-            groupTemas.Controls.Add(txtTema);
-            groupTemas.Controls.Add(label3);
-            groupTemas.Controls.Add(label1);
-            groupTemas.Controls.Add(label2);
-            groupTemas.Controls.Add(txtId);
-            groupTemas.Controls.Add(labelNome);
-            groupTemas.Location = new Point(12, 11);
-            groupTemas.Margin = new Padding(3, 2, 3, 2);
-            groupTemas.Name = "groupTemas";
-            groupTemas.Padding = new Padding(3, 2, 3, 2);
-            groupTemas.Size = new Size(406, 133);
-            groupTemas.TabIndex = 11;
-            groupTemas.TabStop = false;
-            groupTemas.Text = "Cliente";
+            gpCliente.Controls.Add(txtTelefone);
+            gpCliente.Controls.Add(txtCpf);
+            gpCliente.Controls.Add(txtNome);
+            gpCliente.Controls.Add(lblTelefone);
+            gpCliente.Controls.Add(lblId);
+            gpCliente.Controls.Add(lblCpf);
+            gpCliente.Controls.Add(txtId);
+            gpCliente.Controls.Add(lblNome);
+            gpCliente.Location = new Point(12, 11);
+            gpCliente.Margin = new Padding(3, 2, 3, 2);
+            gpCliente.Name = "gpCliente";
+            gpCliente.Padding = new Padding(3, 2, 3, 2);
+            gpCliente.Size = new Size(406, 133);
+            gpCliente.TabIndex = 11;
+            gpCliente.TabStop = false;
+            gpCliente.Text = "Cliente";
             // 
-            // textBox2
+            // txtTelefone
             // 
-            textBox2.Location = new Point(69, 99);
-            textBox2.Margin = new Padding(3, 2, 3, 2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(324, 23);
-            textBox2.TabIndex = 34;
+            txtTelefone.Location = new Point(69, 99);
+            txtTelefone.Margin = new Padding(3, 2, 3, 2);
+            txtTelefone.Name = "txtTelefone";
+            txtTelefone.Size = new Size(324, 23);
+            txtTelefone.TabIndex = 34;
             // 
-            // textBox1
+            // txtCpf
             // 
-            textBox1.Location = new Point(69, 72);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(324, 23);
-            textBox1.TabIndex = 34;
+            txtCpf.Location = new Point(69, 72);
+            txtCpf.Margin = new Padding(3, 2, 3, 2);
+            txtCpf.Name = "txtCpf";
+            txtCpf.Size = new Size(324, 23);
+            txtCpf.TabIndex = 34;
             // 
-            // txtTema
+            // txtNome
             // 
-            txtTema.Location = new Point(69, 45);
-            txtTema.Margin = new Padding(3, 2, 3, 2);
-            txtTema.Name = "txtTema";
-            txtTema.Size = new Size(324, 23);
-            txtTema.TabIndex = 34;
+            txtNome.Location = new Point(69, 45);
+            txtNome.Margin = new Padding(3, 2, 3, 2);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(324, 23);
+            txtNome.TabIndex = 34;
             // 
-            // label3
+            // lblTelefone
             // 
-            label3.AutoSize = true;
-            label3.BackColor = SystemColors.ButtonFace;
-            label3.Font = new Font("Segoe UI", 10F);
-            label3.Location = new Point(6, 100);
-            label3.Name = "label3";
-            label3.Size = new Size(62, 19);
-            label3.TabIndex = 27;
-            label3.Text = "Telefone:";
+            lblTelefone.AutoSize = true;
+            lblTelefone.BackColor = SystemColors.ButtonFace;
+            lblTelefone.Font = new Font("Segoe UI", 10F);
+            lblTelefone.Location = new Point(6, 100);
+            lblTelefone.Name = "lblTelefone";
+            lblTelefone.Size = new Size(62, 19);
+            lblTelefone.TabIndex = 27;
+            lblTelefone.Text = "Telefone:";
             // 
-            // label1
+            // lblId
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(44, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(24, 19);
-            label1.TabIndex = 26;
-            label1.Text = "Id:";
+            lblId.AutoSize = true;
+            lblId.Font = new Font("Segoe UI", 10F);
+            lblId.Location = new Point(44, 19);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(24, 19);
+            lblId.TabIndex = 26;
+            lblId.Text = "Id:";
             // 
-            // label2
+            // lblCpf
             // 
-            label2.AutoSize = true;
-            label2.BackColor = SystemColors.ButtonFace;
-            label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(32, 73);
-            label2.Name = "label2";
-            label2.Size = new Size(36, 19);
-            label2.TabIndex = 27;
-            label2.Text = "CPF:";
+            lblCpf.AutoSize = true;
+            lblCpf.BackColor = SystemColors.ButtonFace;
+            lblCpf.Font = new Font("Segoe UI", 10F);
+            lblCpf.Location = new Point(32, 73);
+            lblCpf.Name = "lblCpf";
+            lblCpf.Size = new Size(36, 19);
+            lblCpf.TabIndex = 27;
+            lblCpf.Text = "CPF:";
             // 
             // txtId
             // 
@@ -128,16 +128,16 @@
             txtId.TabIndex = 25;
             txtId.TabStop = false;
             // 
-            // labelNome
+            // lblNome
             // 
-            labelNome.AutoSize = true;
-            labelNome.BackColor = SystemColors.ButtonFace;
-            labelNome.Font = new Font("Segoe UI", 10F);
-            labelNome.Location = new Point(19, 46);
-            labelNome.Name = "labelNome";
-            labelNome.Size = new Size(49, 19);
-            labelNome.TabIndex = 27;
-            labelNome.Text = "Nome:";
+            lblNome.AutoSize = true;
+            lblNome.BackColor = SystemColors.ButtonFace;
+            lblNome.Font = new Font("Segoe UI", 10F);
+            lblNome.Location = new Point(19, 46);
+            lblNome.Name = "lblNome";
+            lblNome.Size = new Size(49, 19);
+            lblNome.TabIndex = 27;
+            lblNome.Text = "Nome:";
             // 
             // btnCancelar
             // 
@@ -158,38 +158,39 @@
             btnSalvar.TabIndex = 9;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // TelaClienteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(427, 195);
-            Controls.Add(groupTemas);
+            Controls.Add(gpCliente);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaClienteForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Cliente";
-            Load += TelaClienteForm_Load;
-            groupTemas.ResumeLayout(false);
-            groupTemas.PerformLayout();
+            gpCliente.ResumeLayout(false);
+            gpCliente.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupTemas;
-        private TextBox textBox2;
-        private TextBox txtTema;
-        private Label label3;
-        private Label label1;
-        private Label label2;
+        private GroupBox gpCliente;
+        private TextBox txtTelefone;
+        private TextBox txtNome;
+        private Label lblTelefone;
+        private Label lblId;
+        private Label lblCpf;
         private TextBox txtId;
-        private Label labelNome;
+        private Label lblNome;
         private Button btnCancelar;
         private Button btnSalvar;
-        private TextBox textBox1;
+        private TextBox txtCpf;
     }
 }
