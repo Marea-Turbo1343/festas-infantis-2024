@@ -1,16 +1,27 @@
-﻿namespace FestasInfantis.ConsoleApp.Compartilhado
+﻿using FestasInfantis.WinApp.Compartilhado;
+
+namespace FestasInfantis.ConsoleApp.Compartilhado
 {
     public abstract class RepositorioBase<T> where T : EntidadeBase
     {
-        protected List<T> registros = new List<T>();
+        protected abstract List<T> ObterRegistros();
 
         protected int contadorId = 1;
+
+        protected ContextoDados contexto;
+
+        public RepositorioBase(ContextoDados contexto)
+        {
+            this.contexto = contexto;
+        }
 
         public void Cadastrar(T novoRegistro)
         {
             novoRegistro.Id = contadorId++;
 
-            registros.Add(novoRegistro);
+            ObterRegistros().Add(novoRegistro);
+
+            contexto.Gravar();
         }
 
         public bool Editar(int id, T novaEntidade)
@@ -22,36 +33,36 @@
 
             registro.AtualizarRegistro(novaEntidade);
 
+            contexto.Gravar();
+
             return true;
         }
 
-        public bool Excluir(int id)
+        public virtual bool Excluir(int id)
         {
-            return registros.Remove(SelecionarPorId(id));
+            bool conseguiuExcluir = ObterRegistros().Remove(SelecionarPorId(id));
+
+            if (!conseguiuExcluir)
+                return false;
+
+            contexto.Gravar();
+
+            return true;
         }
 
         public List<T> SelecionarTodos()
         {
-            return registros;
+            return ObterRegistros();
         }
 
         public T SelecionarPorId(int id)
         {
-            return registros.Find(x => x.Id == id);
+            return ObterRegistros().Find(x => x.Id == id);
         }
 
         public bool Existe(int id)
         {
-            return registros.Any(x => x.Id == id);
-        }
-
-        public void CadastrarVarios(List<T> registrosAdicionados)
-        {
-            foreach (T registro in registrosAdicionados)
-            {
-                registro.Id = contadorId++;
-                registros.Add(registro);
-            }
+            return ObterRegistros().Any(x => x.Id == id);
         }
     }
 }
