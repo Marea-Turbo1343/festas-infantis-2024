@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupTemas = new GroupBox();
+            gpItem = new GroupBox();
             lblAtivo = new Label();
             txtId = new TextBox();
             lblId = new Label();
@@ -39,28 +39,28 @@
             lblTitulo = new Label();
             btnCancelar = new Button();
             btnSalvar = new Button();
-            groupTemas.SuspendLayout();
+            gpItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtPreco).BeginInit();
             SuspendLayout();
             // 
-            // groupTemas
+            // gpItem
             // 
-            groupTemas.Controls.Add(lblAtivo);
-            groupTemas.Controls.Add(txtId);
-            groupTemas.Controls.Add(lblId);
-            groupTemas.Controls.Add(txtPreco);
-            groupTemas.Controls.Add(txtTitulo);
-            groupTemas.Controls.Add(chkAtivo);
-            groupTemas.Controls.Add(lblPreco);
-            groupTemas.Controls.Add(lblTitulo);
-            groupTemas.Location = new Point(12, 11);
-            groupTemas.Margin = new Padding(3, 2, 3, 2);
-            groupTemas.Name = "groupTemas";
-            groupTemas.Padding = new Padding(3, 2, 3, 2);
-            groupTemas.Size = new Size(240, 128);
-            groupTemas.TabIndex = 6;
-            groupTemas.TabStop = false;
-            groupTemas.Text = "Temas";
+            gpItem.Controls.Add(lblAtivo);
+            gpItem.Controls.Add(txtId);
+            gpItem.Controls.Add(lblId);
+            gpItem.Controls.Add(txtPreco);
+            gpItem.Controls.Add(txtTitulo);
+            gpItem.Controls.Add(chkAtivo);
+            gpItem.Controls.Add(lblPreco);
+            gpItem.Controls.Add(lblTitulo);
+            gpItem.Location = new Point(12, 11);
+            gpItem.Margin = new Padding(3, 2, 3, 2);
+            gpItem.Name = "gpItem";
+            gpItem.Padding = new Padding(3, 2, 3, 2);
+            gpItem.Size = new Size(240, 128);
+            gpItem.TabIndex = 6;
+            gpItem.TabStop = false;
+            gpItem.Text = "Item";
             // 
             // lblAtivo
             // 
@@ -162,21 +162,21 @@
             ClientSize = new Size(259, 187);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
-            Controls.Add(groupTemas);
+            Controls.Add(gpItem);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaItemTemaForm";
             ShowIcon = false;
             Text = "Cadastro de Item";
-            groupTemas.ResumeLayout(false);
-            groupTemas.PerformLayout();
+            gpItem.ResumeLayout(false);
+            gpItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)txtPreco).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupTemas;
+        private GroupBox gpItem;
         private Button btnCancelar;
         private Button btnSalvar;
         private TextBox txtId;

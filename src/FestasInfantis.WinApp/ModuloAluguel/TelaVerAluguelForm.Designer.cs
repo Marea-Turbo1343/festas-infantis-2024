@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             gpVerAluguel = new GroupBox();
-            btnOk = new Button();
             groupBox1 = new GroupBox();
             listItens = new ListBox();
             labelValorTotal = new Label();
@@ -66,6 +65,7 @@
             labelTel = new Label();
             labelNomeClinete = new Label();
             lblId = new Label();
+            btnOk = new Button();
             gpVerAluguel.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -111,30 +111,19 @@
             gpVerAluguel.Margin = new Padding(3, 2, 3, 2);
             gpVerAluguel.Name = "gpVerAluguel";
             gpVerAluguel.Padding = new Padding(3, 2, 3, 2);
-            gpVerAluguel.Size = new Size(556, 525);
+            gpVerAluguel.Size = new Size(556, 490);
             gpVerAluguel.TabIndex = 7;
             gpVerAluguel.TabStop = false;
             gpVerAluguel.Text = "Aluguel";
             // 
-            // btnOk
-            // 
-            btnOk.DialogResult = DialogResult.OK;
-            btnOk.Location = new Point(473, 540);
-            btnOk.Margin = new Padding(3, 2, 3, 2);
-            btnOk.Name = "btnOk";
-            btnOk.Size = new Size(95, 33);
-            btnOk.TabIndex = 19;
-            btnOk.Text = "OK";
-            btnOk.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(listItens);
-            groupBox1.Location = new Point(281, 263);
+            groupBox1.Location = new Point(281, 160);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(261, 213);
+            groupBox1.Size = new Size(261, 317);
             groupBox1.TabIndex = 75;
             groupBox1.TabStop = false;
             groupBox1.Text = "Itens do Tema";
@@ -148,7 +137,7 @@
             listItens.Location = new Point(3, 18);
             listItens.Margin = new Padding(3, 2, 3, 2);
             listItens.Name = "listItens";
-            listItens.Size = new Size(255, 193);
+            listItens.Size = new Size(255, 297);
             listItens.TabIndex = 1;
             // 
             // labelValorTotal
@@ -457,11 +446,22 @@
             lblId.TabIndex = 0;
             lblId.Text = "Id:";
             // 
+            // btnOk
+            // 
+            btnOk.DialogResult = DialogResult.OK;
+            btnOk.Location = new Point(473, 505);
+            btnOk.Margin = new Padding(3, 2, 3, 2);
+            btnOk.Name = "btnOk";
+            btnOk.Size = new Size(95, 33);
+            btnOk.TabIndex = 19;
+            btnOk.Text = "OK";
+            btnOk.UseVisualStyleBackColor = true;
+            // 
             // TelaVerAluguelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(580, 585);
+            ClientSize = new Size(580, 549);
             Controls.Add(btnOk);
             Controls.Add(gpVerAluguel);
             MaximizeBox = false;
