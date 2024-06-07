@@ -120,7 +120,7 @@
             // txtId
             // 
             txtId.Enabled = false;
-            txtId.Location = new Point(69, 18);
+            txtId.Location = new Point(73, 18);
             txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
@@ -139,23 +139,42 @@
             lblNome.TabIndex = 27;
             lblNome.Text = "Nome:";
             // 
+            // lblEndereco
+            // 
+            lblEndereco.AutoSize = true;
+            lblEndereco.BackColor = SystemColors.ButtonFace;
+            lblEndereco.Font = new Font("Segoe UI", 10F);
+            lblEndereco.Location = new Point(4, 127);
+            lblEndereco.Name = "lblEndereco";
+            lblEndereco.Size = new Size(68, 19);
+            lblEndereco.TabIndex = 27;
+            lblEndereco.Text = "Endereço:";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(73, 126);
+            textBox3.Margin = new Padding(3, 2, 3, 2);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(324, 23);
+            textBox3.TabIndex = 34;
+            // 
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(343, 149);
+            btnCancelar.Location = new Point(343, 176);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 35);
-            btnCancelar.TabIndex = 10;
+            btnCancelar.TabIndex = 13;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnSalvar
             // 
             btnSalvar.DialogResult = DialogResult.OK;
-            btnSalvar.Location = new Point(262, 149);
+            btnSalvar.Location = new Point(262, 176);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 35);
-            btnSalvar.TabIndex = 9;
+            btnSalvar.TabIndex = 12;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
@@ -168,6 +187,7 @@
             Controls.Add(gpCliente);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
+            Controls.Add(groupTemas);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaClienteForm";
