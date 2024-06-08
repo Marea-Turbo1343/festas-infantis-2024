@@ -1,6 +1,4 @@
 ﻿using FestasInfantis.WinApp.Compartilhado;
-using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
@@ -99,6 +97,7 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             tabelaTema.AtualizarRegistros(temas);
         }
+
         public override UserControl ObterListagem()
         {
             if (tabelaTema == null)
@@ -108,5 +107,14 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             return tabelaTema;
         }
+
+        public override bool HabilitarBtnAdicionar() { return true; }
+        public override bool HabilitarBtnEditar() { return true; }
+        public override bool HabilitarBtnExcluir() { return true; }
+        public override bool HabilitarBtnFiltrar() { return false; }
+        public override bool HabilitarBtnAdicionarItens() { return true; }
+        public override bool HabilitarBtnVisualizarAlugueis() { return false; }
+        public override bool HabilitarBtnConcluirAluguel() { return false; }
+        public override bool HabilitarBtnConfigurarDescontos() { return false; }
     }
 }

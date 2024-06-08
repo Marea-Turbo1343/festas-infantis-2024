@@ -29,97 +29,97 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            label1 = new Label();
+            numDesconto = new NumericUpDown();
             numDescontoMax = new NumericUpDown();
-            numDescontoMin = new NumericUpDown();
-            labelDesMin = new Label();
+            lblPorcentagemMaxima = new Label();
+            lblPorcentagemDesconto = new Label();
             btnCancelar = new Button();
             btnSalvar = new Button();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numDesconto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numDescontoMax).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numDescontoMin).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(numDesconto);
             groupBox1.Controls.Add(numDescontoMax);
-            groupBox1.Controls.Add(numDescontoMin);
-            groupBox1.Controls.Add(labelDesMin);
+            groupBox1.Controls.Add(lblPorcentagemMaxima);
+            groupBox1.Controls.Add(lblPorcentagemDesconto);
             groupBox1.Location = new Point(12, 11);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(268, 83);
+            groupBox1.Size = new Size(197, 74);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Desconto";
             // 
-            // label1
+            // numDesconto
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(9, 49);
-            label1.Name = "label1";
-            label1.Size = new Size(110, 15);
-            label1.TabIndex = 10;
-            label1.Text = "Desconto máximo: ";
+            numDesconto.Location = new Point(145, 16);
+            numDesconto.Margin = new Padding(3, 2, 3, 2);
+            numDesconto.Name = "numDesconto";
+            numDesconto.Size = new Size(44, 23);
+            numDesconto.TabIndex = 1;
             // 
             // numDescontoMax
             // 
-            numDescontoMax.Location = new Point(124, 47);
+            numDescontoMax.Location = new Point(145, 43);
             numDescontoMax.Margin = new Padding(3, 2, 3, 2);
             numDescontoMax.Name = "numDescontoMax";
-            numDescontoMax.Size = new Size(134, 23);
-            numDescontoMax.TabIndex = 9;
+            numDescontoMax.Size = new Size(44, 23);
+            numDescontoMax.TabIndex = 1;
             // 
-            // numDescontoMin
+            // lblPorcentagemMaxima
             // 
-            numDescontoMin.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
-            numDescontoMin.Location = new Point(124, 20);
-            numDescontoMin.Margin = new Padding(3, 2, 3, 2);
-            numDescontoMin.Name = "numDescontoMin";
-            numDescontoMin.Size = new Size(134, 23);
-            numDescontoMin.TabIndex = 8;
+            lblPorcentagemMaxima.AutoSize = true;
+            lblPorcentagemMaxima.Location = new Point(12, 45);
+            lblPorcentagemMaxima.Name = "lblPorcentagemMaxima";
+            lblPorcentagemMaxima.Size = new Size(127, 15);
+            lblPorcentagemMaxima.TabIndex = 6;
+            lblPorcentagemMaxima.Text = "Porcentagem máxima:";
             // 
-            // labelDesMin
+            // lblPorcentagemDesconto
             // 
-            labelDesMin.AutoSize = true;
-            labelDesMin.Location = new Point(11, 22);
-            labelDesMin.Name = "labelDesMin";
-            labelDesMin.Size = new Size(108, 15);
-            labelDesMin.TabIndex = 6;
-            labelDesMin.Text = "Desconto mínimo: ";
+            lblPorcentagemDesconto.AutoSize = true;
+            lblPorcentagemDesconto.Location = new Point(6, 18);
+            lblPorcentagemDesconto.Name = "lblPorcentagemDesconto";
+            lblPorcentagemDesconto.Size = new Size(133, 15);
+            lblPorcentagemDesconto.TabIndex = 6;
+            lblPorcentagemDesconto.Text = "Porcentagem desconto:";
             // 
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(212, 98);
+            btnCancelar.Location = new Point(141, 89);
             btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(68, 34);
-            btnCancelar.TabIndex = 4;
+            btnCancelar.TabIndex = 7;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnSalvar
             // 
             btnSalvar.DialogResult = DialogResult.OK;
-            btnSalvar.Location = new Point(138, 98);
+            btnSalvar.Location = new Point(67, 89);
             btnSalvar.Margin = new Padding(3, 2, 3, 2);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(68, 34);
-            btnSalvar.TabIndex = 3;
+            btnSalvar.TabIndex = 6;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // TelaDescontoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(289, 141);
-            Controls.Add(groupBox1);
+            ClientSize = new Size(218, 131);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
+            Controls.Add(groupBox1);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaDescontoForm";
@@ -128,8 +128,8 @@
             Text = "Configurar Desconto";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numDesconto).EndInit();
             ((System.ComponentModel.ISupportInitialize)numDescontoMax).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numDescontoMin).EndInit();
             ResumeLayout(false);
         }
 
@@ -139,8 +139,10 @@
         private Label label1;
         private NumericUpDown numDescontoMax;
         private NumericUpDown numDescontoMin;
-        private Label labelDesMin;
+        private Label lblPorcentagemDesconto;
         private Button btnCancelar;
         private Button btnSalvar;
+        private NumericUpDown numDesconto;
+        private Label lblPorcentagemMaxima;
     }
 }

@@ -13,18 +13,17 @@ namespace FestasInfantis.WinApp.Compartilhado
         public List<Item> Itens { get; set; }
         public List<Tema> Temas { get; set; }
         public List<Aluguel> Alugueis { get; set; }
+        public ConfiguracaoDesconto ConfiguracaoDesconto { get; set; }
 
         private string caminho = $"C:\\temp\\FestasInfantis\\dados.json";
 
         public ContextoDados()
         {
             Clientes = new List<Cliente>();
-
             Itens = new List<Item>();
-
             Temas = new List<Tema>();
-
             Alugueis = new List<Aluguel>();
+            ConfiguracaoDesconto = new ConfiguracaoDesconto(padrao: true);
         }
 
         public ContextoDados(bool carregarDados) : this()
@@ -69,12 +68,10 @@ namespace FestasInfantis.WinApp.Compartilhado
             if (ctx == null) return;
 
             Clientes = ctx.Clientes;
-
             Itens = ctx.Itens;
-
             Temas = ctx.Temas;
-
             Alugueis = ctx.Alugueis;
+            ConfiguracaoDesconto = ctx.ConfiguracaoDesconto;
         }
     }
 }

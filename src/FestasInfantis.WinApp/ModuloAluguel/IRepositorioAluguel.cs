@@ -8,5 +8,7 @@
         Aluguel SelecionarPorId(int idSelecionado);
         List<Aluguel> SelecionarTodos();
         List<Aluguel> SelecionarAlugueisPorPeriodo(DateTime dataInicio, DateTime dataTermino);
+        ConfiguracaoDesconto SelecionarConfiguracaoDesconto();
+        void SalvarDesconto(ConfiguracaoDesconto configuracaoDesconto);
     }
 }

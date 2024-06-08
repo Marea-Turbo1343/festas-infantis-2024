@@ -108,5 +108,14 @@ namespace FestasInfantis.WinApp.ModuloItem
 
             return tabelaItem;
         }
+
+        public override bool HabilitarBtnAdicionar() { return true; }
+        public override bool HabilitarBtnEditar() { return true; }
+        public override bool HabilitarBtnExcluir() { return true; }
+        public override bool HabilitarBtnFiltrar() { return false; }
+        public override bool HabilitarBtnAdicionarItens() { return false; }
+        public override bool HabilitarBtnVisualizarAlugueis() { return false; }
+        public override bool HabilitarBtnConcluirAluguel() { return false; }
+        public override bool HabilitarBtnConfigurarDescontos() { return false; }
     }
 }

@@ -150,5 +150,34 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
             tabelaAluguel.AtualizarRegistros(alugueis);
         }
+
+        public void ConfigurarDesconto()
+        {
+            ConfiguracaoDesconto configuracaoDesconto = repositorioAluguel.SelecionarConfiguracaoDesconto();
+
+            var telaDesconto = new TelaDescontoForm(configuracaoDesconto)
+            {
+                Text = "Configurar Desconto"
+            };
+
+            DialogResult result = telaDesconto.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                configuracaoDesconto.EditarDesconto(telaDesconto.configuracaoDesconto);
+
+                repositorioAluguel.SalvarDesconto(configuracaoDesconto);
+
+            }
+        }
+
+        public override bool HabilitarBtnAdicionar() { return true; }
+        public override bool HabilitarBtnEditar() { return true; }
+        public override bool HabilitarBtnExcluir() { return true; }
+        public override bool HabilitarBtnFiltrar() { return true; }
+        public override bool HabilitarBtnAdicionarItens() { return false; }
+        public override bool HabilitarBtnVisualizarAlugueis() { return false; }
+        public override bool HabilitarBtnConcluirAluguel() { return true; }
+        public override bool HabilitarBtnConfigurarDescontos() { return true; }
     }
 }

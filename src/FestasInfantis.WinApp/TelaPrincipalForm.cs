@@ -36,7 +36,7 @@ namespace FestasInfantis.WinApp
 
         public void AtualizarRodape(string texto)
         {
-            statusLabelPrincipal.Text = texto;
+            lblRodape.Text = texto;
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,7 +84,7 @@ namespace FestasInfantis.WinApp
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
-            lblTipoCadastro.Text = "Cadastro de " + controladorSelecionado.TipoCadastro;
+            lblTipoCadastro.Text = controladorSelecionado.TipoCadastro;
 
             ConfigurarToolBox(controladorSelecionado);
             ConfigurarListagem(controladorSelecionado);
@@ -92,18 +92,30 @@ namespace FestasInfantis.WinApp
 
         private void ConfigurarToolBox(ControladorBase controladorSelecionado)
         {
-            btnAdicionar.Enabled = controladorSelecionado is ControladorBase;
-            btnEditar.Enabled = controladorSelecionado is ControladorBase;
-            btnExcluir.Enabled = controladorSelecionado is ControladorBase;
+            btnAdicionar.Enabled = controladorSelecionado.HabilitarBtnAdicionar();
+            btnEditar.Enabled = controladorSelecionado.HabilitarBtnEditar();
+            btnExcluir.Enabled = controladorSelecionado.HabilitarBtnExcluir();
+            btnFiltrar.Enabled = controladorSelecionado.HabilitarBtnFiltrar();
+            btnAdicionarItens.Enabled = controladorSelecionado.HabilitarBtnAdicionarItens();
+            btnVisualizarAlugueis.Enabled = controladorSelecionado.HabilitarBtnVisualizarAlugueis();
+            btnConcluirAluguel.Enabled = controladorSelecionado.HabilitarBtnConcluirAluguel();
+            btnConfigurarDescontos.Enabled = controladorSelecionado.HabilitarBtnConfigurarDescontos();
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)
         {
-            UserControl listagemContato = controladorSelecionado.ObterListagem();
-            listagemContato.Dock = DockStyle.Fill;
+            UserControl listagemCliente = controladorSelecionado.ObterListagem();
+            listagemCliente.Dock = DockStyle.Fill;
 
             pnlRegistros.Controls.Clear();
-            pnlRegistros.Controls.Add(listagemContato);
+            pnlRegistros.Controls.Add(listagemCliente);
+        }
+
+        private void btnConfigurarDescontos_Click(object sender, EventArgs e)
+        {
+            if (controlador is ControladorAluguel control)
+
+                control.ConfigurarDesconto();
         }
     }
 }

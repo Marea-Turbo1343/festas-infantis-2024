@@ -27,7 +27,6 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
             DialogResult resultado = telaCliente.ShowDialog();
 
-            // guardas = bloquear momentos em que a aplicação toma um "caminho triste"
             if (resultado != DialogResult.OK)
                 return;
 
@@ -110,5 +109,14 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
             return tabelaCliente;
         }
+
+        public override bool HabilitarBtnAdicionar() { return true; }
+        public override bool HabilitarBtnEditar() { return true; }
+        public override bool HabilitarBtnExcluir() { return true; }
+        public override bool HabilitarBtnFiltrar() { return false; }
+        public override bool HabilitarBtnAdicionarItens() { return false; }
+        public override bool HabilitarBtnVisualizarAlugueis() { return true; }
+        public override bool HabilitarBtnConcluirAluguel() { return true; }
+        public override bool HabilitarBtnConfigurarDescontos() { return false; }
     }
 }

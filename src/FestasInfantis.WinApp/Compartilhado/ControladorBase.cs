@@ -13,5 +13,14 @@
         public abstract void Adicionar();
         public abstract void Editar();
         public abstract void Excluir();
+
+        public virtual bool HabilitarBtnAdicionar() { return true; }
+        public virtual bool HabilitarBtnEditar() { return true; }
+        public virtual bool HabilitarBtnExcluir() { return true; }
+        public virtual bool HabilitarBtnFiltrar() { return false; }
+        public virtual bool HabilitarBtnAdicionarItens() { return false; }
+        public virtual bool HabilitarBtnVisualizarAlugueis() { return false; }
+        public virtual bool HabilitarBtnConcluirAluguel() { return false; }
+        public virtual bool HabilitarBtnConfigurarDescontos() { return false; }
     }
 }

@@ -35,7 +35,7 @@
             itensToolStripMenuItem = new ToolStripMenuItem();
             alugueisToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
-            statusLabelPrincipal = new ToolStripStatusLabel();
+            lblRodape = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
             btnAdicionar = new ToolStripButton();
             btnEditar = new ToolStripButton();
@@ -76,46 +76,46 @@
             // clientesToolStripMenuItem
             // 
             clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            clientesToolStripMenuItem.Size = new Size(180, 24);
+            clientesToolStripMenuItem.Size = new Size(135, 24);
             clientesToolStripMenuItem.Text = "Clientes";
             clientesToolStripMenuItem.Click += clientesToolStripMenuItem_Click;
             // 
             // temasToolStripMenuItem
             // 
             temasToolStripMenuItem.Name = "temasToolStripMenuItem";
-            temasToolStripMenuItem.Size = new Size(180, 24);
+            temasToolStripMenuItem.Size = new Size(135, 24);
             temasToolStripMenuItem.Text = "Temas";
             temasToolStripMenuItem.Click += temasToolStripMenuItem_Click;
             // 
             // itensToolStripMenuItem
             // 
             itensToolStripMenuItem.Name = "itensToolStripMenuItem";
-            itensToolStripMenuItem.Size = new Size(180, 24);
+            itensToolStripMenuItem.Size = new Size(135, 24);
             itensToolStripMenuItem.Text = "Itens";
             itensToolStripMenuItem.Click += itensToolStripMenuItem_Click;
             // 
             // alugueisToolStripMenuItem
             // 
             alugueisToolStripMenuItem.Name = "alugueisToolStripMenuItem";
-            alugueisToolStripMenuItem.Size = new Size(180, 24);
+            alugueisToolStripMenuItem.Size = new Size(135, 24);
             alugueisToolStripMenuItem.Text = "Aluguéis";
             alugueisToolStripMenuItem.Click += alugueisToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
             statusStrip1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            statusStrip1.Items.AddRange(new ToolStripItem[] { statusLabelPrincipal });
+            statusStrip1.Items.AddRange(new ToolStripItem[] { lblRodape });
             statusStrip1.Location = new Point(0, 425);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(800, 25);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
             // 
-            // statusLabelPrincipal
+            // lblRodape
             // 
-            statusLabelPrincipal.Name = "statusLabelPrincipal";
-            statusLabelPrincipal.Size = new Size(118, 20);
-            statusLabelPrincipal.Text = "Seja bem-vindo!";
+            lblRodape.Name = "lblRodape";
+            lblRodape.Size = new Size(118, 20);
+            lblRodape.Text = "Seja bem-vindo!";
             // 
             // toolStrip1
             // 
@@ -229,6 +229,7 @@
             btnConfigurarDescontos.Name = "btnConfigurarDescontos";
             btnConfigurarDescontos.Padding = new Padding(5);
             btnConfigurarDescontos.Size = new Size(38, 38);
+            btnConfigurarDescontos.Click += btnConfigurarDescontos_Click;
             // 
             // toolStripSeparator4
             // 
@@ -281,7 +282,7 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem menuToolStripMenuItem;
         private StatusStrip statusStrip1;
-        private ToolStripStatusLabel statusLabelPrincipal;
+        private ToolStripStatusLabel lblRodape;
         private ToolStrip toolStrip1;
         private ToolStripButton btnAdicionar;
         private ToolStripButton btnEditar;

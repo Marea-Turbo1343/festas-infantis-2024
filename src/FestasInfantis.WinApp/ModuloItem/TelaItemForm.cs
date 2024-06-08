@@ -11,7 +11,7 @@ namespace FestasInfantis.WinApp.ModuloItem
             {
                 txtId.Text = value.Id.ToString();
                 txtDescricao.Text = value.Descricao;
-                txtValor.Text = value.Valor.ToString(); // Converta o valor para string ao definir txtValor.Text
+                txtValor.Text = value.Valor.ToString();
             }
             get
             {
