@@ -152,6 +152,7 @@
             MinimizeBox = false;
             Name = "TelaVerTema";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Visualizando Tema";
             gpTema.ResumeLayout(false);
             gpTema.PerformLayout();

@@ -120,7 +120,7 @@
             // txtId
             // 
             txtId.Enabled = false;
-            txtId.Location = new Point(73, 18);
+            txtId.Location = new Point(69, 18);
             txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;

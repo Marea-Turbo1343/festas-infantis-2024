@@ -10,24 +10,21 @@ namespace FestasInfantis.WinApp.Compartilhado
     public class ContextoDados
     {
         public List<Cliente> Clientes { get; set; }
-        //public List<Compromisso> Compromissos { get; set; }
-        //public List<Tarefa> Tarefas { get; set; }
-        //public List<Categoria> Categorias { get; set; }
-        //public List<Despesa> Despesas { get; set; }
+        public List<Item> Itens { get; set; }
+        public List<Tema> Temas { get; set; }
+        public List<Aluguel> Alugueis { get; set; }
 
-        private string caminho = $"C:\\temp\\eAgenda\\dados.json";
+        private string caminho = $"C:\\temp\\FestasInfantis\\dados.json";
 
         public ContextoDados()
         {
             Clientes = new List<Cliente>();
 
-            //Compromissos = new List<Compromisso>();
+            Itens = new List<Item>();
 
-            //Tarefas = new List<Tarefa>();
+            Temas = new List<Tema>();
 
-            //Categorias = new List<Categoria>();
-
-            //Despesas = new List<Despesa>();
+            Alugueis = new List<Aluguel>();
         }
 
         public ContextoDados(bool carregarDados) : this()
@@ -73,13 +70,11 @@ namespace FestasInfantis.WinApp.Compartilhado
 
             Clientes = ctx.Clientes;
 
-            //Compromissos = ctx.Compromissos;
+            Itens = ctx.Itens;
 
-            //Tarefas = ctx.Tarefas;
+            Temas = ctx.Temas;
 
-            //Categorias = ctx.Categorias;
-
-            //Despesas = ctx.Despesas;
+            Alugueis = ctx.Alugueis;
         }
     }
 }

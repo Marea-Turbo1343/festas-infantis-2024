@@ -31,41 +31,37 @@
             txtQtdEmp = new TextBox();
             lblQtdEmprestimos = new Label();
             lblDescontoCliente = new Label();
-            txtDescontoMax = new TextBox();
-            label1 = new Label();
-            txtDescontoMin = new TextBox();
-            labelDesconto = new Label();
+            txtDescontoDisponivel = new TextBox();
+            lblDescontoDisponivel = new Label();
             txtDescontoCliente = new TextBox();
             lblHoraTermino = new Label();
-            lblHoraInicial = new Label();
+            lblHoraInicio = new Label();
             txtHoraTermino = new DateTimePicker();
-            txtHoraInicial = new DateTimePicker();
-            txtPreco = new TextBox();
-            lblValorFinal = new Label();
-            txtTema = new ComboBox();
+            txtHoraInicio = new DateTimePicker();
+            txtValorTotal = new TextBox();
+            lblValorTotal = new Label();
+            cmbTema = new ComboBox();
             lblTema = new Label();
-            txtPagamento = new ComboBox();
-            lblFormapgto = new Label();
-            txtEndereco = new TextBox();
-            labelEndereco = new Label();
-            txtEntrada = new ComboBox();
-            txtData = new DateTimePicker();
-            txtCliente = new ComboBox();
+            lblEndereco = new Label();
+            cmbEntrada = new ComboBox();
+            txtDataFesta = new DateTimePicker();
+            cmbCliente = new ComboBox();
             lblEntrada = new Label();
-            lblData = new Label();
+            lblDataFesta = new Label();
             lblCliente = new Label();
-            groupAlugueis = new GroupBox();
-            listItemsAlugueis = new ListBox();
+            gpAlugueis = new GroupBox();
+            listItensAlugueis = new ListBox();
             lblId = new Label();
             txtId = new TextBox();
+            txtEndereco = new TextBox();
             btnCancelar = new Button();
             btnSalvar = new Button();
-            groupAlugueis.SuspendLayout();
+            gpAlugueis.SuspendLayout();
             SuspendLayout();
             // 
             // txtQtdEmp
             // 
-            txtQtdEmp.Location = new Point(175, 129);
+            txtQtdEmp.Location = new Point(175, 125);
             txtQtdEmp.Margin = new Padding(3, 2, 3, 2);
             txtQtdEmp.Name = "txtQtdEmp";
             txtQtdEmp.ReadOnly = true;
@@ -76,7 +72,7 @@
             // lblQtdEmprestimos
             // 
             lblQtdEmprestimos.AutoSize = true;
-            lblQtdEmprestimos.Location = new Point(9, 132);
+            lblQtdEmprestimos.Location = new Point(9, 128);
             lblQtdEmprestimos.Name = "lblQtdEmprestimos";
             lblQtdEmprestimos.Size = new Size(160, 15);
             lblQtdEmprestimos.TabIndex = 69;
@@ -85,53 +81,34 @@
             // lblDescontoCliente
             // 
             lblDescontoCliente.AutoSize = true;
-            lblDescontoCliente.Location = new Point(26, 159);
+            lblDescontoCliente.Location = new Point(26, 155);
             lblDescontoCliente.Name = "lblDescontoCliente";
             lblDescontoCliente.Size = new Size(143, 15);
             lblDescontoCliente.TabIndex = 68;
             lblDescontoCliente.Text = "Desconto disponibilizado:";
             // 
-            // txtDescontoMax
+            // txtDescontoDisponivel
             // 
-            txtDescontoMax.Location = new Point(421, 322);
-            txtDescontoMax.Margin = new Padding(3, 2, 3, 2);
-            txtDescontoMax.Name = "txtDescontoMax";
-            txtDescontoMax.ReadOnly = true;
-            txtDescontoMax.Size = new Size(70, 23);
-            txtDescontoMax.TabIndex = 66;
-            txtDescontoMax.TabStop = false;
+            txtDescontoDisponivel.Location = new Point(175, 291);
+            txtDescontoDisponivel.Margin = new Padding(3, 2, 3, 2);
+            txtDescontoDisponivel.Name = "txtDescontoDisponivel";
+            txtDescontoDisponivel.ReadOnly = true;
+            txtDescontoDisponivel.Size = new Size(70, 23);
+            txtDescontoDisponivel.TabIndex = 65;
+            txtDescontoDisponivel.TabStop = false;
             // 
-            // label1
+            // lblDescontoDisponivel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(251, 325);
-            label1.Name = "label1";
-            label1.Size = new Size(164, 15);
-            label1.TabIndex = 67;
-            label1.Text = "Desconto máximo disponível:";
-            // 
-            // txtDescontoMin
-            // 
-            txtDescontoMin.Location = new Point(175, 322);
-            txtDescontoMin.Margin = new Padding(3, 2, 3, 2);
-            txtDescontoMin.Name = "txtDescontoMin";
-            txtDescontoMin.ReadOnly = true;
-            txtDescontoMin.Size = new Size(70, 23);
-            txtDescontoMin.TabIndex = 65;
-            txtDescontoMin.TabStop = false;
-            // 
-            // labelDesconto
-            // 
-            labelDesconto.AutoSize = true;
-            labelDesconto.Location = new Point(7, 325);
-            labelDesconto.Name = "labelDesconto";
-            labelDesconto.Size = new Size(162, 15);
-            labelDesconto.TabIndex = 64;
-            labelDesconto.Text = "Desconto mínimo disponível:";
+            lblDescontoDisponivel.AutoSize = true;
+            lblDescontoDisponivel.Location = new Point(52, 294);
+            lblDescontoDisponivel.Name = "lblDescontoDisponivel";
+            lblDescontoDisponivel.Size = new Size(117, 15);
+            lblDescontoDisponivel.TabIndex = 64;
+            lblDescontoDisponivel.Text = "Desconto disponível:";
             // 
             // txtDescontoCliente
             // 
-            txtDescontoCliente.Location = new Point(175, 156);
+            txtDescontoCliente.Location = new Point(175, 152);
             txtDescontoCliente.Margin = new Padding(3, 2, 3, 2);
             txtDescontoCliente.Name = "txtDescontoCliente";
             txtDescontoCliente.ReadOnly = true;
@@ -142,157 +119,131 @@
             // lblHoraTermino
             // 
             lblHoraTermino.AutoSize = true;
-            lblHoraTermino.Location = new Point(58, 273);
+            lblHoraTermino.Location = new Point(58, 269);
             lblHoraTermino.Name = "lblHoraTermino";
             lblHoraTermino.Size = new Size(111, 15);
             lblHoraTermino.TabIndex = 62;
             lblHoraTermino.Text = "Horário de término:";
             // 
-            // lblHoraInicial
+            // lblHoraInicio
             // 
-            lblHoraInicial.AutoSize = true;
-            lblHoraInicial.Location = new Point(71, 244);
-            lblHoraInicial.Name = "lblHoraInicial";
-            lblHoraInicial.Size = new Size(98, 15);
-            lblHoraInicial.TabIndex = 61;
-            lblHoraInicial.Text = "Horário de início:";
+            lblHoraInicio.AutoSize = true;
+            lblHoraInicio.Location = new Point(71, 240);
+            lblHoraInicio.Name = "lblHoraInicio";
+            lblHoraInicio.Size = new Size(98, 15);
+            lblHoraInicio.TabIndex = 61;
+            lblHoraInicio.Text = "Horário de início:";
             // 
             // txtHoraTermino
             // 
             txtHoraTermino.CustomFormat = "HH:mm";
             txtHoraTermino.Format = DateTimePickerFormat.Custom;
-            txtHoraTermino.Location = new Point(175, 267);
+            txtHoraTermino.Location = new Point(175, 263);
             txtHoraTermino.Name = "txtHoraTermino";
             txtHoraTermino.ShowUpDown = true;
             txtHoraTermino.Size = new Size(49, 23);
             txtHoraTermino.TabIndex = 47;
             // 
-            // txtHoraInicial
+            // txtHoraInicio
             // 
-            txtHoraInicial.CustomFormat = "HH:mm";
-            txtHoraInicial.Format = DateTimePickerFormat.Custom;
-            txtHoraInicial.Location = new Point(175, 238);
-            txtHoraInicial.Name = "txtHoraInicial";
-            txtHoraInicial.ShowUpDown = true;
-            txtHoraInicial.Size = new Size(49, 23);
-            txtHoraInicial.TabIndex = 46;
+            txtHoraInicio.CustomFormat = "HH:mm";
+            txtHoraInicio.Format = DateTimePickerFormat.Custom;
+            txtHoraInicio.Location = new Point(175, 234);
+            txtHoraInicio.Name = "txtHoraInicio";
+            txtHoraInicio.ShowUpDown = true;
+            txtHoraInicio.Size = new Size(49, 23);
+            txtHoraInicio.TabIndex = 46;
             // 
-            // txtPreco
+            // txtValorTotal
             // 
-            txtPreco.Location = new Point(175, 349);
-            txtPreco.Margin = new Padding(3, 2, 3, 2);
-            txtPreco.Name = "txtPreco";
-            txtPreco.ReadOnly = true;
-            txtPreco.Size = new Size(260, 23);
-            txtPreco.TabIndex = 53;
-            txtPreco.TabStop = false;
+            txtValorTotal.Location = new Point(175, 318);
+            txtValorTotal.Margin = new Padding(3, 2, 3, 2);
+            txtValorTotal.Name = "txtValorTotal";
+            txtValorTotal.ReadOnly = true;
+            txtValorTotal.Size = new Size(260, 23);
+            txtValorTotal.TabIndex = 53;
+            txtValorTotal.TabStop = false;
             // 
-            // lblValorFinal
+            // lblValorTotal
             // 
-            lblValorFinal.AutoSize = true;
-            lblValorFinal.Location = new Point(89, 352);
-            lblValorFinal.Name = "lblValorFinal";
-            lblValorFinal.Size = new Size(80, 15);
-            lblValorFinal.TabIndex = 58;
-            lblValorFinal.Text = "Valor Total R$:";
+            lblValorTotal.AutoSize = true;
+            lblValorTotal.Location = new Point(89, 321);
+            lblValorTotal.Name = "lblValorTotal";
+            lblValorTotal.Size = new Size(80, 15);
+            lblValorTotal.TabIndex = 58;
+            lblValorTotal.Text = "Valor Total R$:";
             // 
-            // txtTema
+            // cmbTema
             // 
-            txtTema.FormattingEnabled = true;
-            txtTema.Location = new Point(175, 75);
-            txtTema.Margin = new Padding(3, 2, 3, 2);
-            txtTema.Name = "txtTema";
-            txtTema.Size = new Size(260, 23);
-            txtTema.TabIndex = 42;
+            cmbTema.FormattingEnabled = true;
+            cmbTema.Location = new Point(175, 71);
+            cmbTema.Margin = new Padding(3, 2, 3, 2);
+            cmbTema.Name = "cmbTema";
+            cmbTema.Size = new Size(260, 23);
+            cmbTema.TabIndex = 42;
             // 
             // lblTema
             // 
             lblTema.AutoSize = true;
-            lblTema.Location = new Point(131, 78);
+            lblTema.Location = new Point(131, 74);
             lblTema.Name = "lblTema";
             lblTema.Size = new Size(38, 15);
             lblTema.TabIndex = 54;
             lblTema.Text = "Tema:";
             // 
-            // txtPagamento
+            // lblEndereco
             // 
-            txtPagamento.FormattingEnabled = true;
-            txtPagamento.Location = new Point(175, 295);
-            txtPagamento.Margin = new Padding(3, 2, 3, 2);
-            txtPagamento.Name = "txtPagamento";
-            txtPagamento.Size = new Size(142, 23);
-            txtPagamento.TabIndex = 50;
+            lblEndereco.AutoSize = true;
+            lblEndereco.Location = new Point(64, 182);
+            lblEndereco.Name = "lblEndereco";
+            lblEndereco.Size = new Size(105, 15);
+            lblEndereco.TabIndex = 49;
+            lblEndereco.Text = "Endereço da Festa:";
             // 
-            // lblFormapgto
+            // cmbEntrada
             // 
-            lblFormapgto.AutoSize = true;
-            lblFormapgto.Location = new Point(45, 301);
-            lblFormapgto.Name = "lblFormapgto";
-            lblFormapgto.Size = new Size(124, 15);
-            lblFormapgto.TabIndex = 51;
-            lblFormapgto.Text = "Forma de pagamento:";
+            cmbEntrada.FormattingEnabled = true;
+            cmbEntrada.Location = new Point(175, 98);
+            cmbEntrada.Margin = new Padding(3, 2, 3, 2);
+            cmbEntrada.Name = "cmbEntrada";
+            cmbEntrada.Size = new Size(79, 23);
+            cmbEntrada.TabIndex = 48;
             // 
-            // txtEndereco
+            // txtDataFesta
             // 
-            txtEndereco.Location = new Point(175, 183);
-            txtEndereco.Margin = new Padding(3, 2, 3, 2);
-            txtEndereco.Name = "txtEndereco";
-            txtEndereco.Size = new Size(260, 23);
-            txtEndereco.TabIndex = 52;
+            txtDataFesta.Format = DateTimePickerFormat.Short;
+            txtDataFesta.Location = new Point(175, 206);
+            txtDataFesta.Margin = new Padding(3, 2, 3, 2);
+            txtDataFesta.Name = "txtDataFesta";
+            txtDataFesta.Size = new Size(95, 23);
+            txtDataFesta.TabIndex = 45;
             // 
-            // labelEndereco
+            // cmbCliente
             // 
-            labelEndereco.AutoSize = true;
-            labelEndereco.Location = new Point(64, 186);
-            labelEndereco.Name = "labelEndereco";
-            labelEndereco.Size = new Size(105, 15);
-            labelEndereco.TabIndex = 49;
-            labelEndereco.Text = "Endereço da Festa:";
-            // 
-            // txtEntrada
-            // 
-            txtEntrada.FormattingEnabled = true;
-            txtEntrada.Location = new Point(175, 102);
-            txtEntrada.Margin = new Padding(3, 2, 3, 2);
-            txtEntrada.Name = "txtEntrada";
-            txtEntrada.Size = new Size(79, 23);
-            txtEntrada.TabIndex = 48;
-            // 
-            // txtData
-            // 
-            txtData.Format = DateTimePickerFormat.Short;
-            txtData.Location = new Point(175, 210);
-            txtData.Margin = new Padding(3, 2, 3, 2);
-            txtData.Name = "txtData";
-            txtData.Size = new Size(95, 23);
-            txtData.TabIndex = 45;
-            // 
-            // txtCliente
-            // 
-            txtCliente.FormattingEnabled = true;
-            txtCliente.Location = new Point(175, 44);
-            txtCliente.Margin = new Padding(3, 2, 3, 2);
-            txtCliente.Name = "txtCliente";
-            txtCliente.Size = new Size(260, 23);
-            txtCliente.TabIndex = 44;
+            cmbCliente.FormattingEnabled = true;
+            cmbCliente.Location = new Point(175, 44);
+            cmbCliente.Margin = new Padding(3, 2, 3, 2);
+            cmbCliente.Name = "cmbCliente";
+            cmbCliente.Size = new Size(260, 23);
+            cmbCliente.TabIndex = 44;
             // 
             // lblEntrada
             // 
             lblEntrada.AutoSize = true;
-            lblEntrada.Location = new Point(29, 105);
+            lblEntrada.Location = new Point(29, 101);
             lblEntrada.Name = "lblEntrada";
             lblEntrada.Size = new Size(140, 15);
             lblEntrada.TabIndex = 43;
             lblEntrada.Text = "Porcentagem de entrada:";
             // 
-            // lblData
+            // lblDataFesta
             // 
-            lblData.AutoSize = true;
-            lblData.Location = new Point(89, 216);
-            lblData.Name = "lblData";
-            lblData.Size = new Size(80, 15);
-            lblData.TabIndex = 41;
-            lblData.Text = "Data da Festa:";
+            lblDataFesta.AutoSize = true;
+            lblDataFesta.Location = new Point(89, 212);
+            lblDataFesta.Name = "lblDataFesta";
+            lblDataFesta.Size = new Size(80, 15);
+            lblDataFesta.TabIndex = 41;
+            lblDataFesta.Text = "Data da Festa:";
             // 
             // lblCliente
             // 
@@ -304,55 +255,51 @@
             lblCliente.TabIndex = 40;
             lblCliente.Text = "Cliente:";
             // 
-            // groupAlugueis
+            // gpAlugueis
             // 
-            groupAlugueis.Controls.Add(listItemsAlugueis);
-            groupAlugueis.Controls.Add(lblId);
-            groupAlugueis.Controls.Add(txtId);
-            groupAlugueis.Controls.Add(txtPreco);
-            groupAlugueis.Controls.Add(txtDescontoMax);
-            groupAlugueis.Controls.Add(lblValorFinal);
-            groupAlugueis.Controls.Add(txtQtdEmp);
-            groupAlugueis.Controls.Add(label1);
-            groupAlugueis.Controls.Add(lblCliente);
-            groupAlugueis.Controls.Add(txtDescontoMin);
-            groupAlugueis.Controls.Add(lblQtdEmprestimos);
-            groupAlugueis.Controls.Add(labelDesconto);
-            groupAlugueis.Controls.Add(txtCliente);
-            groupAlugueis.Controls.Add(lblHoraTermino);
-            groupAlugueis.Controls.Add(lblDescontoCliente);
-            groupAlugueis.Controls.Add(lblHoraInicial);
-            groupAlugueis.Controls.Add(txtPagamento);
-            groupAlugueis.Controls.Add(txtTema);
-            groupAlugueis.Controls.Add(lblFormapgto);
-            groupAlugueis.Controls.Add(txtHoraTermino);
-            groupAlugueis.Controls.Add(txtEndereco);
-            groupAlugueis.Controls.Add(labelEndereco);
-            groupAlugueis.Controls.Add(lblTema);
-            groupAlugueis.Controls.Add(txtHoraInicial);
-            groupAlugueis.Controls.Add(txtEntrada);
-            groupAlugueis.Controls.Add(lblEntrada);
-            groupAlugueis.Controls.Add(txtDescontoCliente);
-            groupAlugueis.Controls.Add(lblData);
-            groupAlugueis.Controls.Add(txtData);
-            groupAlugueis.Location = new Point(12, 11);
-            groupAlugueis.Margin = new Padding(3, 2, 3, 2);
-            groupAlugueis.Name = "groupAlugueis";
-            groupAlugueis.Padding = new Padding(3, 2, 3, 2);
-            groupAlugueis.Size = new Size(525, 521);
-            groupAlugueis.TabIndex = 73;
-            groupAlugueis.TabStop = false;
-            groupAlugueis.Text = "Aluguéis";
+            gpAlugueis.Controls.Add(listItensAlugueis);
+            gpAlugueis.Controls.Add(lblId);
+            gpAlugueis.Controls.Add(txtId);
+            gpAlugueis.Controls.Add(txtValorTotal);
+            gpAlugueis.Controls.Add(lblValorTotal);
+            gpAlugueis.Controls.Add(txtQtdEmp);
+            gpAlugueis.Controls.Add(lblCliente);
+            gpAlugueis.Controls.Add(txtDescontoDisponivel);
+            gpAlugueis.Controls.Add(lblQtdEmprestimos);
+            gpAlugueis.Controls.Add(lblDescontoDisponivel);
+            gpAlugueis.Controls.Add(cmbCliente);
+            gpAlugueis.Controls.Add(lblHoraTermino);
+            gpAlugueis.Controls.Add(lblDescontoCliente);
+            gpAlugueis.Controls.Add(lblHoraInicio);
+            gpAlugueis.Controls.Add(cmbTema);
+            gpAlugueis.Controls.Add(txtHoraTermino);
+            gpAlugueis.Controls.Add(txtEndereco);
+            gpAlugueis.Controls.Add(lblEndereco);
+            gpAlugueis.Controls.Add(lblTema);
+            gpAlugueis.Controls.Add(txtHoraInicio);
+            gpAlugueis.Controls.Add(cmbEntrada);
+            gpAlugueis.Controls.Add(lblEntrada);
+            gpAlugueis.Controls.Add(txtDescontoCliente);
+            gpAlugueis.Controls.Add(lblDataFesta);
+            gpAlugueis.Controls.Add(txtDataFesta);
+            gpAlugueis.Location = new Point(12, 11);
+            gpAlugueis.Margin = new Padding(3, 2, 3, 2);
+            gpAlugueis.Name = "gpAlugueis";
+            gpAlugueis.Padding = new Padding(3, 2, 3, 2);
+            gpAlugueis.Size = new Size(525, 490);
+            gpAlugueis.TabIndex = 73;
+            gpAlugueis.TabStop = false;
+            gpAlugueis.Text = "Aluguéis";
             // 
-            // listItemsAlugueis
+            // listItensAlugueis
             // 
-            listItemsAlugueis.FormattingEnabled = true;
-            listItemsAlugueis.ItemHeight = 15;
-            listItemsAlugueis.Location = new Point(6, 376);
-            listItemsAlugueis.Margin = new Padding(3, 2, 3, 2);
-            listItemsAlugueis.Name = "listItemsAlugueis";
-            listItemsAlugueis.Size = new Size(513, 139);
-            listItemsAlugueis.TabIndex = 35;
+            listItensAlugueis.FormattingEnabled = true;
+            listItensAlugueis.ItemHeight = 15;
+            listItensAlugueis.Location = new Point(6, 345);
+            listItensAlugueis.Margin = new Padding(3, 2, 3, 2);
+            listItensAlugueis.Name = "listItensAlugueis";
+            listItensAlugueis.Size = new Size(513, 139);
+            listItensAlugueis.TabIndex = 35;
             // 
             // lblId
             // 
@@ -375,23 +322,31 @@
             txtId.TabIndex = 25;
             txtId.TabStop = false;
             // 
+            // txtEndereco
+            // 
+            txtEndereco.Location = new Point(175, 179);
+            txtEndereco.Margin = new Padding(3, 2, 3, 2);
+            txtEndereco.Name = "txtEndereco";
+            txtEndereco.Size = new Size(260, 23);
+            txtEndereco.TabIndex = 52;
+            // 
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(462, 537);
+            btnCancelar.Location = new Point(462, 506);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 35);
-            btnCancelar.TabIndex = 72;
+            btnCancelar.TabIndex = 75;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnSalvar
             // 
             btnSalvar.DialogResult = DialogResult.OK;
-            btnSalvar.Location = new Point(381, 537);
+            btnSalvar.Location = new Point(381, 506);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 35);
-            btnSalvar.TabIndex = 71;
+            btnSalvar.TabIndex = 74;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             // 
@@ -399,17 +354,18 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(547, 581);
-            Controls.Add(groupAlugueis);
+            ClientSize = new Size(547, 551);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
+            Controls.Add(gpAlugueis);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaAluguelForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar Aluguel";
-            groupAlugueis.ResumeLayout(false);
-            groupAlugueis.PerformLayout();
+            gpAlugueis.ResumeLayout(false);
+            gpAlugueis.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -418,34 +374,30 @@
         private TextBox txtQtdEmp;
         private Label lblQtdEmprestimos;
         private Label lblDescontoCliente;
-        private TextBox txtDescontoMax;
-        private Label label1;
-        private TextBox txtDescontoMin;
-        private Label labelDesconto;
+        private TextBox txtDescontoDisponivel;
+        private Label lblDescontoDisponivel;
         private TextBox txtDescontoCliente;
         private Label lblHoraTermino;
-        private Label lblHoraInicial;
+        private Label lblHoraInicio;
         private DateTimePicker txtHoraTermino;
-        private DateTimePicker txtHoraInicial;
-        private TextBox txtPreco;
-        private Label lblValorFinal;
-        private ComboBox txtTema;
+        private DateTimePicker txtHoraInicio;
+        private TextBox txtValorTotal;
+        private Label lblValorTotal;
+        private ComboBox cmbTema;
         private Label lblTema;
-        private ComboBox txtPagamento;
-        private Label lblFormapgto;
-        private TextBox txtEndereco;
-        private Label labelEndereco;
-        private ComboBox txtEntrada;
-        private DateTimePicker txtData;
-        private ComboBox txtCliente;
+        private Label lblEndereco;
+        private ComboBox cmbEntrada;
+        private DateTimePicker txtDataFesta;
+        private ComboBox cmbCliente;
         private Label lblEntrada;
-        private Label lblData;
+        private Label lblDataFesta;
         private Label lblCliente;
-        private GroupBox groupAlugueis;
-        private ListBox listItemsAlugueis;
+        private GroupBox gpAlugueis;
+        private ListBox listItensAlugueis;
         private Label lblId;
         private TextBox txtId;
         private Button btnCancelar;
         private Button btnSalvar;
+        private TextBox txtEndereco;
     }
 }

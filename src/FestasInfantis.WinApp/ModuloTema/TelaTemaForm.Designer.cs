@@ -32,14 +32,14 @@
             btnDeletarItem = new Button();
             btnAdicionarItem = new Button();
             numValor = new NumericUpDown();
-            txtTema = new TextBox();
+            txtNome = new TextBox();
             cmbItens = new ComboBox();
             listBoxItensTema = new ListBox();
             lblValor = new Label();
             lblItem = new Label();
             lblId = new Label();
             txtId = new TextBox();
-            lblTema = new Label();
+            lblNome = new Label();
             btnCancelar = new Button();
             btnSalvar = new Button();
             gpTema.SuspendLayout();
@@ -51,14 +51,14 @@
             gpTema.Controls.Add(btnDeletarItem);
             gpTema.Controls.Add(btnAdicionarItem);
             gpTema.Controls.Add(numValor);
-            gpTema.Controls.Add(txtTema);
+            gpTema.Controls.Add(txtNome);
             gpTema.Controls.Add(cmbItens);
             gpTema.Controls.Add(listBoxItensTema);
             gpTema.Controls.Add(lblValor);
             gpTema.Controls.Add(lblItem);
             gpTema.Controls.Add(lblId);
             gpTema.Controls.Add(txtId);
-            gpTema.Controls.Add(lblTema);
+            gpTema.Controls.Add(lblNome);
             gpTema.Location = new Point(11, 12);
             gpTema.Margin = new Padding(3, 2, 3, 2);
             gpTema.Name = "gpTema";
@@ -99,13 +99,13 @@
             numValor.Size = new Size(78, 23);
             numValor.TabIndex = 3;
             // 
-            // txtTema
+            // txtNome
             // 
-            txtTema.Location = new Point(51, 47);
-            txtTema.Margin = new Padding(3, 2, 3, 2);
-            txtTema.Name = "txtTema";
-            txtTema.Size = new Size(243, 23);
-            txtTema.TabIndex = 1;
+            txtNome.Location = new Point(51, 47);
+            txtNome.Margin = new Padding(3, 2, 3, 2);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(243, 23);
+            txtNome.TabIndex = 1;
             // 
             // cmbItens
             // 
@@ -168,16 +168,16 @@
             txtId.TabIndex = 0;
             txtId.TabStop = false;
             // 
-            // lblTema
+            // lblNome
             // 
-            lblTema.AutoSize = true;
-            lblTema.BackColor = SystemColors.ButtonFace;
-            lblTema.Font = new Font("Segoe UI", 10F);
-            lblTema.Location = new Point(5, 48);
-            lblTema.Name = "lblTema";
-            lblTema.Size = new Size(44, 19);
-            lblTema.TabIndex = 27;
-            lblTema.Text = "Tema:";
+            lblNome.AutoSize = true;
+            lblNome.BackColor = SystemColors.ButtonFace;
+            lblNome.Font = new Font("Segoe UI", 10F);
+            lblNome.Location = new Point(0, 48);
+            lblNome.Name = "lblNome";
+            lblNome.Size = new Size(49, 19);
+            lblNome.TabIndex = 27;
+            lblNome.Text = "Nome:";
             // 
             // btnCancelar
             // 
@@ -211,6 +211,7 @@
             MinimizeBox = false;
             Name = "TelaTemaForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Tema";
             gpTema.ResumeLayout(false);
             gpTema.PerformLayout();
@@ -224,14 +225,14 @@
         private Button btnDeletarItem;
         private Button btnAdicionarItem;
         private NumericUpDown numValor;
-        private TextBox txtTema;
+        private TextBox txtNome;
         private ComboBox cmbItens;
         private ListBox listBoxItensTema;
         private Label lblValor;
         private Label lblItem;
         private Label lblId;
         private TextBox txtId;
-        private Label lblTema;
+        private Label lblNome;
         private Button btnCancelar;
         private Button btnSalvar;
     }

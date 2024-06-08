@@ -212,6 +212,7 @@
             MinimizeBox = false;
             Name = "TelaEncerrarAluguelForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Encerrar aluguel";
             gpBoxEncerrarAluguel.ResumeLayout(false);
             gpBoxEncerrarAluguel.PerformLayout();

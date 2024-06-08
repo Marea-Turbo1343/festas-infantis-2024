@@ -85,6 +85,7 @@
             temasToolStripMenuItem.Name = "temasToolStripMenuItem";
             temasToolStripMenuItem.Size = new Size(180, 24);
             temasToolStripMenuItem.Text = "Temas";
+            temasToolStripMenuItem.Click += temasToolStripMenuItem_Click;
             // 
             // itensToolStripMenuItem
             // 
@@ -98,6 +99,7 @@
             alugueisToolStripMenuItem.Name = "alugueisToolStripMenuItem";
             alugueisToolStripMenuItem.Size = new Size(180, 24);
             alugueisToolStripMenuItem.Text = "Aluguéis";
+            alugueisToolStripMenuItem.Click += alugueisToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 

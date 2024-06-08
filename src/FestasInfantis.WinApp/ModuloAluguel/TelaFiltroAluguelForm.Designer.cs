@@ -192,6 +192,7 @@
             MinimizeBox = false;
             Name = "TelaFiltroAluguelForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Filtrar aluguéis";
             gpBoxFiltro.ResumeLayout(false);
             gpBoxFiltro.PerformLayout();

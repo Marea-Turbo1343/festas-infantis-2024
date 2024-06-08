@@ -7,6 +7,7 @@ namespace FestasInfantis.WinApp.ModuloCliente
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public string Telefone { get; set; }
+        public int ContadorDeAlugueis { get; set; }
 
         public Cliente()
         {
@@ -17,6 +18,11 @@ namespace FestasInfantis.WinApp.ModuloCliente
             Nome = nome;
             Cpf = cpf;
             Telefone = telefone;
+        }
+
+        public void AdicionarAluguel()
+        {
+            this.ContadorDeAlugueis++;
         }
 
         public override List<string> Validar()

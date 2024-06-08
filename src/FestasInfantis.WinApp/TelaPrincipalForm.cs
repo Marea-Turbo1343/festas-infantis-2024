@@ -1,6 +1,8 @@
 using FestasInfantis.WinApp.Compartilhado;
 using FestasInfantis.WinApp.ModuloCliente;
 using FestasInfantis.WinApp.ModuloItem;
+using FestasInfantis.WinApp.ModuloTema;
+using FestasInfantis.WinApp.ModuloAluguel;
 
 namespace FestasInfantis.WinApp
 {
@@ -8,8 +10,12 @@ namespace FestasInfantis.WinApp
     {
         ControladorBase controlador;
 
+        ContextoDados contexto;
+
         IRepositorioCliente repositorioCliente;
         IRepositorioItem repositorioItem;
+        IRepositorioTema repositorioTema;
+        IRepositorioAluguel repositorioAluguel;
 
         public static TelaPrincipalForm Instancia { get; private set; }
 
@@ -20,8 +26,12 @@ namespace FestasInfantis.WinApp
             lblTipoCadastro.Text = string.Empty;
             Instancia = this;
 
-            repositorioCliente = new RepositorioClienteEmMemoria();
-            repositorioItem = new RepositorioItemEmMemoria();
+            contexto = new ContextoDados(carregarDados: true);
+
+            repositorioCliente = new RepositorioClienteEmArquivo(contexto);
+            repositorioItem = new RepositorioItemEmArquivo(contexto);
+            repositorioTema = new RepositorioTemaEmArquivo(contexto);
+            repositorioAluguel = new RepositorioAluguelEmArquivo(contexto);
         }
 
         public void AtualizarRodape(string texto)
@@ -39,6 +49,20 @@ namespace FestasInfantis.WinApp
         private void itensToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorItem(repositorioItem);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void temasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorTema(repositorioTema);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void alugueisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorAluguel(repositorioAluguel, repositorioCliente, repositorioTema);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -71,20 +95,6 @@ namespace FestasInfantis.WinApp
             btnAdicionar.Enabled = controladorSelecionado is ControladorBase;
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
-
-            btnFiltrar.Enabled = controladorSelecionado is IControladorFiltravel;
-
-            ConfigurarToolTips(controladorSelecionado);
-        }
-
-        private void ConfigurarToolTips(ControladorBase controladorSelecionado)
-        {
-            btnAdicionar.ToolTipText = controladorSelecionado.ToolTipAdicionar;
-            btnEditar.ToolTipText = controladorSelecionado.ToolTipEditar;
-            btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
-
-            if (controladorSelecionado is IControladorFiltravel controladorFiltravel)
-                btnFiltrar.ToolTipText = controladorFiltravel.ToolTipFiltrar;
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)

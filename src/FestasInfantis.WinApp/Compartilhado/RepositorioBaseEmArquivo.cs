@@ -2,7 +2,7 @@
 
 namespace FestasInfantis.ConsoleApp.Compartilhado
 {
-    public abstract class RepositorioBase<T> where T : EntidadeBase
+    public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase
     {
         protected abstract List<T> ObterRegistros();
 
@@ -10,7 +10,7 @@ namespace FestasInfantis.ConsoleApp.Compartilhado
 
         protected ContextoDados contexto;
 
-        public RepositorioBase(ContextoDados contexto)
+        public RepositorioBaseEmArquivo(ContextoDados contexto)
         {
             this.contexto = contexto;
         }

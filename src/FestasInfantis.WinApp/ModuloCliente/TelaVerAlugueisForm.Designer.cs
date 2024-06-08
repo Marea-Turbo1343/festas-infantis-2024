@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupAlugueis = new GroupBox();
+            gpAlugueis = new GroupBox();
             listAlugueis = new ListBox();
-            txtTema = new TextBox();
-            label1 = new Label();
+            txtNome = new TextBox();
+            lblId = new Label();
             txtId = new TextBox();
-            labelNome = new Label();
+            lblNome = new Label();
             btnCancelar = new Button();
             btnSalvar = new Button();
-            groupAlugueis.SuspendLayout();
+            gpAlugueis.SuspendLayout();
             SuspendLayout();
             // 
-            // groupAlugueis
+            // gpAlugueis
             // 
-            groupAlugueis.Controls.Add(listAlugueis);
-            groupAlugueis.Controls.Add(txtTema);
-            groupAlugueis.Controls.Add(label1);
-            groupAlugueis.Controls.Add(txtId);
-            groupAlugueis.Controls.Add(labelNome);
-            groupAlugueis.Location = new Point(12, 11);
-            groupAlugueis.Margin = new Padding(3, 2, 3, 2);
-            groupAlugueis.Name = "groupAlugueis";
-            groupAlugueis.Padding = new Padding(3, 2, 3, 2);
-            groupAlugueis.Size = new Size(525, 251);
-            groupAlugueis.TabIndex = 14;
-            groupAlugueis.TabStop = false;
-            groupAlugueis.Text = "Aluguéis";
+            gpAlugueis.Controls.Add(listAlugueis);
+            gpAlugueis.Controls.Add(txtNome);
+            gpAlugueis.Controls.Add(lblId);
+            gpAlugueis.Controls.Add(txtId);
+            gpAlugueis.Controls.Add(lblNome);
+            gpAlugueis.Location = new Point(12, 11);
+            gpAlugueis.Margin = new Padding(3, 2, 3, 2);
+            gpAlugueis.Name = "gpAlugueis";
+            gpAlugueis.Padding = new Padding(3, 2, 3, 2);
+            gpAlugueis.Size = new Size(525, 251);
+            gpAlugueis.TabIndex = 14;
+            gpAlugueis.TabStop = false;
+            gpAlugueis.Text = "Aluguéis";
             // 
             // listAlugueis
             // 
@@ -65,23 +65,23 @@
             listAlugueis.Size = new Size(513, 169);
             listAlugueis.TabIndex = 35;
             // 
-            // txtTema
+            // txtNome
             // 
-            txtTema.Location = new Point(57, 47);
-            txtTema.Margin = new Padding(3, 2, 3, 2);
-            txtTema.Name = "txtTema";
-            txtTema.Size = new Size(330, 23);
-            txtTema.TabIndex = 34;
+            txtNome.Location = new Point(57, 47);
+            txtNome.Margin = new Padding(3, 2, 3, 2);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(330, 23);
+            txtNome.TabIndex = 34;
             // 
-            // label1
+            // lblId
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(32, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(24, 19);
-            label1.TabIndex = 26;
-            label1.Text = "Id:";
+            lblId.AutoSize = true;
+            lblId.Font = new Font("Segoe UI", 10F);
+            lblId.Location = new Point(32, 19);
+            lblId.Name = "lblId";
+            lblId.Size = new Size(24, 19);
+            lblId.TabIndex = 26;
+            lblId.Text = "Id:";
             // 
             // txtId
             // 
@@ -94,16 +94,16 @@
             txtId.TabIndex = 25;
             txtId.TabStop = false;
             // 
-            // labelNome
+            // lblNome
             // 
-            labelNome.AutoSize = true;
-            labelNome.BackColor = SystemColors.ButtonFace;
-            labelNome.Font = new Font("Segoe UI", 10F);
-            labelNome.Location = new Point(7, 46);
-            labelNome.Name = "labelNome";
-            labelNome.Size = new Size(49, 19);
-            labelNome.TabIndex = 27;
-            labelNome.Text = "Nome:";
+            lblNome.AutoSize = true;
+            lblNome.BackColor = SystemColors.ButtonFace;
+            lblNome.Font = new Font("Segoe UI", 10F);
+            lblNome.Location = new Point(7, 46);
+            lblNome.Name = "lblNome";
+            lblNome.Size = new Size(49, 19);
+            lblNome.TabIndex = 27;
+            lblNome.Text = "Nome:";
             // 
             // btnCancelar
             // 
@@ -130,26 +130,27 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(549, 314);
-            Controls.Add(groupAlugueis);
+            Controls.Add(gpAlugueis);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "TelaVerAlugueisForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Visualizando aluguéis";
-            groupAlugueis.ResumeLayout(false);
-            groupAlugueis.PerformLayout();
+            gpAlugueis.ResumeLayout(false);
+            gpAlugueis.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupAlugueis;
-        private TextBox txtTema;
-        private Label label1;
+        private GroupBox gpAlugueis;
+        private TextBox txtNome;
+        private Label lblId;
         private TextBox txtId;
-        private Label labelNome;
+        private Label lblNome;
         private Button btnCancelar;
         private Button btnSalvar;
         private ListBox listAlugueis;

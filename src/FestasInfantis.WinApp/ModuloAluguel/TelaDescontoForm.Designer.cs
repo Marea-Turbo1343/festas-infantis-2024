@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            label1 = new Label();
             numDescontoMax = new NumericUpDown();
             numDescontoMin = new NumericUpDown();
             labelDesMin = new Label();
             btnCancelar = new Button();
             btnSalvar = new Button();
-            label1 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numDescontoMax).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numDescontoMin).BeginInit();
@@ -54,6 +54,15 @@
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Desconto";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(9, 49);
+            label1.Name = "label1";
+            label1.Size = new Size(110, 15);
+            label1.TabIndex = 10;
+            label1.Text = "Desconto máximo: ";
             // 
             // numDescontoMax
             // 
@@ -103,15 +112,6 @@
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(9, 49);
-            label1.Name = "label1";
-            label1.Size = new Size(110, 15);
-            label1.TabIndex = 10;
-            label1.Text = "Desconto máximo: ";
-            // 
             // TelaDescontoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -124,6 +124,7 @@
             MinimizeBox = false;
             Name = "TelaDescontoForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Configurar Desconto";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

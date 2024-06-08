@@ -468,6 +468,7 @@
             MinimizeBox = false;
             Name = "TelaVerAluguelForm";
             ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Detalhes Aluguel";
             gpVerAluguel.ResumeLayout(false);
             gpVerAluguel.PerformLayout();

@@ -1,4 +1,6 @@
-﻿namespace FestasInfantis.WinApp.ModuloCliente
+﻿using FestasInfantis.WinApp.ModuloAluguel;
+
+namespace FestasInfantis.WinApp.ModuloCliente
 {
     public interface IRepositorioCliente
     {
@@ -7,5 +9,6 @@
         bool Excluir(int id);
         Cliente SelecionarPorId(int idSelecionado);
         List<Cliente> SelecionarTodos();
+        List<Aluguel> BuscarAlugueisPorCliente(Cliente cliente);
     }
 }
