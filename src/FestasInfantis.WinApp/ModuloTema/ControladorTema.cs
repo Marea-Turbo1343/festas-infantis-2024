@@ -1,6 +1,4 @@
-﻿using FestasInfantis.WinApp.Compartilhado;
-
-namespace FestasInfantis.WinApp.ModuloTema
+﻿namespace FestasInfantis.WinApp.ModuloTema
 {
     public class ControladorTema : ControladorBase
     {
@@ -107,14 +105,5 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             return tabelaTema;
         }
-
-        public override bool HabilitarBtnAdicionar() { return true; }
-        public override bool HabilitarBtnEditar() { return true; }
-        public override bool HabilitarBtnExcluir() { return true; }
-        public override bool HabilitarBtnFiltrar() { return false; }
-        public override bool HabilitarBtnAdicionarItens() { return true; }
-        public override bool HabilitarBtnVisualizarAlugueis() { return false; }
-        public override bool HabilitarBtnConcluirAluguel() { return false; }
-        public override bool HabilitarBtnConfigurarDescontos() { return false; }
     }
 }

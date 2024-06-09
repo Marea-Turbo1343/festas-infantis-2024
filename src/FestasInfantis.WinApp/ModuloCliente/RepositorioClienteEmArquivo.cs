@@ -17,6 +17,14 @@ namespace FestasInfantis.WinApp.ModuloCliente
             return contexto.Clientes;
         }
 
+        public int ObterProximoId()
+        {
+            if (contexto.Clientes.Any())
+                return contexto.Clientes.Max(c => c.Id) + 1;
+            else
+                return 1;
+        }
+
         public List<Aluguel> BuscarAlugueisPorCliente(Cliente cliente)
         {
             return contexto.Alugueis.Where(i => i.Cliente!.Equals(cliente)).ToList();

@@ -148,6 +148,7 @@
             btnEditar.Name = "btnEditar";
             btnEditar.Padding = new Padding(5);
             btnEditar.Size = new Size(38, 38);
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnExcluir
             // 
@@ -159,6 +160,7 @@
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Padding = new Padding(5);
             btnExcluir.Size = new Size(38, 38);
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // toolStripSeparator1
             // 
@@ -175,6 +177,7 @@
             btnFiltrar.Name = "btnFiltrar";
             btnFiltrar.Padding = new Padding(5);
             btnFiltrar.Size = new Size(38, 38);
+            btnFiltrar.Click += btnFiltrar_Click;
             // 
             // toolStripSeparator3
             // 
@@ -191,6 +194,7 @@
             btnAdicionarItens.Name = "btnAdicionarItens";
             btnAdicionarItens.Padding = new Padding(5);
             btnAdicionarItens.Size = new Size(38, 38);
+            btnAdicionarItens.Click += btnAdicionarItens_Click;
             // 
             // toolStripSeparator2
             // 
@@ -207,6 +211,7 @@
             btnVisualizarAlugueis.Name = "btnVisualizarAlugueis";
             btnVisualizarAlugueis.Padding = new Padding(5);
             btnVisualizarAlugueis.Size = new Size(38, 38);
+            btnVisualizarAlugueis.Click += btnVisualizarAlugueis_Click;
             // 
             // btnConcluirAluguel
             // 
@@ -218,6 +223,7 @@
             btnConcluirAluguel.Name = "btnConcluirAluguel";
             btnConcluirAluguel.Padding = new Padding(5);
             btnConcluirAluguel.Size = new Size(38, 38);
+            btnConcluirAluguel.Click += btnConcluirAluguel_Click;
             // 
             // btnConfigurarDescontos
             // 

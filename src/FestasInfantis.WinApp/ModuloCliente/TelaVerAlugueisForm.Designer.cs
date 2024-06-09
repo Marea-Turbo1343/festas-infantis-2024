@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             gpAlugueis = new GroupBox();
-            listAlugueis = new ListBox();
             txtNome = new TextBox();
             lblId = new Label();
             txtId = new TextBox();
             lblNome = new Label();
             btnCancelar = new Button();
             btnSalvar = new Button();
+            listViewAlugueis = new ListView();
             gpAlugueis.SuspendLayout();
             SuspendLayout();
             // 
             // gpAlugueis
             // 
-            gpAlugueis.Controls.Add(listAlugueis);
+            gpAlugueis.Controls.Add(listViewAlugueis);
             gpAlugueis.Controls.Add(txtNome);
             gpAlugueis.Controls.Add(lblId);
             gpAlugueis.Controls.Add(txtId);
@@ -54,16 +54,6 @@
             gpAlugueis.TabIndex = 14;
             gpAlugueis.TabStop = false;
             gpAlugueis.Text = "Aluguéis";
-            // 
-            // listAlugueis
-            // 
-            listAlugueis.FormattingEnabled = true;
-            listAlugueis.ItemHeight = 15;
-            listAlugueis.Location = new Point(6, 75);
-            listAlugueis.Margin = new Padding(3, 2, 3, 2);
-            listAlugueis.Name = "listAlugueis";
-            listAlugueis.Size = new Size(513, 169);
-            listAlugueis.TabIndex = 35;
             // 
             // txtNome
             // 
@@ -125,6 +115,14 @@
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             // 
+            // listViewAlugueis
+            // 
+            listViewAlugueis.Location = new Point(6, 75);
+            listViewAlugueis.Name = "listViewAlugueis";
+            listViewAlugueis.Size = new Size(513, 171);
+            listViewAlugueis.TabIndex = 35;
+            listViewAlugueis.UseCompatibleStateImageBehavior = false;
+            // 
             // TelaVerAlugueisForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -153,6 +151,6 @@
         private Label lblNome;
         private Button btnCancelar;
         private Button btnSalvar;
-        private ListBox listAlugueis;
+        private ListView listViewAlugueis;
     }
 }

@@ -1,10 +1,7 @@
-﻿using FestasInfantis.WinApp.Compartilhado;
-
-namespace FestasInfantis.WinApp.ModuloCliente
+﻿namespace FestasInfantis.WinApp.ModuloCliente
 {
     public class ControladorCliente : ControladorBase
     {
-
         private IRepositorioCliente repositorioCliente;
         private TabelaClienteControl tabelaCliente;
 
@@ -21,9 +18,11 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
         public override string ToolTipExcluir { get { return "Excluir um cliente existente"; } }
 
+        public string ToolTipVisualizarAlugueis => "Visualizar aluguéis do cliente";
+
         public override void Adicionar()
         {
-            TelaClienteForm telaCliente = new TelaClienteForm();
+            TelaClienteForm telaCliente = new TelaClienteForm(repositorioCliente);
 
             DialogResult resultado = telaCliente.ShowDialog();
 
@@ -41,12 +40,11 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
         public override void Editar()
         {
-            TelaClienteForm telaCliente = new TelaClienteForm();
+            TelaClienteForm telaCliente = new TelaClienteForm(repositorioCliente);
 
             int idSelecionado = tabelaCliente.ObterRegistroSelecionado();
 
-            Cliente clienteSelecionado =
-                repositorioCliente.SelecionarPorId(idSelecionado);
+            Cliente clienteSelecionado = repositorioCliente.SelecionarPorId(idSelecionado);
 
             if (clienteSelecionado == null)
             {
@@ -100,6 +98,7 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
             tabelaCliente.AtualizarRegistros(clientes);
         }
+
         public override UserControl ObterListagem()
         {
             if (tabelaCliente == null)
@@ -109,14 +108,5 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
             return tabelaCliente;
         }
-
-        public override bool HabilitarBtnAdicionar() { return true; }
-        public override bool HabilitarBtnEditar() { return true; }
-        public override bool HabilitarBtnExcluir() { return true; }
-        public override bool HabilitarBtnFiltrar() { return false; }
-        public override bool HabilitarBtnAdicionarItens() { return false; }
-        public override bool HabilitarBtnVisualizarAlugueis() { return true; }
-        public override bool HabilitarBtnConcluirAluguel() { return true; }
-        public override bool HabilitarBtnConfigurarDescontos() { return false; }
     }
 }

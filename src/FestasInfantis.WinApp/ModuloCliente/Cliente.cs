@@ -32,11 +32,11 @@ namespace FestasInfantis.WinApp.ModuloCliente
             if (string.IsNullOrEmpty(Nome.Trim()))
                 erros.Add("O campo \"nome\" é obrigatório");
 
-            if (string.IsNullOrEmpty(Telefone.Trim()))
-                erros.Add("O campo \"telefone\" é obrigatório");
-
             if (string.IsNullOrEmpty(Cpf.Trim()))
                 erros.Add("O campo \"cpf\" é obrigatório");
+
+            if (string.IsNullOrEmpty(Telefone.Trim()))
+                erros.Add("O campo \"telefone\" é obrigatório");
 
             return erros;
         }
@@ -46,8 +46,8 @@ namespace FestasInfantis.WinApp.ModuloCliente
             Cliente atualizado = (Cliente)novoRegistro;
 
             Nome = atualizado.Nome;
-            Telefone = atualizado.Telefone;
             Cpf = atualizado.Cpf;
+            Telefone = atualizado.Telefone;
         }
     }
 }

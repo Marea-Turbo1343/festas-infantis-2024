@@ -9,6 +9,7 @@ namespace FestasInfantis.WinApp.ModuloCliente
         bool Excluir(int id);
         Cliente SelecionarPorId(int idSelecionado);
         List<Cliente> SelecionarTodos();
+        int ObterProximoId();
         List<Aluguel> BuscarAlugueisPorCliente(Cliente cliente);
     }
 }

@@ -67,7 +67,7 @@
             txtTelefone.Margin = new Padding(3, 2, 3, 2);
             txtTelefone.Name = "txtTelefone";
             txtTelefone.Size = new Size(324, 23);
-            txtTelefone.TabIndex = 34;
+            txtTelefone.TabIndex = 3;
             // 
             // txtCpf
             // 
@@ -75,7 +75,7 @@
             txtCpf.Margin = new Padding(3, 2, 3, 2);
             txtCpf.Name = "txtCpf";
             txtCpf.Size = new Size(324, 23);
-            txtCpf.TabIndex = 34;
+            txtCpf.TabIndex = 2;
             // 
             // txtNome
             // 
@@ -83,7 +83,7 @@
             txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(324, 23);
-            txtNome.TabIndex = 34;
+            txtNome.TabIndex = 1;
             // 
             // lblTelefone
             // 
@@ -125,7 +125,7 @@
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(73, 23);
-            txtId.TabIndex = 25;
+            txtId.TabIndex = 0;
             txtId.TabStop = false;
             // 
             // lblNome
@@ -145,7 +145,7 @@
             btnCancelar.Location = new Point(340, 149);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 35);
-            btnCancelar.TabIndex = 13;
+            btnCancelar.TabIndex = 5;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -155,7 +155,7 @@
             btnSalvar.Location = new Point(259, 149);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 35);
-            btnSalvar.TabIndex = 12;
+            btnSalvar.TabIndex = 4;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;

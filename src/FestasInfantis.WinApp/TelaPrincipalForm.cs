@@ -82,6 +82,27 @@ namespace FestasInfantis.WinApp
             controlador.Excluir();
         }
 
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnAdicionarItens_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnVisualizarAlugueis_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnConcluirAluguel_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnConfigurarDescontos_Click(object sender, EventArgs e)
+        {
+        }
+
+
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
             lblTipoCadastro.Text = controladorSelecionado.TipoCadastro;
@@ -90,16 +111,41 @@ namespace FestasInfantis.WinApp
             ConfigurarListagem(controladorSelecionado);
         }
 
+        private void ConfigurarToolTips(ControladorBase controladorSelecionado)
+        {
+            btnAdicionar.ToolTipText = controladorSelecionado.ToolTipAdicionar;
+            btnEditar.ToolTipText = controladorSelecionado.ToolTipEditar;
+            btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
+
+            if (controladorSelecionado is IControladorFiltravel controladorFiltravel)
+                btnFiltrar.ToolTipText = controladorFiltravel.ToolTipFiltrar;
+
+            if (controladorSelecionado is IControladorAdicionarItens controladorAdicionavel)
+                btnAdicionarItens.ToolTipText = controladorAdicionavel.ToolTipAdicionarItens;
+
+            if (controladorSelecionado is IControladorVisualizarAlugueis controladorVisualizavel)
+                btnVisualizarAlugueis.ToolTipText = controladorVisualizavel.ToolTipVisualizarAlugueis;
+
+            if (controladorSelecionado is IControladorConcluirAluguel controladorConcluivel)
+                btnConcluirAluguel.ToolTipText = controladorConcluivel.ToolTipConcluirAluguel;
+
+            if (controladorSelecionado is IControladorConfigurarDescontos controladorConfiguravel)
+                btnConfigurarDescontos.ToolTipText = controladorConfiguravel.ToolTipConfigurarDescontos;
+        }
+
         private void ConfigurarToolBox(ControladorBase controladorSelecionado)
         {
-            btnAdicionar.Enabled = controladorSelecionado.HabilitarBtnAdicionar();
-            btnEditar.Enabled = controladorSelecionado.HabilitarBtnEditar();
-            btnExcluir.Enabled = controladorSelecionado.HabilitarBtnExcluir();
-            btnFiltrar.Enabled = controladorSelecionado.HabilitarBtnFiltrar();
-            btnAdicionarItens.Enabled = controladorSelecionado.HabilitarBtnAdicionarItens();
-            btnVisualizarAlugueis.Enabled = controladorSelecionado.HabilitarBtnVisualizarAlugueis();
-            btnConcluirAluguel.Enabled = controladorSelecionado.HabilitarBtnConcluirAluguel();
-            btnConfigurarDescontos.Enabled = controladorSelecionado.HabilitarBtnConfigurarDescontos();
+            btnAdicionar.Enabled = controladorSelecionado is ControladorBase;
+            btnEditar.Enabled = controladorSelecionado is ControladorBase;
+            btnExcluir.Enabled = controladorSelecionado is ControladorBase;
+
+            btnFiltrar.Enabled = controladorSelecionado is IControladorFiltravel;
+            btnAdicionarItens.Enabled = controladorSelecionado is IControladorAdicionarItens;
+            btnVisualizarAlugueis.Enabled = controladorSelecionado is IControladorVisualizarAlugueis;
+            btnConcluirAluguel.Enabled = controladorSelecionado is IControladorConcluirAluguel;
+            btnConfigurarDescontos.Enabled = controladorSelecionado is IControladorConfigurarDescontos;
+
+            ConfigurarToolTips(controladorSelecionado);
         }
 
         private void ConfigurarListagem(ControladorBase controladorSelecionado)
@@ -109,13 +155,6 @@ namespace FestasInfantis.WinApp
 
             pnlRegistros.Controls.Clear();
             pnlRegistros.Controls.Add(listagemCliente);
-        }
-
-        private void btnConfigurarDescontos_Click(object sender, EventArgs e)
-        {
-            if (controlador is ControladorAluguel control)
-
-                control.ConfigurarDesconto();
         }
     }
 }

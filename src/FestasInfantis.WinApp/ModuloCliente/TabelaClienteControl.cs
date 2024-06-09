@@ -18,7 +18,7 @@ namespace FestasInfantis.WinApp.ModuloCliente
             grid.Rows.Clear();
 
             foreach (Cliente c in clientes)
-                grid.Rows.Add(c.Id, c.Nome.ToTitleCase(), c.Telefone, c.Cpf, c.ContadorDeAlugueis);
+                grid.Rows.Add(c.Id, c.Nome.ToTitleCase(), c.Cpf, c.Telefone, c.ContadorDeAlugueis);
         }
         public int ObterRegistroSelecionado()
         {
@@ -31,8 +31,8 @@ namespace FestasInfantis.WinApp.ModuloCliente
                         {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome" },
-                new DataGridViewTextBoxColumn { DataPropertyName = "Telefone", HeaderText = "Telefone" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "CPF", HeaderText = "CPF" },
+                new DataGridViewTextBoxColumn { DataPropertyName = "Telefone", HeaderText = "Telefone" },
                 new DataGridViewTextBoxColumn { DataPropertyName = "ContadorDeAlugueis", HeaderText = "Qtd de Aluguéis" }
                         };
         }

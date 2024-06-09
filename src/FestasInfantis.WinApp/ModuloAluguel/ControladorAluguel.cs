@@ -1,5 +1,4 @@
-﻿using FestasInfantis.WinApp.Compartilhado;
-using FestasInfantis.WinApp.ModuloCliente;
+﻿using FestasInfantis.WinApp.ModuloCliente;
 using FestasInfantis.WinApp.ModuloTema;
 
 namespace FestasInfantis.WinApp.ModuloAluguel
@@ -12,6 +11,13 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         private IRepositorioCliente repositorioCliente;
         private IRepositorioTema repositorioTema;
 
+        public ControladorAluguel(IRepositorioAluguel repositorioAluguel, IRepositorioCliente repositorioCliente, IRepositorioTema repositorioTema)
+        {
+            this.repositorioAluguel = repositorioAluguel;
+            this.repositorioCliente = repositorioCliente;
+            this.repositorioTema = repositorioTema;
+        }
+
         public override string TipoCadastro { get { return "Aluguéis"; } }
 
         public override string ToolTipAdicionar { get { return "Cadastrar um novo aluguel"; } }
@@ -19,13 +25,6 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         public override string ToolTipEditar { get { return "Editar um aluguel existente"; } }
 
         public override string ToolTipExcluir { get { return "Excluir um aluguel existente"; } }
-
-        public ControladorAluguel(IRepositorioAluguel repositorioAluguel, IRepositorioCliente repositorioCliente, IRepositorioTema repositorioTema)
-        {
-            this.repositorioAluguel = repositorioAluguel;
-            this.repositorioCliente = repositorioCliente;
-            this.repositorioTema = repositorioTema;
-        }
 
         public override void Adicionar()
         {
@@ -170,14 +169,5 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
             }
         }
-
-        public override bool HabilitarBtnAdicionar() { return true; }
-        public override bool HabilitarBtnEditar() { return true; }
-        public override bool HabilitarBtnExcluir() { return true; }
-        public override bool HabilitarBtnFiltrar() { return true; }
-        public override bool HabilitarBtnAdicionarItens() { return false; }
-        public override bool HabilitarBtnVisualizarAlugueis() { return false; }
-        public override bool HabilitarBtnConcluirAluguel() { return true; }
-        public override bool HabilitarBtnConfigurarDescontos() { return true; }
     }
 }

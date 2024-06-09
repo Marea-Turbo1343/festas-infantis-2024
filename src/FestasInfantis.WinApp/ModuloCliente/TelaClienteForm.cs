@@ -5,14 +5,16 @@ namespace FestasInfantis.WinApp.ModuloCliente
     public partial class TelaClienteForm : Form
     {
         private Cliente cliente;
+        private IRepositorioCliente repositorioCliente;
+
         public Cliente Cliente
         {
             set
             {
                 txtId.Text = value.Id.ToString();
                 txtNome.Text = value.Nome;
-                txtTelefone.Text = value.Telefone;
                 txtCpf.Text = value.Cpf;
+                txtTelefone.Text = value.Telefone;
             }
             get
             {
@@ -20,33 +22,14 @@ namespace FestasInfantis.WinApp.ModuloCliente
             }
         }
 
-        public TelaClienteForm()
+        public TelaClienteForm(IRepositorioCliente repositorioCliente)
         {
             InitializeComponent();
-        }
 
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
-            string nome = txtNome.Text;
-            string telefone = txtTelefone.Text;
-            string cpf = txtCpf.Text;
+            this.repositorioCliente = repositorioCliente;
 
-            if (!ValidarNome(nome) || !ValidarCpf(cpf) || !ValidarTelefone(telefone))
-            {
-                DialogResult = DialogResult.None;
-                return;
-            }
-
-            cliente = new Cliente(nome, telefone, cpf);
-
-            List<string> erros = cliente.Validar();
-
-            if (erros.Count > 0)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
-
-                DialogResult = DialogResult.None;
-            }
+            int proximoId = repositorioCliente.ObterProximoId();
+            txtId.Text = proximoId.ToString();
         }
 
         private bool ValidarNome(string nome)
@@ -72,7 +55,7 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
             if (cpf.Length != 11 || Regex.IsMatch(cpf, @"\D"))
             {
-                MessageBox.Show("O CPF deve ter 11 dígitos e conter apenas números. Exemplos: 12345678900 ou 123.456.789-00");
+                MessageBox.Show("O CPF deve ter 11 dígitos e conter apenas números. \nExemplo: 12345678900 ou 123.456.789-00");
                 return false;
             }
 
@@ -85,11 +68,40 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
             if (telefone.Length != 11 || Regex.IsMatch(telefone, @"\D"))
             {
-                MessageBox.Show("O telefone deve ter 11 dígitos e conter apenas números. Exemplos: 49 98875-1234 ou 49988751234");
+                MessageBox.Show("O telefone deve ter 11 dígitos e conter apenas números. \nExemplo: 49 98875-1234 ou 49988751234");
                 return false;
             }
 
             return true;
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            string nome = txtNome.Text;
+            string cpf = txtCpf.Text;
+            string telefone = txtTelefone.Text;
+
+            if (!ValidarNome(nome) || !ValidarCpf(cpf) || !ValidarTelefone(telefone))
+            {
+                DialogResult = DialogResult.None;
+                return;
+            }
+
+            cliente = new Cliente(nome, cpf, telefone);
+
+            List<string> erros = cliente.Validar();
+
+            if (erros.Count > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
+            }
+            else
+            {
+                int proximoId = repositorioCliente.ObterProximoId();
+                txtId.Text = proximoId.ToString();
+            }
         }
     }
 }
