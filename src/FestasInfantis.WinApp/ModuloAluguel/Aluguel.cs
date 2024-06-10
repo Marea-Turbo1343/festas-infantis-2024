@@ -2,6 +2,7 @@
 using FestasInfantis.WinApp.ModuloCliente;
 using FestasInfantis.WinApp.ModuloItem;
 using FestasInfantis.WinApp.ModuloTema;
+using System.ComponentModel;
 
 namespace FestasInfantis.WinApp.ModuloAluguel
 {
@@ -9,7 +10,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
     {
         public Cliente Cliente { get; set; }
         public Tema Tema { get; set; }
-        public int PorcentagemEntrada { get; set; }
+        public PorcentagemEntrada Entrada { get; set; }
         public int QuantidadeEmprestimos { get; set; }
         public decimal DescontoDisponibilizado { get; set; }
         public string EnderecoFesta { get; set; }
@@ -17,7 +18,6 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         public DateTime HoraInicio { get; set; }
         public DateTime HoraTermino { get; set; }
         public DateTime DataPagamento { get; set; }
-        public decimal DescontoTotal { get; set; }
         public decimal ValorTotal { get; set; }
         public List<Item> ItensAlugueis { get; set; }
         public bool PagamentoConcluido { get => DataPagamento != null; }
@@ -29,29 +29,28 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         public Aluguel(
             Cliente cliente,
             Tema tema,
-            int porcentagemEntrada,
+            PorcentagemEntrada entrada,
             int quantidadeEmprestimos,
             decimal descontoDisponibilizado,
             string enderecoFesta,
             DateTime dataFesta,
             DateTime horaInicio,
             DateTime horaTermino,
-            decimal descontoTotal,
             decimal valorTotal,
             List<Item> itensAlugueis
         )
         {
             Cliente = cliente;
             Tema = tema;
-            PorcentagemEntrada = porcentagemEntrada;
+            Entrada = entrada;
             QuantidadeEmprestimos = quantidadeEmprestimos;
             DescontoDisponibilizado = descontoDisponibilizado;
             EnderecoFesta = enderecoFesta;
             DataFesta = dataFesta;
             HoraInicio = horaInicio;
             HoraTermino = horaTermino;
-            DescontoTotal = descontoTotal;
-            ValorTotal = valorTotal;
+            decimal valorDoDesconto = (DescontoDisponibilizado / 100) * valorTotal;
+            ValorTotal = valorTotal - valorDoDesconto;
             ItensAlugueis = itensAlugueis;
         }
 
@@ -77,20 +76,38 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             return erros;
         }
 
+        public enum PorcentagemEntrada
+        {
+            [Description("40%")] _40porcento = 40,
+            [Description("50%")] _50porcento = 50,
+        }
+
+        public decimal CalcularValorTotal()
+        {
+            if (Tema != null)
+            {
+                decimal valorDoDesconto = (DescontoDisponibilizado / 100) * Tema.ValorTotal;
+                return Tema.ValorTotal - valorDoDesconto;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
             Aluguel atualizado = (Aluguel)novoRegistro;
 
             Cliente = atualizado.Cliente;
             Tema = atualizado.Tema;
-            PorcentagemEntrada = atualizado.PorcentagemEntrada;
+            Entrada = atualizado.Entrada;
             QuantidadeEmprestimos = atualizado.QuantidadeEmprestimos;
             DescontoDisponibilizado = atualizado.DescontoDisponibilizado;
             EnderecoFesta = atualizado.EnderecoFesta;
             DataFesta = atualizado.DataFesta;
             HoraInicio = atualizado.HoraInicio;
             HoraTermino = atualizado.HoraTermino;
-            DescontoTotal = atualizado.DescontoTotal;
             ValorTotal = atualizado.ValorTotal;
             ItensAlugueis = atualizado.ItensAlugueis;
         }

@@ -1,4 +1,5 @@
 ﻿using FestasInfantis.WinApp.Compartilhado;
+using FestasInfantis.WinApp.ModuloAluguel;
 using FestasInfantis.WinApp.ModuloItem;
 
 namespace FestasInfantis.WinApp.ModuloCliente
@@ -6,11 +7,13 @@ namespace FestasInfantis.WinApp.ModuloCliente
     public class ControladorCliente : ControladorBase, IControladorVisualizarAlugueis
     {
         private IRepositorioCliente repositorioCliente;
+        private IRepositorioAluguel repositorioAluguel;
         private TabelaClienteControl tabelaCliente;
 
-        public ControladorCliente(IRepositorioCliente repositorio)
+        public ControladorCliente(IRepositorioCliente repositorioCliente, IRepositorioAluguel repositorioAluguel)
         {
-            repositorioCliente = repositorio;
+            this.repositorioCliente = repositorioCliente;
+            this.repositorioAluguel = repositorioAluguel;
         }
 
         public override string TipoCadastro { get { return "Clientes"; } }
@@ -123,7 +126,18 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
         public void VisualizarAlugueis()
         {
-            
+            int idSelecionado = tabelaCliente.ObterRegistroSelecionado();
+
+            Cliente clienteSelecionado = repositorioCliente.SelecionarPorId(idSelecionado);
+
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show("Não é possível realizar esta ação sem um registro selecionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            TelaVerAlugueisForm telaVerAlugueis = new TelaVerAlugueisForm(repositorioAluguel, clienteSelecionado.Id);
+            telaVerAlugueis.ShowDialog();
         }
 
         public override UserControl ObterListagem()

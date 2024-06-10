@@ -14,8 +14,8 @@
             }
         }
 
-        public ConfiguracaoDesconto() 
-        { 
+        public ConfiguracaoDesconto()
+        {
         }
 
         public void EditarDesconto(ConfiguracaoDesconto configuracaoDesconto)
@@ -31,6 +31,18 @@
             }
 
             return true;
+        }
+
+        public decimal CalcularDesconto(int quantidadeEmprestimos)
+        {
+            decimal desconto = PorcentagemDesconto * quantidadeEmprestimos;
+
+            if (desconto > PorcentagemMaxima)
+            {
+                return PorcentagemMaxima;
+            }
+
+            return desconto;
         }
     }
 }

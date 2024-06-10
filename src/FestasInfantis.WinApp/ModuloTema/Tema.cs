@@ -35,6 +35,11 @@ namespace FestasInfantis.WinApp.ModuloTema
             return erros;
         }
 
+        public override string ToString()
+        {
+            return Nome;
+        }
+
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
             Tema atualizado = (Tema)novoRegistro;

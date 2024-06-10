@@ -41,6 +41,11 @@ namespace FestasInfantis.WinApp.ModuloCliente
             return erros;
         }
 
+        public override string ToString()
+        {
+            return Nome;
+        }
+
         public override void AtualizarRegistro(EntidadeBase novoRegistro)
         {
             Cliente atualizado = (Cliente)novoRegistro;

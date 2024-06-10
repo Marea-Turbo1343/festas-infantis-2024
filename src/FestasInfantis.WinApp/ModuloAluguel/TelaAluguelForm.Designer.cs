@@ -30,10 +30,6 @@
         {
             txtQtdEmp = new TextBox();
             lblQtdEmprestimos = new Label();
-            lblDescontoCliente = new Label();
-            txtDescontoDisponivel = new TextBox();
-            lblDescontoDisponivel = new Label();
-            txtDescontoCliente = new TextBox();
             lblHoraTermino = new Label();
             lblHoraInicio = new Label();
             txtHoraTermino = new DateTimePicker();
@@ -50,12 +46,16 @@
             lblDataFesta = new Label();
             lblCliente = new Label();
             gpAlugueis = new GroupBox();
-            listItensAlugueis = new ListBox();
+            listItensAluguel = new ListBox();
             lblId = new Label();
             txtId = new TextBox();
+            txtDescDisp = new TextBox();
+            lblDescDisp = new Label();
             txtEndereco = new TextBox();
             btnCancelar = new Button();
             btnSalvar = new Button();
+            lblValorPagar = new Label();
+            txtValorPagar = new TextBox();
             gpAlugueis.SuspendLayout();
             SuspendLayout();
             // 
@@ -77,44 +77,6 @@
             lblQtdEmprestimos.Size = new Size(160, 15);
             lblQtdEmprestimos.TabIndex = 69;
             lblQtdEmprestimos.Text = "Quantidade de empréstimos:";
-            // 
-            // lblDescontoCliente
-            // 
-            lblDescontoCliente.AutoSize = true;
-            lblDescontoCliente.Location = new Point(26, 155);
-            lblDescontoCliente.Name = "lblDescontoCliente";
-            lblDescontoCliente.Size = new Size(143, 15);
-            lblDescontoCliente.TabIndex = 68;
-            lblDescontoCliente.Text = "Desconto disponibilizado:";
-            // 
-            // txtDescontoDisponivel
-            // 
-            txtDescontoDisponivel.Location = new Point(175, 291);
-            txtDescontoDisponivel.Margin = new Padding(3, 2, 3, 2);
-            txtDescontoDisponivel.Name = "txtDescontoDisponivel";
-            txtDescontoDisponivel.ReadOnly = true;
-            txtDescontoDisponivel.Size = new Size(70, 23);
-            txtDescontoDisponivel.TabIndex = 65;
-            txtDescontoDisponivel.TabStop = false;
-            // 
-            // lblDescontoDisponivel
-            // 
-            lblDescontoDisponivel.AutoSize = true;
-            lblDescontoDisponivel.Location = new Point(52, 294);
-            lblDescontoDisponivel.Name = "lblDescontoDisponivel";
-            lblDescontoDisponivel.Size = new Size(117, 15);
-            lblDescontoDisponivel.TabIndex = 64;
-            lblDescontoDisponivel.Text = "Desconto disponível:";
-            // 
-            // txtDescontoCliente
-            // 
-            txtDescontoCliente.Location = new Point(175, 152);
-            txtDescontoCliente.Margin = new Padding(3, 2, 3, 2);
-            txtDescontoCliente.Name = "txtDescontoCliente";
-            txtDescontoCliente.ReadOnly = true;
-            txtDescontoCliente.Size = new Size(49, 23);
-            txtDescontoCliente.TabIndex = 63;
-            txtDescontoCliente.TabStop = false;
             // 
             // lblHoraTermino
             // 
@@ -156,18 +118,18 @@
             // 
             // txtValorTotal
             // 
-            txtValorTotal.Location = new Point(175, 318);
+            txtValorTotal.Location = new Point(175, 291);
             txtValorTotal.Margin = new Padding(3, 2, 3, 2);
             txtValorTotal.Name = "txtValorTotal";
             txtValorTotal.ReadOnly = true;
-            txtValorTotal.Size = new Size(260, 23);
+            txtValorTotal.Size = new Size(95, 23);
             txtValorTotal.TabIndex = 53;
             txtValorTotal.TabStop = false;
             // 
             // lblValorTotal
             // 
             lblValorTotal.AutoSize = true;
-            lblValorTotal.Location = new Point(89, 321);
+            lblValorTotal.Location = new Point(89, 294);
             lblValorTotal.Name = "lblValorTotal";
             lblValorTotal.Size = new Size(80, 15);
             lblValorTotal.TabIndex = 58;
@@ -257,19 +219,20 @@
             // 
             // gpAlugueis
             // 
-            gpAlugueis.Controls.Add(listItensAlugueis);
+            gpAlugueis.Controls.Add(listItensAluguel);
             gpAlugueis.Controls.Add(lblId);
             gpAlugueis.Controls.Add(txtId);
+            gpAlugueis.Controls.Add(txtValorPagar);
+            gpAlugueis.Controls.Add(lblValorPagar);
             gpAlugueis.Controls.Add(txtValorTotal);
             gpAlugueis.Controls.Add(lblValorTotal);
+            gpAlugueis.Controls.Add(txtDescDisp);
             gpAlugueis.Controls.Add(txtQtdEmp);
+            gpAlugueis.Controls.Add(lblDescDisp);
             gpAlugueis.Controls.Add(lblCliente);
-            gpAlugueis.Controls.Add(txtDescontoDisponivel);
             gpAlugueis.Controls.Add(lblQtdEmprestimos);
-            gpAlugueis.Controls.Add(lblDescontoDisponivel);
             gpAlugueis.Controls.Add(cmbCliente);
             gpAlugueis.Controls.Add(lblHoraTermino);
-            gpAlugueis.Controls.Add(lblDescontoCliente);
             gpAlugueis.Controls.Add(lblHoraInicio);
             gpAlugueis.Controls.Add(cmbTema);
             gpAlugueis.Controls.Add(txtHoraTermino);
@@ -279,27 +242,26 @@
             gpAlugueis.Controls.Add(txtHoraInicio);
             gpAlugueis.Controls.Add(cmbEntrada);
             gpAlugueis.Controls.Add(lblEntrada);
-            gpAlugueis.Controls.Add(txtDescontoCliente);
             gpAlugueis.Controls.Add(lblDataFesta);
             gpAlugueis.Controls.Add(txtDataFesta);
             gpAlugueis.Location = new Point(12, 11);
             gpAlugueis.Margin = new Padding(3, 2, 3, 2);
             gpAlugueis.Name = "gpAlugueis";
             gpAlugueis.Padding = new Padding(3, 2, 3, 2);
-            gpAlugueis.Size = new Size(525, 490);
+            gpAlugueis.Size = new Size(525, 505);
             gpAlugueis.TabIndex = 73;
             gpAlugueis.TabStop = false;
             gpAlugueis.Text = "Aluguéis";
             // 
-            // listItensAlugueis
+            // listItensAluguel
             // 
-            listItensAlugueis.FormattingEnabled = true;
-            listItensAlugueis.ItemHeight = 15;
-            listItensAlugueis.Location = new Point(6, 345);
-            listItensAlugueis.Margin = new Padding(3, 2, 3, 2);
-            listItensAlugueis.Name = "listItensAlugueis";
-            listItensAlugueis.Size = new Size(513, 139);
-            listItensAlugueis.TabIndex = 35;
+            listItensAluguel.FormattingEnabled = true;
+            listItensAluguel.ItemHeight = 15;
+            listItensAluguel.Location = new Point(6, 345);
+            listItensAluguel.Margin = new Padding(3, 2, 3, 2);
+            listItensAluguel.Name = "listItensAluguel";
+            listItensAluguel.Size = new Size(513, 154);
+            listItensAluguel.TabIndex = 35;
             // 
             // lblId
             // 
@@ -322,6 +284,25 @@
             txtId.TabIndex = 25;
             txtId.TabStop = false;
             // 
+            // txtDescDisp
+            // 
+            txtDescDisp.Location = new Point(175, 152);
+            txtDescDisp.Margin = new Padding(3, 2, 3, 2);
+            txtDescDisp.Name = "txtDescDisp";
+            txtDescDisp.ReadOnly = true;
+            txtDescDisp.Size = new Size(49, 23);
+            txtDescDisp.TabIndex = 70;
+            txtDescDisp.TabStop = false;
+            // 
+            // lblDescDisp
+            // 
+            lblDescDisp.AutoSize = true;
+            lblDescDisp.Location = new Point(52, 155);
+            lblDescDisp.Name = "lblDescDisp";
+            lblDescDisp.Size = new Size(117, 15);
+            lblDescDisp.TabIndex = 69;
+            lblDescDisp.Text = "Desconto disponível:";
+            // 
             // txtEndereco
             // 
             txtEndereco.Location = new Point(175, 179);
@@ -333,7 +314,7 @@
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(462, 506);
+            btnCancelar.Location = new Point(462, 521);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 35);
             btnCancelar.TabIndex = 75;
@@ -343,18 +324,38 @@
             // btnSalvar
             // 
             btnSalvar.DialogResult = DialogResult.OK;
-            btnSalvar.Location = new Point(381, 506);
+            btnSalvar.Location = new Point(381, 521);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 35);
             btnSalvar.TabIndex = 74;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
+            // 
+            // lblValorPagar
+            // 
+            lblValorPagar.AutoSize = true;
+            lblValorPagar.Location = new Point(75, 321);
+            lblValorPagar.Name = "lblValorPagar";
+            lblValorPagar.Size = new Size(94, 15);
+            lblValorPagar.TabIndex = 58;
+            lblValorPagar.Text = "Valor a pagar R$:";
+            // 
+            // txtValorPagar
+            // 
+            txtValorPagar.Location = new Point(175, 318);
+            txtValorPagar.Margin = new Padding(3, 2, 3, 2);
+            txtValorPagar.Name = "txtValorPagar";
+            txtValorPagar.ReadOnly = true;
+            txtValorPagar.Size = new Size(95, 23);
+            txtValorPagar.TabIndex = 53;
+            txtValorPagar.TabStop = false;
             // 
             // TelaAluguelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(547, 551);
+            ClientSize = new Size(547, 565);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             Controls.Add(gpAlugueis);
@@ -373,10 +374,10 @@
 
         private TextBox txtQtdEmp;
         private Label lblQtdEmprestimos;
-        private Label lblDescontoCliente;
-        private TextBox txtDescontoDisponivel;
         private Label lblDescontoDisponivel;
-        private TextBox txtDescontoCliente;
+        private TextBox txtDescontoDisponivel;
+        private TextBox txtDescDisp;
+        private Label lblDescDisp;
         private Label lblHoraTermino;
         private Label lblHoraInicio;
         private DateTimePicker txtHoraTermino;
@@ -393,11 +394,13 @@
         private Label lblDataFesta;
         private Label lblCliente;
         private GroupBox gpAlugueis;
-        private ListBox listItensAlugueis;
+        private ListBox listItensAluguel;
         private Label lblId;
         private TextBox txtId;
         private Button btnCancelar;
         private Button btnSalvar;
         private TextBox txtEndereco;
+        private TextBox txtValorPagar;
+        private Label lblValorPagar;
     }
 }

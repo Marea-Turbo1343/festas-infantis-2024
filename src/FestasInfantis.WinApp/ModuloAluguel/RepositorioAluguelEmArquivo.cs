@@ -33,8 +33,8 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
         public int ObterProximoId()
         {
-            if (contexto.Clientes.Any())
-                return contexto.Clientes.Max(c => c.Id) + 1;
+            if (contexto.Alugueis.Any())
+                return contexto.Alugueis.Max(c => c.Id) + 1;
             else
                 return 1;
         }

@@ -1,18 +1,16 @@
 ﻿using FestasInfantis.WinApp.ModuloCliente;
 using FestasInfantis.WinApp.ModuloItem;
 using FestasInfantis.WinApp.ModuloTema;
-using System.Reflection.Metadata;
 
 namespace FestasInfantis.WinApp.ModuloAluguel
 {
     public class ControladorAluguel : ControladorBase
     {
-        private TabelaAluguelControl tabelaAluguel;
-
         private IRepositorioAluguel repositorioAluguel;
         private IRepositorioCliente repositorioCliente;
         private IRepositorioTema repositorioTema;
         private IRepositorioItem repositorioItem;
+        private TabelaAluguelControl tabelaAluguel;
 
         public ControladorAluguel(IRepositorioAluguel repositorioAluguel, IRepositorioCliente repositorioCliente, IRepositorioTema repositorioTema, IRepositorioItem repositorioItem)
         {
@@ -34,7 +32,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
         public string ToolTipVisualizarAlugueis => "Visualizar aluguéis";
 
-        public String ToolTipConcluirAluguel => "Concluir aluguel";
+        public string ToolTipConcluirAluguel => "Concluir aluguel";
 
         public string ToolTipConfigurarDesconto => "Configurar desconto";
 
@@ -59,7 +57,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
         public override void Adicionar()
         {
-            TelaAluguelForm telaAluguel = new TelaAluguelForm();
+            TelaAluguelForm telaAluguel = new TelaAluguelForm(repositorioAluguel);
 
             List<Cliente> clientesCadastrados = repositorioCliente.SelecionarTodos();
             List<Tema> temasCadastrados = repositorioTema.SelecionarTodos();
@@ -74,18 +72,63 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
             Aluguel novoAluguel = telaAluguel.Aluguel;
 
+            if (repositorioAluguel.SelecionarTodos().Any(a => a.Cliente == novoAluguel.Cliente && a.DataFesta > DateTime.Now))
+            {
+                MessageBox.Show("O cliente selecionado possui um aluguel em aberto. É preciso pagar o aluguel em aberto antes de realizar um novo.", "Cliente com aluguel em aberto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                TelaEncerrarAluguelForm telaEncerrarAluguel = new TelaEncerrarAluguelForm();
+                telaEncerrarAluguel.ShowDialog();
+
+                return;
+            }
+
+            if (repositorioAluguel.SelecionarTodos().Any(a => a.Tema == novoAluguel.Tema && a.DataFesta > DateTime.Now))
+            {
+                MessageBox.Show("O tema selecionado já está alugado por outro cliente.", "Tema já alugado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (novoAluguel.Entrada != Aluguel.PorcentagemEntrada._40porcento && novoAluguel.Entrada != Aluguel.PorcentagemEntrada._50porcento)
+            {
+                MessageBox.Show("A porcentagem de entrada deve ser 40% ou 50%.", "Porcentagem de entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(novoAluguel.EnderecoFesta))
+            {
+                MessageBox.Show("O endereço da festa deve estar preenchido.", "Endereço da festa vazio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (novoAluguel.DataFesta <= DateTime.Now)
+            {
+                MessageBox.Show("A data da festa deve ser de amanhã em diante.", "Data da festa inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (novoAluguel.HoraInicio >= novoAluguel.HoraTermino)
+            {
+                MessageBox.Show("O horário de início não pode ser depois do horário de término.", "Horário inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (novoAluguel.ValorTotal != novoAluguel.ValorTotal - novoAluguel.DescontoDisponibilizado)
+            {
+                MessageBox.Show("O valor total deve estar com o desconto já calculado.", "Valor total inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             repositorioAluguel.Cadastrar(novoAluguel);
 
             CarregarAlugueis();
 
-            TelaPrincipalForm
-                .Instancia
-                .AtualizarRodape($"O registro \"{novoAluguel.Cliente.Nome}\" foi criado com sucesso!");
+            TelaPrincipalForm.Instancia.Temporizador($"O registro \"{novoAluguel.Cliente.Nome}\" foi criado com sucesso!");
         }
+
 
         public override void Editar()
         {
-            TelaAluguelForm telaAluguel = new TelaAluguelForm();
+            TelaAluguelForm telaAluguel = new TelaAluguelForm(repositorioAluguel);
 
             List<Cliente> clientesCadastrados = repositorioCliente.SelecionarTodos();
             List<Tema> temasCadastrados = repositorioTema.SelecionarTodos();
@@ -122,9 +165,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
             CarregarAlugueis();
 
-            TelaPrincipalForm
-                .Instancia
-                .AtualizarRodape($"O registro \"{aluguelEditado.Cliente.Nome}\" foi editado com sucesso!");
+            TelaPrincipalForm.Instancia.Temporizador($"O registro \"{aluguelEditado.Cliente.Nome}\" foi editado com sucesso!");
         }
 
         public override void Excluir()
@@ -159,9 +200,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
             CarregarAlugueis();
 
-            TelaPrincipalForm
-               .Instancia
-               .AtualizarRodape($"O registro \"{aluguelSelecionado.Cliente.Nome}\" foi excluído com sucesso!");
+            TelaPrincipalForm.Instancia.Temporizador($"O registro \"{aluguelSelecionado.Cliente.Nome}\" foi excluído com sucesso!");
         }
 
         public override UserControl ObterListagem()

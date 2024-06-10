@@ -205,7 +205,6 @@ namespace FestasInfantis.WinApp.ModuloTema
             TelaPrincipalForm.Instancia.Temporizador($"O registro \"{temaSelecionado.Nome}\" foi excluído com sucesso!");
         }
 
-
         private void CarregarTemas()
         {
             List<Tema> temas = repositorioTema.SelecionarTodos();

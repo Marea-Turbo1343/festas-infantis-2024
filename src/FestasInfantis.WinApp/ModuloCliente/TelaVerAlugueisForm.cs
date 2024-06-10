@@ -16,25 +16,26 @@ namespace FestasInfantis.WinApp.ModuloCliente
     
             CarregarAlugueis();
         }
-    
+
         private void CarregarAlugueis()
         {
-            //List<Aluguel> alugueisDoCliente = repositorioAluguel.SelecionarPorCliente(idCliente);
+            List<Aluguel> alugueis = repositorioAluguel.SelecionarPorCliente(idCliente);
 
-            //listViewAlugueis.Items.Clear();
-    
-            //foreach (Aluguel aluguel in alugueisDoCliente)
-            //{
-            //    ListViewItem item = new ListViewItem(aluguel.Id.ToString());
-            //    item.SubItems.Add(aluguel.Tema);
-            //    item.SubItems.Add(aluguel.Valor.ToString());
-            //    item.SubItems.Add(aluguel.DataFesta.ToString());
-            //    item.SubItems.Add(aluguel.StatusPago ? "Pago" : "Não pago");
-            //    if (aluguel.StatusPago)
-            //        item.SubItems.Add(aluguel.DataPagamento.ToString());
-    
-            //    listAlugueis.Items.Add(item);
-            //}
+            listViewAlugueis.Items.Clear(); // Limpa a lista antes de adicionar novos itens
+
+            foreach (Aluguel aluguel in alugueis)
+            {
+                // Cria um novo item de lista com as informações do aluguel
+                ListViewItem item = new ListViewItem(new string[]
+                {
+            aluguel.Tema.Nome, // Substitua pelo campo correto do tema do aluguel
+            aluguel.DataFesta.ToString(), // Substitua pelo campo correto da data da festa
+            aluguel.PagamentoConcluido ? "Aluguel Concluido" : "Aluguel em Andamento"
+                });
+
+                // Adiciona o item à ListView
+                listViewAlugueis.Items.Add(item);
+            }
         }
     }
 }

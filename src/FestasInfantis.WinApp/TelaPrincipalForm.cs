@@ -57,7 +57,7 @@ namespace FestasInfantis.WinApp
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorCliente(repositorioCliente);
+            controlador = new ControladorCliente(repositorioCliente, repositorioAluguel);
 
             ConfigurarTelaPrincipal(controlador);
         }

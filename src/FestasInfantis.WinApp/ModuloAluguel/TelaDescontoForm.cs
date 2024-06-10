@@ -27,6 +27,9 @@
             numDesconto.Maximum = 100;
             numDescontoMax.Minimum = 1;
             numDescontoMax.Maximum = 100;
+
+            numDesconto.Value = configuracaoDesconto.PorcentagemDesconto;
+            numDescontoMax.Value = configuracaoDesconto.PorcentagemMaxima;
         }
 
         private void NumDesconto_KeyPress(object sender, KeyPressEventArgs e)
