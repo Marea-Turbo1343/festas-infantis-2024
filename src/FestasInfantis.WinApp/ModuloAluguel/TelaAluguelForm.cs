@@ -65,6 +65,11 @@ namespace FestasInfantis.WinApp.ModuloAluguel
                 MessageBox.Show("O horário de início não pode ser posterior ao horário de término.", "Horário inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtHoraInicio.Value = txtHoraTermino.Value.AddHours(-1);
             }
+            else if (txtHoraTermino.Value - txtHoraInicio.Value < TimeSpan.FromMinutes(30))
+            {
+                MessageBox.Show("Deve existir um intervalo de no mínimo 30 minutos entre o início e o término da festa.", "Intervalo de tempo inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtHoraInicio.Value = txtHoraTermino.Value.AddMinutes(-30);
+            }
         }
 
         private void txtHoraTermino_ValueChanged(object sender, EventArgs e)
@@ -73,6 +78,11 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             {
                 MessageBox.Show("O horário de término não pode ser anterior ao horário de início.", "Horário inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtHoraTermino.Value = txtHoraInicio.Value.AddHours(1);
+            }
+            else if (txtHoraTermino.Value - txtHoraInicio.Value < TimeSpan.FromMinutes(30))
+            {
+                MessageBox.Show("Deve existir um intervalo de no mínimo 30 minutos entre o início e o término da festa.", "Intervalo de tempo inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtHoraTermino.Value = txtHoraInicio.Value.AddMinutes(30);
             }
         }
 
@@ -90,7 +100,17 @@ namespace FestasInfantis.WinApp.ModuloAluguel
                 decimal valorTotal = aluguel.CalcularValorTotal();
                 txtValorTotal.Text = valorTotal.ToString();
 
-                decimal valorEntrada = valorTotal * (decimal)aluguel.Entrada / 100;
+                decimal valorEntrada;
+                if (cmbEntrada.SelectedItem != null)
+                {
+                    string entradaSelecionada = cmbEntrada.SelectedItem.ToString().Replace("%", "");
+                    aluguel.Entrada = (PorcentagemEntrada)Enum.Parse(typeof(PorcentagemEntrada), "_" + entradaSelecionada + "porcento");
+                    valorEntrada = valorTotal * ((decimal)aluguel.Entrada / 100);
+                }
+                else
+                {
+                    valorEntrada = 0;
+                }
 
                 decimal valorAPagar = valorTotal - valorEntrada;
                 txtValorPagar.Text = valorAPagar.ToString();
@@ -210,7 +230,8 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             Cliente cliente = (Cliente)cmbCliente.SelectedItem;
             Tema tema = (Tema)cmbTema.SelectedItem;
 
-            PorcentagemEntrada porcentagemEntrada = (PorcentagemEntrada)Enum.Parse(typeof(PorcentagemEntrada), cmbEntrada.SelectedItem.ToString());
+            string entradaSelecionada = cmbEntrada.SelectedItem.ToString().Replace("%", "");
+            PorcentagemEntrada porcentagemEntrada = (PorcentagemEntrada)Enum.Parse(typeof(PorcentagemEntrada), "_" + entradaSelecionada + "porcento");
 
             int quantidadeEmprestimos = int.Parse(txtQtdEmp.Text);
             string enderecoFesta = txtEndereco.Text;
