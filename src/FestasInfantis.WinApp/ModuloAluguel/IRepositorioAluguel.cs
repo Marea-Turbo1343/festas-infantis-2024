@@ -9,6 +9,8 @@
         List<Aluguel> SelecionarTodos();
         List<Aluguel> SelecionarAlugueisPorPeriodo(DateTime dataInicio, DateTime dataTermino);
         ConfiguracaoDesconto SelecionarConfiguracaoDesconto();
+        int ObterProximoId();
         void SalvarDesconto(ConfiguracaoDesconto configuracaoDesconto);
+        List<Aluguel> SelecionarPorCliente(int idCliente);
     }
 }

@@ -13,7 +13,7 @@ namespace FestasInfantis.WinApp.ModuloItem
             grid.ConfigurarGridZebrado();
         }
 
-        internal void AtualizarRegistros(List<Item> itens)
+        public void AtualizarRegistros(List<Item> itens)
         {
             grid.Rows.Clear();
 

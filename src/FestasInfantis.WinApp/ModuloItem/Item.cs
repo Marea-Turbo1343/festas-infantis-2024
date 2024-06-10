@@ -5,13 +5,13 @@ namespace FestasInfantis.WinApp.ModuloItem
     public class Item : EntidadeBase
     {
         public string Descricao { get; set; }
-        public double Valor { get; set; }
+        public decimal Valor { get; set; }
 
         public Item()
         {
         }
 
-        public Item(string descricao, double valor)
+        public Item(string descricao, decimal valor)
         {
             Descricao = descricao;
             Valor = valor;
@@ -30,6 +30,11 @@ namespace FestasInfantis.WinApp.ModuloItem
             }
 
             return erros;
+        }
+
+        public override string ToString()
+        {
+            return $"{Descricao} R${Valor}";
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)

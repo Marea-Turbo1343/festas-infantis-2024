@@ -1,4 +1,6 @@
-﻿namespace FestasInfantis.WinApp.ModuloItem
+﻿using FestasInfantis.WinApp.ModuloTema;
+
+namespace FestasInfantis.WinApp.ModuloItem
 {
     public class ControladorItem : ControladorBase
     {
@@ -18,13 +20,31 @@
 
         public override string ToolTipExcluir { get { return "Excluir um item existente"; } }
 
+        public void AtualizarListagem()
+        {
+            List<Item> itens = repositorioItem.SelecionarTodos();
+
+            tabelaItem.AtualizarRegistros(itens);
+
+            TelaPrincipalForm.Instancia?.AtualizarRodape(ObterTextoRodape(itens));
+        }
+
+        private static string ObterTextoRodape(List<Item> itens)
+        {
+            if (itens.Count == 0)
+                return "Nenhum item cadastrado até o momento!";
+            else if (itens.Count == 1)
+                return "Exibindo 1 item";
+
+            return $"Exibindo {itens.Count} itens.";
+        }
+
         public override void Adicionar()
         {
-            TelaItemForm telaItem = new TelaItemForm();
+            TelaItemForm telaItem = new TelaItemForm(repositorioItem);
 
             DialogResult resultado = telaItem.ShowDialog();
 
-            // guardas = bloquear momentos em que a aplicação toma um "caminho triste"
             if (resultado != DialogResult.OK)
                 return;
 
@@ -34,12 +54,12 @@
 
             CarregarItens();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{novoItem.Descricao}\" foi criado com sucesso!");
+            TelaPrincipalForm.Instancia.Temporizador($"O registro \"{novoItem.Descricao}\" foi criado com sucesso!");
         }
 
         public override void Editar()
         {
-            TelaItemForm telaItem = new TelaItemForm();
+            TelaItemForm telaItem = new TelaItemForm(repositorioItem);
 
             int idSelecionado = tabelaItem.ObterRegistroSelecionado();
             Item itemSelecionado =
@@ -64,7 +84,7 @@
 
             CarregarItens();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{itemEditado.Descricao}\" foi editado com sucesso!");
+            TelaPrincipalForm.Instancia.Temporizador($"O registro \"{itemEditado.Descricao}\" foi editado com sucesso!");
         }
 
         public override void Excluir()
@@ -88,7 +108,7 @@
 
             CarregarItens();
 
-            TelaPrincipalForm.Instancia.AtualizarRodape($"O registro \"{itemSelecionado.Descricao}\" foi excluído com sucesso!");
+            TelaPrincipalForm.Instancia.Temporizador($"O registro \"{itemSelecionado.Descricao}\" foi excluído com sucesso!");
         }
 
         private void CarregarItens()
@@ -97,12 +117,15 @@
 
             tabelaItem.AtualizarRegistros(itens);
         }
+
         public override UserControl ObterListagem()
         {
             if (tabelaItem == null)
                 tabelaItem = new TabelaItemControl();
 
             CarregarItens();
+
+            AtualizarListagem();
 
             return tabelaItem;
         }

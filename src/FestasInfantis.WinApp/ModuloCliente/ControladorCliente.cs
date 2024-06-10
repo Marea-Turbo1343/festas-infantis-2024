@@ -1,6 +1,9 @@
-﻿namespace FestasInfantis.WinApp.ModuloCliente
+﻿using FestasInfantis.WinApp.Compartilhado;
+using FestasInfantis.WinApp.ModuloItem;
+
+namespace FestasInfantis.WinApp.ModuloCliente
 {
-    public class ControladorCliente : ControladorBase
+    public class ControladorCliente : ControladorBase, IControladorVisualizarAlugueis
     {
         private IRepositorioCliente repositorioCliente;
         private TabelaClienteControl tabelaCliente;
@@ -19,6 +22,25 @@
         public override string ToolTipExcluir { get { return "Excluir um cliente existente"; } }
 
         public string ToolTipVisualizarAlugueis => "Visualizar aluguéis do cliente";
+
+        public void AtualizarListagem()
+        {
+            List<Cliente> clientes = repositorioCliente.SelecionarTodos();
+
+            tabelaCliente.AtualizarRegistros(clientes);
+
+            TelaPrincipalForm.Instancia?.AtualizarRodape(ObterTextoRodape(clientes));
+        }
+
+        private static string ObterTextoRodape(List<Cliente> clientes)
+        {
+            if (clientes.Count == 0)
+                return "Nenhum cliente cadastrado até o momento!";
+            else if (clientes.Count == 1)
+                return "Exibindo 1 cliente";
+
+            return $"Exibindo {clientes.Count} clientes.";
+        }
 
         public override void Adicionar()
         {
@@ -99,12 +121,19 @@
             tabelaCliente.AtualizarRegistros(clientes);
         }
 
+        public void VisualizarAlugueis()
+        {
+            
+        }
+
         public override UserControl ObterListagem()
         {
             if (tabelaCliente == null)
                 tabelaCliente = new TabelaClienteControl();
 
             CarregarClientes();
+
+            AtualizarListagem();
 
             return tabelaCliente;
         }

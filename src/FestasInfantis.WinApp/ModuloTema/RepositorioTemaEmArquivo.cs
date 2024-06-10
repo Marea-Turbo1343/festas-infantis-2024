@@ -1,6 +1,7 @@
 ﻿using FestasInfantis.ConsoleApp.Compartilhado;
 using FestasInfantis.WinApp.Compartilhado;
 using FestasInfantis.WinApp.ModuloAluguel;
+using FestasInfantis.WinApp.ModuloItem;
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
@@ -17,11 +18,6 @@ namespace FestasInfantis.WinApp.ModuloTema
             return contexto.Temas;
         }
 
-        public List<Aluguel> BuscarAlugueisPorTema(Tema tema)
-        {
-            return contexto.Alugueis.Where(a => a.Tema!.Equals(tema)).ToList();
-        }
-
         public override bool Excluir(int id)
         {
             Tema tema = SelecionarPorId(id);
@@ -33,6 +29,19 @@ namespace FestasInfantis.WinApp.ModuloTema
                 a.Tema = null;
 
             return base.Excluir(id);
+        }
+
+        public int ObterProximoId()
+        {
+            if (contexto.Temas.Any())
+                return contexto.Temas.Max(c => c.Id) + 1;
+            else
+                return 1;
+        }
+
+        public Tema AdicionarItens(int id, Tema tema)
+        {
+            throw new NotImplementedException();
         }
     }
 }

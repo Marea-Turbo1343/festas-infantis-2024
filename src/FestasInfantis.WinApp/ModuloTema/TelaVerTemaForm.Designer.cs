@@ -1,6 +1,6 @@
 ﻿namespace FestasInfantis.WinApp.ModuloTema
 {
-    partial class TelaVerTema
+    partial class TelaVerTemaForm
     {
         /// <summary>
         /// Required designer variable.

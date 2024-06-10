@@ -11,14 +11,26 @@ namespace FestasInfantis.WinApp.ModuloTema
             grid.Columns.AddRange(ObterColunas());
             grid.ConfigurarGridSomenteLeitura();
             grid.ConfigurarGridZebrado();
+            grid.CellDoubleClick += Grid_DoubleClick;
         }
 
-        internal void AtualizarRegistros(List<Tema> temas)
-        {
-            grid.Rows.Clear();
+        private void Grid_DoubleClick(object sender, DataGridViewCellEventArgs e)
+{
+            Tema temaSelecionado = (Tema)grid.CurrentRow.DataBoundItem;
 
-            foreach (Tema c in temas)
-                grid.Rows.Add(c.Id, c.Nome.ToTitleCase(), c.CalcularValorTotal());
+            if (temaSelecionado == null)
+            {
+                MessageBox.Show("Por favor, selecione um tema.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            TelaVerTemaForm telaVerTema = new TelaVerTemaForm(temaSelecionado);
+            telaVerTema.ShowDialog();
+        }
+
+        public void AtualizarRegistros(List<Tema> temas)
+        {
+            grid.DataSource = temas;
         }
 
         public int ObterRegistroSelecionado()

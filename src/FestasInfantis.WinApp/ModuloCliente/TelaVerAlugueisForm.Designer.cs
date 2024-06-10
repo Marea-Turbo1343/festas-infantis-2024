@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             gpAlugueis = new GroupBox();
+            listViewAlugueis = new ListView();
             txtNome = new TextBox();
             lblId = new Label();
             txtId = new TextBox();
             lblNome = new Label();
             btnCancelar = new Button();
             btnSalvar = new Button();
-            listViewAlugueis = new ListView();
             gpAlugueis.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,13 +55,21 @@
             gpAlugueis.TabStop = false;
             gpAlugueis.Text = "Aluguéis";
             // 
+            // listViewAlugueis
+            // 
+            listViewAlugueis.Location = new Point(6, 75);
+            listViewAlugueis.Name = "listViewAlugueis";
+            listViewAlugueis.Size = new Size(513, 171);
+            listViewAlugueis.TabIndex = 2;
+            listViewAlugueis.UseCompatibleStateImageBehavior = false;
+            // 
             // txtNome
             // 
             txtNome.Location = new Point(57, 47);
             txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(330, 23);
-            txtNome.TabIndex = 34;
+            txtNome.TabIndex = 1;
             // 
             // lblId
             // 
@@ -81,7 +89,7 @@
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
             txtId.Size = new Size(79, 23);
-            txtId.TabIndex = 25;
+            txtId.TabIndex = 0;
             txtId.TabStop = false;
             // 
             // lblNome
@@ -101,7 +109,7 @@
             btnCancelar.Location = new Point(462, 267);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 35);
-            btnCancelar.TabIndex = 13;
+            btnCancelar.TabIndex = 4;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -111,17 +119,9 @@
             btnSalvar.Location = new Point(381, 267);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 35);
-            btnSalvar.TabIndex = 12;
+            btnSalvar.TabIndex = 3;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
-            // 
-            // listViewAlugueis
-            // 
-            listViewAlugueis.Location = new Point(6, 75);
-            listViewAlugueis.Name = "listViewAlugueis";
-            listViewAlugueis.Size = new Size(513, 171);
-            listViewAlugueis.TabIndex = 35;
-            listViewAlugueis.UseCompatibleStateImageBehavior = false;
             // 
             // TelaVerAlugueisForm
             // 

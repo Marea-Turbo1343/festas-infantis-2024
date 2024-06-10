@@ -17,6 +17,8 @@ namespace FestasInfantis.WinApp
         IRepositorioTema repositorioTema;
         IRepositorioAluguel repositorioAluguel;
 
+        public event Action TemporizadorTerminou;
+
         public static TelaPrincipalForm Instancia { get; private set; }
 
         public TelaPrincipalForm()
@@ -39,6 +41,20 @@ namespace FestasInfantis.WinApp
             lblRodape.Text = texto;
         }
 
+        public void Temporizador(string mensagem)
+        {
+            AtualizarRodape(mensagem);
+
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+            timer.Interval = 5000;
+            timer.Tick += (s, e) =>
+            {
+                timer.Stop();
+                TemporizadorTerminou?.Invoke();
+            };
+            timer.Start();
+        }
+
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorCliente(repositorioCliente);
@@ -55,14 +71,14 @@ namespace FestasInfantis.WinApp
 
         private void temasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorTema(repositorioTema);
+            controlador = new ControladorTema(repositorioTema, repositorioItem, repositorioAluguel);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void alugueisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorAluguel(repositorioAluguel, repositorioCliente, repositorioTema);
+            controlador = new ControladorAluguel(repositorioAluguel, repositorioCliente, repositorioTema, repositorioItem);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -84,24 +100,33 @@ namespace FestasInfantis.WinApp
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
+            if (controlador is IControladorFiltrar controladorFiltravel)
+                controladorFiltravel.Filtrar();
         }
 
         private void btnAdicionarItens_Click(object sender, EventArgs e)
         {
+            if (controlador is IControladorAdicionarItens controladorAdicionarItens)
+                controladorAdicionarItens.AdicionarItens();
         }
 
         private void btnVisualizarAlugueis_Click(object sender, EventArgs e)
         {
+            if (controlador is IControladorVisualizarAlugueis controladorVisualizarAlugueis)
+                controladorVisualizarAlugueis.VisualizarAlugueis();
         }
 
         private void btnConcluirAluguel_Click(object sender, EventArgs e)
         {
+            if (controlador is IControladorConcluirAluguel controladorConcluirAluguel)
+                controladorConcluirAluguel.ConcluirAluguel();
         }
 
         private void btnConfigurarDescontos_Click(object sender, EventArgs e)
         {
+            if (controlador is IControladorConfigurarDescontos controladorConfigurarDescontos)
+                controladorConfigurarDescontos.ConfigurarDescontos();
         }
-
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorSelecionado)
         {
@@ -117,20 +142,20 @@ namespace FestasInfantis.WinApp
             btnEditar.ToolTipText = controladorSelecionado.ToolTipEditar;
             btnExcluir.ToolTipText = controladorSelecionado.ToolTipExcluir;
 
-            if (controladorSelecionado is IControladorFiltravel controladorFiltravel)
+            if (controladorSelecionado is IControladorFiltrar controladorFiltravel)
                 btnFiltrar.ToolTipText = controladorFiltravel.ToolTipFiltrar;
 
-            if (controladorSelecionado is IControladorAdicionarItens controladorAdicionavel)
-                btnAdicionarItens.ToolTipText = controladorAdicionavel.ToolTipAdicionarItens;
+            if (controladorSelecionado is IControladorAdicionarItens controladorAdicionarItens)
+                btnAdicionarItens.ToolTipText = controladorAdicionarItens.ToolTipAdicionarItens;
 
-            if (controladorSelecionado is IControladorVisualizarAlugueis controladorVisualizavel)
-                btnVisualizarAlugueis.ToolTipText = controladorVisualizavel.ToolTipVisualizarAlugueis;
+            if (controladorSelecionado is IControladorVisualizarAlugueis controladorVisualizarAlugueis)
+                btnVisualizarAlugueis.ToolTipText = controladorVisualizarAlugueis.ToolTipVisualizarAlugueis;
 
-            if (controladorSelecionado is IControladorConcluirAluguel controladorConcluivel)
-                btnConcluirAluguel.ToolTipText = controladorConcluivel.ToolTipConcluirAluguel;
+            if (controladorSelecionado is IControladorConcluirAluguel controladorConcluirAluguel)
+                btnConcluirAluguel.ToolTipText = controladorConcluirAluguel.ToolTipConcluirAluguel;
 
-            if (controladorSelecionado is IControladorConfigurarDescontos controladorConfiguravel)
-                btnConfigurarDescontos.ToolTipText = controladorConfiguravel.ToolTipConfigurarDescontos;
+            if (controladorSelecionado is IControladorConfigurarDescontos controladorConfigurarDescontos)
+                btnConfigurarDescontos.ToolTipText = controladorConfigurarDescontos.ToolTipConfigurarDescontos;
         }
 
         private void ConfigurarToolBox(ControladorBase controladorSelecionado)
@@ -139,7 +164,7 @@ namespace FestasInfantis.WinApp
             btnEditar.Enabled = controladorSelecionado is ControladorBase;
             btnExcluir.Enabled = controladorSelecionado is ControladorBase;
 
-            btnFiltrar.Enabled = controladorSelecionado is IControladorFiltravel;
+            btnFiltrar.Enabled = controladorSelecionado is IControladorFiltrar;
             btnAdicionarItens.Enabled = controladorSelecionado is IControladorAdicionarItens;
             btnVisualizarAlugueis.Enabled = controladorSelecionado is IControladorVisualizarAlugueis;
             btnConcluirAluguel.Enabled = controladorSelecionado is IControladorConcluirAluguel;

@@ -7,6 +7,7 @@ namespace FestasInfantis.WinApp.ModuloTema
     {
         public string Nome { get; set; }
         public List<Item> Itens { get; set; }
+        public decimal ValorTotal { get => CalcularValorTotal(); }
 
         public Tema()
         {
@@ -19,14 +20,9 @@ namespace FestasInfantis.WinApp.ModuloTema
             Itens = new List<Item>();
         }
 
-        public double CalcularValorTotal()
+        public decimal CalcularValorTotal()
         {
-            double total = 0;
-            foreach (var item in Itens)
-            {
-                total += item.Valor;
-            }
-            return total;
+            return Itens == null || Itens.Count == 0 ? 0 : Itens.Sum(i => i.Valor);
         }
 
         public override List<string> Validar()

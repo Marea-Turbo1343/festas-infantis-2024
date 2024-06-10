@@ -1,5 +1,7 @@
 ﻿using FestasInfantis.WinApp.ModuloCliente;
+using FestasInfantis.WinApp.ModuloItem;
 using FestasInfantis.WinApp.ModuloTema;
+using System.Reflection.Metadata;
 
 namespace FestasInfantis.WinApp.ModuloAluguel
 {
@@ -10,12 +12,14 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         private IRepositorioAluguel repositorioAluguel;
         private IRepositorioCliente repositorioCliente;
         private IRepositorioTema repositorioTema;
+        private IRepositorioItem repositorioItem;
 
-        public ControladorAluguel(IRepositorioAluguel repositorioAluguel, IRepositorioCliente repositorioCliente, IRepositorioTema repositorioTema)
+        public ControladorAluguel(IRepositorioAluguel repositorioAluguel, IRepositorioCliente repositorioCliente, IRepositorioTema repositorioTema, IRepositorioItem repositorioItem)
         {
             this.repositorioAluguel = repositorioAluguel;
             this.repositorioCliente = repositorioCliente;
             this.repositorioTema = repositorioTema;
+            this.repositorioItem = repositorioItem;
         }
 
         public override string TipoCadastro { get { return "Aluguéis"; } }
@@ -25,6 +29,33 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         public override string ToolTipEditar { get { return "Editar um aluguel existente"; } }
 
         public override string ToolTipExcluir { get { return "Excluir um aluguel existente"; } }
+
+        public string ToolTipFiltrar => "Filtrar aluguéis";
+
+        public string ToolTipVisualizarAlugueis => "Visualizar aluguéis";
+
+        public String ToolTipConcluirAluguel => "Concluir aluguel";
+
+        public string ToolTipConfigurarDesconto => "Configurar desconto";
+
+        public void AtualizarListagem()
+        {
+            List<Aluguel> alugueis = repositorioAluguel.SelecionarTodos();
+
+            tabelaAluguel?.AtualizarRegistros(alugueis);
+
+            TelaPrincipalForm.Instancia?.AtualizarRodape(ObterTextoRodape(alugueis));
+        }
+
+        private static string ObterTextoRodape(List<Aluguel> alugueis)
+        {
+            if (alugueis.Count == 0)
+                return "Nenhum aluguel cadastrado até o momento!";
+            else if (alugueis.Count == 1)
+                return "Exibindo 1 aluguel";
+
+            return $"Exibindo {alugueis.Count} aluguéis";
+        }
 
         public override void Adicionar()
         {
@@ -139,6 +170,8 @@ namespace FestasInfantis.WinApp.ModuloAluguel
                 tabelaAluguel = new TabelaAluguelControl();
 
             CarregarAlugueis();
+
+            AtualizarListagem();
 
             return tabelaAluguel;
         }

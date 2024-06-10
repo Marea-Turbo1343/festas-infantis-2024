@@ -31,10 +31,23 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             return configuracaoDescontos;
         }
 
+        public int ObterProximoId()
+        {
+            if (contexto.Clientes.Any())
+                return contexto.Clientes.Max(c => c.Id) + 1;
+            else
+                return 1;
+        }
+
         public void SalvarDesconto(ConfiguracaoDesconto configuracaoDesconto)
         {
             contexto.ConfiguracaoDesconto = configuracaoDesconto;
             contexto.Gravar();
+        }
+
+        public List<Aluguel> SelecionarPorCliente(int idCliente)
+        {
+            throw new NotImplementedException();
         }
     }
 }

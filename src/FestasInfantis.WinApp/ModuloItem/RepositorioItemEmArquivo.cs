@@ -17,9 +17,12 @@ namespace FestasInfantis.WinApp.ModuloItem
             return contexto.Itens;
         }
 
-        public List<Tema> BuscarTemasPorItem(Item item)
+        public int ObterProximoId()
         {
-            return contexto.Temas.Where(t => t.Itens.Contains(item)).ToList();
+            if (contexto.Itens.Any())
+                return contexto.Itens.Max(c => c.Id) + 1;
+            else
+                return 1;
         }
 
         public override bool Excluir(int id)

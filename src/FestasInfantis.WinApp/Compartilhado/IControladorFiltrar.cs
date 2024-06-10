@@ -1,6 +1,6 @@
 ﻿namespace FestasInfantis.WinApp.Compartilhado
 {
-    public interface IControladorFiltravel
+    public interface IControladorFiltrar
     {
         string ToolTipFiltrar { get; }
         void Filtrar();

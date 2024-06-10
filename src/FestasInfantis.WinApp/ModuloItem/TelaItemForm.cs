@@ -1,10 +1,13 @@
-﻿using System.Globalization;
+﻿using FestasInfantis.WinApp.ModuloCliente;
+using System.Globalization;
 
 namespace FestasInfantis.WinApp.ModuloItem
 {
     public partial class TelaItemForm : Form
     {
         private Item item;
+        private IRepositorioItem repositorioItem;
+
         public Item Item
         {
             set
@@ -19,10 +22,15 @@ namespace FestasInfantis.WinApp.ModuloItem
             }
         }
 
-        public TelaItemForm()
+        public TelaItemForm(IRepositorioItem repositorioItem)
         {
             InitializeComponent();
             txtValor.KeyPress += TxtValor_KeyPress;
+
+            this.repositorioItem = repositorioItem;
+
+            int proximoId = repositorioItem.ObterProximoId();
+            txtId.Text = proximoId.ToString();
         }
 
         private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
@@ -30,8 +38,8 @@ namespace FestasInfantis.WinApp.ModuloItem
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
-                System.Media.SystemSounds.Beep.Play(); // Emitir um som
-                MessageBox.Show("Por gentileza, insira apenas números neste campo!"); // Exibir uma caixa de mensagem
+                System.Media.SystemSounds.Beep.Play();
+                MessageBox.Show("Por gentileza, insira apenas números neste campo!");
             }
 
             if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
@@ -43,8 +51,9 @@ namespace FestasInfantis.WinApp.ModuloItem
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             string descricao = txtDescricao.Text;
-            double valor;
-            if (!double.TryParse(txtValor.Text, NumberStyles.Any, new CultureInfo("pt-BR"), out valor))
+            decimal valor;
+
+            if (!decimal.TryParse(txtValor.Text, NumberStyles.Any, new CultureInfo("pt-BR"), out valor))
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape("Por gentileza, informe um valor numérico!");
                 DialogResult = DialogResult.None;
@@ -59,6 +68,11 @@ namespace FestasInfantis.WinApp.ModuloItem
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
                 DialogResult = DialogResult.None;
+            }
+            else
+            {
+                int proximoId = repositorioItem.ObterProximoId();
+                txtId.Text = proximoId.ToString();
             }
         }
     }

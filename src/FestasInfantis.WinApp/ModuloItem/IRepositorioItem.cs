@@ -7,5 +7,6 @@
         bool Excluir(int id);
         Item SelecionarPorId(int idSelecionado);
         List<Item> SelecionarTodos();
+        int ObterProximoId();
     }
 }

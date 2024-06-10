@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace FestasInfantis.WinApp
 {
     internal static class Program
@@ -8,6 +10,8 @@ namespace FestasInfantis.WinApp
         [STAThread]
         static void Main()
         {
+            CultureInfo.CurrentCulture = new CultureInfo("pt-BR");
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

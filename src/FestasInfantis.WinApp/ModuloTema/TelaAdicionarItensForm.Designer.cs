@@ -1,6 +1,6 @@
 ﻿namespace FestasInfantis.WinApp.ModuloTema
 {
-    partial class TelaTemaForm
+    partial class TelaAdicionarItensForm
     {
         /// <summary>
         /// Required designer variable.
@@ -59,12 +59,12 @@
             gpTema.Controls.Add(lblId);
             gpTema.Controls.Add(txtId);
             gpTema.Controls.Add(lblNome);
-            gpTema.Location = new Point(11, 12);
+            gpTema.Location = new Point(11, 10);
             gpTema.Margin = new Padding(3, 2, 3, 2);
             gpTema.Name = "gpTema";
             gpTema.Padding = new Padding(3, 2, 3, 2);
             gpTema.Size = new Size(397, 267);
-            gpTema.TabIndex = 8;
+            gpTema.TabIndex = 11;
             gpTema.TabStop = false;
             gpTema.Text = "Tema";
             // 
@@ -103,9 +103,11 @@
             // 
             // txtNome
             // 
+            txtNome.Enabled = false;
             txtNome.Location = new Point(51, 47);
             txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
+            txtNome.ReadOnly = true;
             txtNome.Size = new Size(243, 23);
             txtNome.TabIndex = 1;
             // 
@@ -132,7 +134,7 @@
             lblValor.AutoSize = true;
             lblValor.BackColor = SystemColors.ButtonFace;
             lblValor.Font = new Font("Segoe UI", 10F);
-            lblValor.Location = new Point(6, 103);
+            lblValor.Location = new Point(6, 102);
             lblValor.Name = "lblValor";
             lblValor.Size = new Size(43, 19);
             lblValor.TabIndex = 29;
@@ -143,7 +145,7 @@
             lblItem.AutoSize = true;
             lblItem.BackColor = SystemColors.ButtonFace;
             lblItem.Font = new Font("Segoe UI", 10F);
-            lblItem.Location = new Point(9, 77);
+            lblItem.Location = new Point(9, 76);
             lblItem.Name = "lblItem";
             lblItem.Size = new Size(40, 19);
             lblItem.TabIndex = 28;
@@ -153,7 +155,7 @@
             // 
             lblId.AutoSize = true;
             lblId.Font = new Font("Segoe UI", 10F);
-            lblId.Location = new Point(25, 21);
+            lblId.Location = new Point(25, 20);
             lblId.Name = "lblId";
             lblId.Size = new Size(24, 19);
             lblId.TabIndex = 26;
@@ -175,7 +177,7 @@
             lblNome.AutoSize = true;
             lblNome.BackColor = SystemColors.ButtonFace;
             lblNome.Font = new Font("Segoe UI", 10F);
-            lblNome.Location = new Point(0, 48);
+            lblNome.Location = new Point(0, 47);
             lblNome.Name = "lblNome";
             lblNome.Size = new Size(49, 19);
             lblNome.TabIndex = 27;
@@ -184,25 +186,25 @@
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(333, 284);
+            btnCancelar.Location = new Point(333, 282);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 35);
-            btnCancelar.TabIndex = 7;
+            btnCancelar.TabIndex = 10;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnSalvar
             // 
             btnSalvar.DialogResult = DialogResult.OK;
-            btnSalvar.Location = new Point(252, 284);
+            btnSalvar.Location = new Point(252, 282);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 35);
-            btnSalvar.TabIndex = 6;
+            btnSalvar.TabIndex = 9;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
-            // TelaTemaForm
+            // TelaAdicionarItensForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -212,10 +214,10 @@
             Controls.Add(btnSalvar);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "TelaTemaForm";
+            Name = "TelaAdicionarItensForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Cadastro de Tema";
+            Text = "Adicionar Itens";
             gpTema.ResumeLayout(false);
             gpTema.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numValor).EndInit();

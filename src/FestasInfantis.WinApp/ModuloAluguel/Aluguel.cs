@@ -16,9 +16,11 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         public DateTime DataFesta { get; set; }
         public DateTime HoraInicio { get; set; }
         public DateTime HoraTermino { get; set; }
+        public DateTime DataPagamento { get; set; }
         public decimal DescontoTotal { get; set; }
         public decimal ValorTotal { get; set; }
         public List<Item> ItensAlugueis { get; set; }
+        public bool PagamentoConcluido { get => DataPagamento != null; }
 
         public Aluguel()
         {

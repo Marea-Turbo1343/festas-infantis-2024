@@ -1,43 +1,30 @@
-﻿using FestasInfantis.WinApp.ModuloItem;
+﻿using FestasInfantis.WinApp.ModuloAluguel;
+using FestasInfantis.WinApp.ModuloItem;
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
-    public partial class TelaTemaForm : Form
+    public partial class TelaAdicionarItensForm : Form
     {
         private Tema tema;
         private List<Item> itens;
         private IRepositorioTema repositorioTema;
+        private IRepositorioAluguel repositorioAluguel;
 
-        public Tema Tema
-        {
-            set
-            {
-                txtId.Text = value.Id.ToString();
-                txtNome.Text = value.Nome;
-                numValor.Value = value.ValorTotal;
-                value.Itens!.ForEach(i => listBoxItensTema.Items.Add(i));
-                itens = value.Itens;
-            }
-            get
-            {
-                return tema;
-            }
-        }
-
-        public TelaTemaForm(List<Item> itens, IRepositorioTema repositorioTema)
+        public TelaAdicionarItensForm(Tema tema, List<Item> itens, IRepositorioTema repositorioTema, IRepositorioAluguel repositorioAluguel)
         {
             InitializeComponent();
 
+            this.tema = tema;
             this.itens = itens;
             this.repositorioTema = repositorioTema;
+            this.repositorioAluguel = repositorioAluguel;
+
+            txtId.Text = tema.Id.ToString();
+            txtNome.Text = tema.Nome;
+            txtId.ReadOnly = true;
+            txtNome.ReadOnly = true;
 
             CarregarItens();
-
-            int proximoId = repositorioTema.ObterProximoId();
-            txtId.Text = proximoId.ToString();
-
-            tema = new Tema("");
-            tema.Itens = new List<Item>();
         }
 
         private void CarregarItens()
@@ -79,6 +66,12 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             if (itemSelecionado != null)
             {
+                if (repositorioAluguel.SelecionarTodos().Any(a => a.Tema.Id == tema.Id && a.PagamentoConcluido == false))
+                {
+                    MessageBox.Show("Não é possível remover um item de um tema que está vinculado a um aluguel não finalizado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 listBoxItensTema.Items.Remove(itemSelecionado);
                 numValor.Value -= itemSelecionado.Valor;
             }
@@ -86,9 +79,6 @@ namespace FestasInfantis.WinApp.ModuloTema
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            string nome = txtNome.Text;
-
-            tema.Nome = nome;
             tema.Itens = new List<Item>(listBoxItensTema.Items.Cast<Item>());
 
             List<string> erros = tema.Validar();
