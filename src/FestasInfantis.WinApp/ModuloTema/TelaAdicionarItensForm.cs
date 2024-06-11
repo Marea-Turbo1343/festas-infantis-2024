@@ -9,6 +9,7 @@ namespace FestasInfantis.WinApp.ModuloTema
         private List<Item> itens;
         private IRepositorioTema repositorioTema;
         private IRepositorioAluguel repositorioAluguel;
+        private List<Item> itensRemovidos = new List<Item>();
 
         public TelaAdicionarItensForm(Tema tema, List<Item> itens, IRepositorioTema repositorioTema, IRepositorioAluguel repositorioAluguel)
         {
@@ -23,6 +24,13 @@ namespace FestasInfantis.WinApp.ModuloTema
             txtNome.Text = tema.Nome;
             txtId.ReadOnly = true;
             txtNome.ReadOnly = true;
+
+            foreach (var item in tema.Itens)
+            {
+                listBoxItensTema.Items.Add(item);
+            }
+
+            numValor.Value = tema.ValorTotal;
 
             CarregarItens();
         }
@@ -91,8 +99,11 @@ namespace FestasInfantis.WinApp.ModuloTema
 
                 listBoxItensTema.Items.Remove(itemSelecionado);
                 numValor.Value -= itemSelecionado.Valor;
-                itens.Add(itemSelecionado);
-                CarregarItens();
+                itensRemovidos.Add(itemSelecionado);
+
+                itens = itens.Concat(itensRemovidos).ToList();
+                cmbItens.DataSource = null;
+                cmbItens.DataSource = itens;
             }
         }
 
@@ -110,6 +121,8 @@ namespace FestasInfantis.WinApp.ModuloTema
             else
             {
                 repositorioTema.Editar(tema.Id, tema);
+                itens.AddRange(itensRemovidos);
+                itensRemovidos.Clear();
             }
         }
     }

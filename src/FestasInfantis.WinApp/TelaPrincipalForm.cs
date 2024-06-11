@@ -3,6 +3,7 @@ using FestasInfantis.WinApp.ModuloCliente;
 using FestasInfantis.WinApp.ModuloItem;
 using FestasInfantis.WinApp.ModuloTema;
 using FestasInfantis.WinApp.ModuloAluguel;
+using System.Diagnostics;
 
 namespace FestasInfantis.WinApp
 {

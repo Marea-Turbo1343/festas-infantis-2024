@@ -121,7 +121,8 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             List<Item> itens = repositorioItens.SelecionarTodos();
 
-            TelaTemaForm telaTema = new TelaTemaForm(repositorioItens.SelecionarTodos(), repositorioTema, repositorioAluguel, true);
+            TelaTemaForm telaTema = new TelaTemaForm(repositorioItens.SelecionarTodos(), repositorioTema, repositorioAluguel, temaSelecionado);
+
             telaTema.Tema = temaSelecionado;
 
             DialogResult resultado = telaTema.ShowDialog();

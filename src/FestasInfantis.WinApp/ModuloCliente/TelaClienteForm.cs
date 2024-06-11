@@ -128,20 +128,34 @@ namespace FestasInfantis.WinApp.ModuloCliente
                 return;
             }
 
-            cliente = new Cliente(nome, cpf, telefone);
+            if (cliente == null)
+            {
+                cliente = new Cliente();
+            }
+
+            cliente.Nome = nome;
+            cliente.Cpf = cpf;
+            cliente.Telefone = telefone;
 
             List<string> erros = cliente.Validar();
 
             if (erros.Count > 0)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
-
                 DialogResult = DialogResult.None;
             }
             else
             {
-                int proximoId = repositorioCliente.ObterProximoId();
-                txtId.Text = proximoId.ToString();
+                if (modoEdicao)
+                {
+                    repositorioCliente.Editar(cliente.Id, cliente);
+                }
+                else
+                {
+                    int proximoId = repositorioCliente.ObterProximoId();
+                    cliente.Id = proximoId;
+                    repositorioCliente.Cadastrar(cliente);
+                }
             }
         }
     }

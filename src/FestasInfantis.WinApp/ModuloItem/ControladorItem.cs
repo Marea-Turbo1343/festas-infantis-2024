@@ -1,6 +1,4 @@
-﻿using FestasInfantis.WinApp.ModuloTema;
-
-namespace FestasInfantis.WinApp.ModuloItem
+﻿namespace FestasInfantis.WinApp.ModuloItem
 {
     public class ControladorItem : ControladorBase
     {
@@ -59,11 +57,9 @@ namespace FestasInfantis.WinApp.ModuloItem
 
         public override void Editar()
         {
-            TelaItemForm telaItem = new TelaItemForm(repositorioItem);
-
             int idSelecionado = tabelaItem.ObterRegistroSelecionado();
-            Item itemSelecionado =
-                repositorioItem.SelecionarPorId(idSelecionado);
+
+            Item itemSelecionado = repositorioItem.SelecionarPorId(idSelecionado);
 
             if (itemSelecionado == null)
             {
@@ -71,6 +67,7 @@ namespace FestasInfantis.WinApp.ModuloItem
                 return;
             }
 
+            TelaItemForm telaItem = new TelaItemForm(repositorioItem, true);
             telaItem.Item = itemSelecionado;
 
             DialogResult resultado = telaItem.ShowDialog();
@@ -86,6 +83,7 @@ namespace FestasInfantis.WinApp.ModuloItem
 
             TelaPrincipalForm.Instancia.Temporizador($"O registro \"{itemEditado.Descricao}\" foi editado com sucesso!");
         }
+
 
         public override void Excluir()
         {

@@ -125,7 +125,6 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             TelaPrincipalForm.Instancia.Temporizador($"O registro \"{novoAluguel.Cliente.Nome}\" foi criado com sucesso!");
         }
 
-
         public override void Editar()
         {
             TelaAluguelForm telaAluguel = new TelaAluguelForm(repositorioAluguel);

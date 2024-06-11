@@ -7,6 +7,7 @@ namespace FestasInfantis.WinApp.ModuloItem
     {
         private Item item;
         private IRepositorioItem repositorioItem;
+        private bool modoEdicao;
 
         public Item Item
         {
@@ -22,15 +23,23 @@ namespace FestasInfantis.WinApp.ModuloItem
             }
         }
 
-        public TelaItemForm(IRepositorioItem repositorioItem)
+        public TelaItemForm(IRepositorioItem repositorioItem, bool modoEdicao = false)
         {
             InitializeComponent();
             txtValor.KeyPress += TxtValor_KeyPress;
 
             this.repositorioItem = repositorioItem;
+            this.modoEdicao = modoEdicao;
 
-            int proximoId = repositorioItem.ObterProximoId();
-            txtId.Text = proximoId.ToString();
+            if (modoEdicao)
+            {
+                this.Text = "Editar Item";
+            }
+            else
+            {
+                int proximoId = repositorioItem.ObterProximoId();
+                txtId.Text = proximoId.ToString();
+            }
         }
 
         private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
@@ -60,7 +69,13 @@ namespace FestasInfantis.WinApp.ModuloItem
                 return;
             }
 
-            item = new Item(descricao, valor);
+            if (item == null)
+            {
+                item = new Item();
+            }
+
+            item.Descricao = descricao;
+            item.Valor = valor;
 
             List<string> erros = item.Validar();
 
@@ -71,8 +86,16 @@ namespace FestasInfantis.WinApp.ModuloItem
             }
             else
             {
-                int proximoId = repositorioItem.ObterProximoId();
-                txtId.Text = proximoId.ToString();
+                if (modoEdicao)
+                {
+                    repositorioItem.Editar(item.Id, item);
+                }
+                else
+                {
+                    int proximoId = repositorioItem.ObterProximoId();
+                    item.Id = proximoId;
+                    repositorioItem.Cadastrar(item);
+                }
             }
         }
     }

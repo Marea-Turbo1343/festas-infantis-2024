@@ -1,5 +1,6 @@
 ﻿using FestasInfantis.WinApp.ModuloAluguel;
 using FestasInfantis.WinApp.ModuloItem;
+using System.Text.RegularExpressions;
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
@@ -9,6 +10,7 @@ namespace FestasInfantis.WinApp.ModuloTema
         private List<Item> itens;
         private IRepositorioTema repositorioTema;
         private IRepositorioAluguel repositorioAluguel;
+        private List<Item> itensRemovidos = new List<Item>();
         private bool modoEdicao;
 
         public Tema Tema
@@ -27,29 +29,41 @@ namespace FestasInfantis.WinApp.ModuloTema
             }
         }
 
-        public TelaTemaForm(List<Item> itens, IRepositorioTema repositorioTema, IRepositorioAluguel repositorioAluguel, bool modoEdicao = false)
+        public TelaTemaForm(List<Item> itens, IRepositorioTema repositorioTema, IRepositorioAluguel repositorioAluguel, Tema temaParaEditar = null)
         {
             InitializeComponent();
 
             this.itens = itens;
             this.repositorioTema = repositorioTema;
             this.repositorioAluguel = repositorioAluguel;
-            this.modoEdicao = modoEdicao;
 
-            if (modoEdicao)
+            if (temaParaEditar != null)
             {
                 this.Text = "Editar Tema";
+                this.tema = temaParaEditar;
+                this.modoEdicao = true;
             }
             else
             {
                 int proximoId = repositorioTema.ObterProximoId();
                 txtId.Text = proximoId.ToString();
+                this.tema = new Tema();
+                this.tema.Nome = "";
+                this.modoEdicao = false;
             }
 
             CarregarItens();
 
-            tema = new Tema("");
-            tema.Itens = new List<Item>();
+            txtNome.Leave += TxtNome_Leave;
+        }
+
+        private void TxtNome_Leave(object sender, EventArgs e)
+        {
+            if (!ValidarNome(txtNome.Text))
+            {
+                MessageBox.Show("O nome deve conter apenas letras e ter 3 caracteres ou mais.");
+                txtNome.Focus();
+            }
         }
 
         private void CarregarItens()
@@ -105,14 +119,38 @@ namespace FestasInfantis.WinApp.ModuloTema
 
                 listBoxItensTema.Items.Remove(itemSelecionado);
                 numValor.Value -= itemSelecionado.Valor;
-                itens.Add(itemSelecionado);
-                CarregarItens();
+                itensRemovidos.Add(itemSelecionado);
+
+                itens = itens.Concat(itensRemovidos).ToList();
+                cmbItens.DataSource = null;
+                cmbItens.DataSource = itens;
             }
+        }
+
+        private bool ValidarNome(string nome)
+        {
+            if (nome.Length < 3)
+            {
+                return false;
+            }
+
+            if (Regex.IsMatch(nome, @"\d"))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
+
+            if (!ValidarNome(nome))
+            {
+                DialogResult = DialogResult.None;
+                return;
+            }
 
             tema.Nome = nome;
             tema.Itens = new List<Item>(listBoxItensTema.Items.Cast<Item>());
@@ -121,13 +159,27 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             if (erros.Count > 0)
             {
-                MessageBox.Show(erros[0]);
+                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
                 DialogResult = DialogResult.None;
             }
             else
             {
-                repositorioTema.Editar(tema.Id, tema);
+                if (modoEdicao)
+                {
+                    repositorioTema.Editar(tema.Id, tema);
+                }
+                else
+                {
+                    int proximoId = repositorioTema.ObterProximoId();
+                    tema.Id = proximoId;
+                    repositorioTema.Cadastrar(tema);
+                }
+
+                itens.AddRange(itensRemovidos);
+                itensRemovidos.Clear();
             }
         }
+
     }
 }
