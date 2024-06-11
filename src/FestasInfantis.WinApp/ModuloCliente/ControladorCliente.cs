@@ -65,8 +65,6 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
         public override void Editar()
         {
-            TelaClienteForm telaCliente = new TelaClienteForm(repositorioCliente);
-
             int idSelecionado = tabelaCliente.ObterRegistroSelecionado();
 
             Cliente clienteSelecionado = repositorioCliente.SelecionarPorId(idSelecionado);
@@ -77,6 +75,7 @@ namespace FestasInfantis.WinApp.ModuloCliente
                 return;
             }
 
+            TelaClienteForm telaCliente = new TelaClienteForm(repositorioCliente, true);
             telaCliente.Cliente = clienteSelecionado;
 
             DialogResult resultado = telaCliente.ShowDialog();

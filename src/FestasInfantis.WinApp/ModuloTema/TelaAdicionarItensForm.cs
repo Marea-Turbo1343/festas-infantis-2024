@@ -27,9 +27,26 @@ namespace FestasInfantis.WinApp.ModuloTema
             CarregarItens();
         }
 
+        public Tema TemaAtualizado
+        {
+            get
+            {
+                tema.Itens = new List<Item>(listBoxItensTema.Items.Cast<Item>());
+                return tema;
+            }
+        }
+
         private void CarregarItens()
         {
-            cmbItens.DataSource = itens.FindAll(i => true);
+            var todosOsTemas = repositorioTema.SelecionarTodos();
+
+            var itensVinculados = todosOsTemas.SelectMany(t => t.Itens).ToList();
+
+            var itensNaoVinculados = itens.Except(itensVinculados).ToList();
+
+            itensNaoVinculados = itensNaoVinculados.Except(tema.Itens).ToList();
+
+            cmbItens.DataSource = itensNaoVinculados;
         }
 
         private void btnAdicionarItem_Click(object sender, EventArgs e)
@@ -74,6 +91,8 @@ namespace FestasInfantis.WinApp.ModuloTema
 
                 listBoxItensTema.Items.Remove(itemSelecionado);
                 numValor.Value -= itemSelecionado.Valor;
+                itens.Add(itemSelecionado);
+                CarregarItens();
             }
         }
 

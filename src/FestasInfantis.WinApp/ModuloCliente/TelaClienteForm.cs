@@ -6,6 +6,7 @@ namespace FestasInfantis.WinApp.ModuloCliente
     {
         private Cliente cliente;
         private IRepositorioCliente repositorioCliente;
+        private bool modoEdicao;
 
         public Cliente Cliente
         {
@@ -22,27 +23,69 @@ namespace FestasInfantis.WinApp.ModuloCliente
             }
         }
 
-        public TelaClienteForm(IRepositorioCliente repositorioCliente)
+        public TelaClienteForm(IRepositorioCliente repositorioCliente, bool modoEdicao = false)
         {
             InitializeComponent();
 
             this.repositorioCliente = repositorioCliente;
+            this.modoEdicao = modoEdicao;
 
-            int proximoId = repositorioCliente.ObterProximoId();
-            txtId.Text = proximoId.ToString();
+            if (modoEdicao)
+            {
+                this.Text = "Editar Cliente";
+            }
+            else
+            {
+                int proximoId = repositorioCliente.ObterProximoId();
+                txtId.Text = proximoId.ToString();
+            }
+
+            txtNome.Leave += TxtNome_Leave;
+            txtCpf.Leave += TxtCpf_Leave;
+            txtTelefone.Leave += TxtTelefone_Leave;
+        }
+
+        private void TxtNome_Leave(object sender, EventArgs e)
+        {
+            if (!ValidarNome(txtNome.Text))
+            {
+                MessageBox.Show("O nome deve conter apenas letras e ter 3 caracteres ou mais.");
+                txtNome.Focus();
+            }
+        }
+
+        private void TxtCpf_Leave(object sender, EventArgs e)
+        {
+            if (!ValidarCpf(txtCpf.Text))
+            {
+                MessageBox.Show("O CPF deve ter 11 dígitos e conter apenas números. \nExemplo: 12345678900 ou 123.456.789-00");
+                txtCpf.Focus();
+            }
+        }
+
+        private void TxtTelefone_Leave(object sender, EventArgs e)
+        {
+            if (!ValidarTelefone(txtTelefone.Text))
+            {
+                MessageBox.Show("O telefone deve ter 11 dígitos e conter apenas números. \nExemplo: 49 98875-1234 ou 49988751234");
+                txtTelefone.Focus();
+            }
+        }
+
+        private string RemoverCaracteresNaoNumericos(string texto)
+        {
+            return Regex.Replace(texto, @"\D", "");
         }
 
         private bool ValidarNome(string nome)
         {
             if (nome.Length < 3)
             {
-                MessageBox.Show("O nome deve ter 3 caracteres ou mais.");
                 return false;
             }
 
             if (Regex.IsMatch(nome, @"\d"))
             {
-                MessageBox.Show("O nome deve conter apenas letras.");
                 return false;
             }
 
@@ -55,7 +98,6 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
             if (cpf.Length != 11 || Regex.IsMatch(cpf, @"\D"))
             {
-                MessageBox.Show("O CPF deve ter 11 dígitos e conter apenas números. \nExemplo: 12345678900 ou 123.456.789-00");
                 return false;
             }
 
@@ -68,7 +110,6 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
             if (telefone.Length != 11 || Regex.IsMatch(telefone, @"\D"))
             {
-                MessageBox.Show("O telefone deve ter 11 dígitos e conter apenas números. \nExemplo: 49 98875-1234 ou 49988751234");
                 return false;
             }
 
@@ -78,8 +119,8 @@ namespace FestasInfantis.WinApp.ModuloCliente
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
-            string cpf = txtCpf.Text;
-            string telefone = txtTelefone.Text;
+            string cpf = RemoverCaracteresNaoNumericos(txtCpf.Text);
+            string telefone = RemoverCaracteresNaoNumericos(txtTelefone.Text);
 
             if (!ValidarNome(nome) || !ValidarCpf(cpf) || !ValidarTelefone(telefone))
             {

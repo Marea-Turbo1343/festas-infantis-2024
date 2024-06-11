@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             gpBoxFiltro = new GroupBox();
-            radiobtnTodos = new RadioButton();
-            radiobtnFuturo = new RadioButton();
-            radiobtnPassados = new RadioButton();
+            rdobtnTodos = new RadioButton();
+            rdobtnAberto = new RadioButton();
+            rdobtnConcluidos = new RadioButton();
             cboxVisualizarPorData = new CheckBox();
             groupBoxDatas = new GroupBox();
             txtDataInicial = new DateTimePicker();
@@ -47,9 +47,9 @@
             // 
             // gpBoxFiltro
             // 
-            gpBoxFiltro.Controls.Add(radiobtnTodos);
-            gpBoxFiltro.Controls.Add(radiobtnFuturo);
-            gpBoxFiltro.Controls.Add(radiobtnPassados);
+            gpBoxFiltro.Controls.Add(rdobtnTodos);
+            gpBoxFiltro.Controls.Add(rdobtnAberto);
+            gpBoxFiltro.Controls.Add(rdobtnConcluidos);
             gpBoxFiltro.Location = new Point(15, 17);
             gpBoxFiltro.Name = "gpBoxFiltro";
             gpBoxFiltro.Size = new Size(171, 105);
@@ -57,38 +57,38 @@
             gpBoxFiltro.TabStop = false;
             gpBoxFiltro.Text = "Filtro";
             // 
-            // radiobtnTodos
+            // rdobtnTodos
             // 
-            radiobtnTodos.AutoSize = true;
-            radiobtnTodos.Location = new Point(6, 22);
-            radiobtnTodos.Name = "radiobtnTodos";
-            radiobtnTodos.Size = new Size(120, 19);
-            radiobtnTodos.TabIndex = 4;
-            radiobtnTodos.TabStop = true;
-            radiobtnTodos.Text = "Todos os Aluguéis";
-            radiobtnTodos.UseVisualStyleBackColor = true;
+            rdobtnTodos.AutoSize = true;
+            rdobtnTodos.Location = new Point(6, 22);
+            rdobtnTodos.Name = "rdobtnTodos";
+            rdobtnTodos.Size = new Size(120, 19);
+            rdobtnTodos.TabIndex = 4;
+            rdobtnTodos.TabStop = true;
+            rdobtnTodos.Text = "Todos os Aluguéis";
+            rdobtnTodos.UseVisualStyleBackColor = true;
             // 
-            // radiobtnFuturo
+            // rdobtnAberto
             // 
-            radiobtnFuturo.AutoSize = true;
-            radiobtnFuturo.Location = new Point(6, 47);
-            radiobtnFuturo.Name = "radiobtnFuturo";
-            radiobtnFuturo.Size = new Size(130, 19);
-            radiobtnFuturo.TabIndex = 3;
-            radiobtnFuturo.TabStop = true;
-            radiobtnFuturo.Text = "Aluguéis em Aberto";
-            radiobtnFuturo.UseVisualStyleBackColor = true;
+            rdobtnAberto.AutoSize = true;
+            rdobtnAberto.Location = new Point(6, 47);
+            rdobtnAberto.Name = "rdobtnAberto";
+            rdobtnAberto.Size = new Size(130, 19);
+            rdobtnAberto.TabIndex = 3;
+            rdobtnAberto.TabStop = true;
+            rdobtnAberto.Text = "Aluguéis em Aberto";
+            rdobtnAberto.UseVisualStyleBackColor = true;
             // 
-            // radiobtnPassados
+            // rdobtnConcluidos
             // 
-            radiobtnPassados.AutoSize = true;
-            radiobtnPassados.Location = new Point(6, 72);
-            radiobtnPassados.Name = "radiobtnPassados";
-            radiobtnPassados.Size = new Size(134, 19);
-            radiobtnPassados.TabIndex = 2;
-            radiobtnPassados.TabStop = true;
-            radiobtnPassados.Text = "Aluguéis Concluídos";
-            radiobtnPassados.UseVisualStyleBackColor = true;
+            rdobtnConcluidos.AutoSize = true;
+            rdobtnConcluidos.Location = new Point(6, 72);
+            rdobtnConcluidos.Name = "rdobtnConcluidos";
+            rdobtnConcluidos.Size = new Size(134, 19);
+            rdobtnConcluidos.TabIndex = 2;
+            rdobtnConcluidos.TabStop = true;
+            rdobtnConcluidos.Text = "Aluguéis Concluídos";
+            rdobtnConcluidos.UseVisualStyleBackColor = true;
             // 
             // cboxVisualizarPorData
             // 
@@ -205,9 +205,9 @@
         #endregion
 
         private GroupBox gpBoxFiltro;
-        private RadioButton radiobtnTodos;
-        private RadioButton radiobtnFuturo;
-        private RadioButton radiobtnPassados;
+        private RadioButton rdobtnTodos;
+        private RadioButton rdobtnAberto;
+        private RadioButton rdobtnConcluidos;
         private CheckBox cboxVisualizarPorData;
         private GroupBox groupBoxDatas;
         private DateTimePicker txtDataInicial;

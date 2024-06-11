@@ -20,10 +20,20 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             return contexto.Alugueis;
         }
 
+        public List<Aluguel> SelecionarAlugueisAberto()
+        {
+            return ObterRegistros().FindAll(x => x.DataFesta > DateTime.Now);
+        }
+
+        public List<Aluguel> SelecionarAlugueisConcluidos()
+        {
+            return ObterRegistros().FindAll(x => x.PagamentoConcluido == true);
+        }
+
         public List<Aluguel> SelecionarAlugueisPorPeriodo(DateTime dataInicio, DateTime dataTermino)
         {
             return ObterRegistros()
-                .FindAll(a => a.DataFesta >= dataInicio && a.DataFesta <= dataTermino);
+                .FindAll(a => a.DataFesta.Date >= dataInicio.Date && a.DataFesta.Date <= dataTermino.Date);
         }
 
         public ConfiguracaoDesconto SelecionarConfiguracaoDesconto()

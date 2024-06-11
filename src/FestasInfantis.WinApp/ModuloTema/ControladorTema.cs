@@ -68,11 +68,11 @@ namespace FestasInfantis.WinApp.ModuloTema
 
         public override void Adicionar()
         {
-            TelaTemaForm telaTema = new(repositorioItens.SelecionarTodos(), repositorioTema);
+            TelaTemaForm telaTema = new(repositorioItens.SelecionarTodos(), repositorioTema, repositorioAluguel);
 
             DialogResult resultado = telaTema.ShowDialog();
 
-            if (resultado != DialogResult.OK)
+            if (resultado != DialogResult.OK)   
                 return;
 
             Tema novoTema = telaTema.Tema;
@@ -96,7 +96,7 @@ namespace FestasInfantis.WinApp.ModuloTema
                 }
 
                 repositorioTema.Cadastrar(novoTema);
-                CarregarTemas();
+
                 TelaPrincipalForm.Instancia.Temporizador($"O registro \"{novoTema.Nome}\" foi criado com sucesso!");
             }
         }
@@ -104,6 +104,7 @@ namespace FestasInfantis.WinApp.ModuloTema
         public override void Editar()
         {
             int idSelecionado = tabelaTema.ObterRegistroSelecionado();
+
             Tema temaSelecionado = repositorioTema.SelecionarPorId(idSelecionado);
 
             if (temaSelecionado == null)
@@ -120,7 +121,7 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             List<Item> itens = repositorioItens.SelecionarTodos();
 
-            TelaTemaForm telaTema = new TelaTemaForm(itens, repositorioTema);
+            TelaTemaForm telaTema = new TelaTemaForm(repositorioItens.SelecionarTodos(), repositorioTema, repositorioAluguel, true);
             telaTema.Tema = temaSelecionado;
 
             DialogResult resultado = telaTema.ShowDialog();
@@ -163,11 +164,14 @@ namespace FestasInfantis.WinApp.ModuloTema
             if (resultado != DialogResult.OK)
                 return;
 
+            temaSelecionado = telaAdicionarItens.TemaAtualizado;
+
+            repositorioTema.Editar(temaSelecionado.Id, temaSelecionado);
+
             CarregarTemas();
 
             TelaPrincipalForm.Instancia.Temporizador($"Itens foram adicionados ao registro \"{temaSelecionado.Nome}\" com sucesso!");
         }
-
 
         public override void Excluir()
         {
