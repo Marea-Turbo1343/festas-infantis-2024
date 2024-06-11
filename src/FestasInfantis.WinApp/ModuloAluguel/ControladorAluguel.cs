@@ -88,7 +88,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
                 return;
             }
 
-            if (novoAluguel.Entrada != Aluguel.PorcentagemEntrada._40porcento && novoAluguel.Entrada != Aluguel.PorcentagemEntrada._50porcento)
+            if (novoAluguel.Entrada != PorcentagemEntrada._40porcento && novoAluguel.Entrada != PorcentagemEntrada._50porcento)
             {
                 MessageBox.Show("A porcentagem de entrada deve ser 40% ou 50%.", "Porcentagem de entrada inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -112,7 +112,9 @@ namespace FestasInfantis.WinApp.ModuloAluguel
                 return;
             }
 
-            if (novoAluguel.ValorTotal != novoAluguel.ValorTotal - novoAluguel.DescontoDisponibilizado)
+            decimal valorDesconto = novoAluguel.ConfiguracaoDesconto.CalcularDesconto(novoAluguel.QuantidadeEmprestimos);
+
+            if (novoAluguel.ValorTotal != novoAluguel.ValorTotal - valorDesconto)
             {
                 MessageBox.Show("O valor total deve estar com o desconto já calculado.", "Valor total inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -246,9 +248,9 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             }
         }
 
-        public void VisualizarAlugueis()
+        public void VisualizarAlugueis(int idCliente)
         {
-            TelaVerAlugueisForm telaVerAlugueis = new TelaVerAlugueisForm(repositorioAluguel);
+            TelaVerAlugueisForm telaVerAlugueis = new TelaVerAlugueisForm(repositorioAluguel, idCliente);
 
             DialogResult resultado = telaVerAlugueis.ShowDialog();
 
@@ -302,7 +304,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
                 return;
             }
 
-            if (aluguelSelecionado.HoraTermino > DateTime.Now.TimeOfDay)
+            if (aluguelSelecionado.HoraTermino.TimeOfDay > DateTime.Now.TimeOfDay)
             {
                 MessageBox.Show(
                     "Não é possível concluir um aluguel que ainda não terminou.",
@@ -313,7 +315,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
                 return;
             }
 
-            if (aluguelSelecionado.HoraTermino < DateTime.Now.TimeOfDay)
+            if (aluguelSelecionado.HoraTermino.TimeOfDay < DateTime.Now.TimeOfDay)
             {
                 MessageBox.Show(
                     "Não é possível concluir um aluguel que já terminou.",
@@ -369,26 +371,6 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             List<Aluguel> alugueis = repositorioAluguel.SelecionarTodos();
 
             tabelaAluguel.AtualizarRegistros(alugueis);
-        }
-
-        public void ConfigurarDesconto()
-        {
-            ConfiguracaoDesconto configuracaoDesconto = repositorioAluguel.SelecionarConfiguracaoDesconto();
-
-            var telaDesconto = new TelaDescontoForm(configuracaoDesconto)
-            {
-                Text = "Configurar Desconto"
-            };
-
-            DialogResult result = telaDesconto.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                configuracaoDesconto.EditarDesconto(telaDesconto.configuracaoDesconto);
-
-                repositorioAluguel.SalvarDesconto(configuracaoDesconto);
-
-            }
         }
     }
 }

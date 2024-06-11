@@ -3,7 +3,6 @@ using FestasInfantis.WinApp.ModuloItem;
 using FestasInfantis.WinApp.ModuloTema;
 using System.ComponentModel;
 using System.Reflection;
-using static FestasInfantis.WinApp.ModuloAluguel.Aluguel;
 
 namespace FestasInfantis.WinApp.ModuloAluguel
 {
@@ -25,7 +24,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
                 txtDataFesta.Value = value.DataFesta;
                 txtHoraInicio.Value = value.HoraInicio;
                 txtHoraTermino.Value = value.HoraTermino;
-                txtDescDisp.Text = value.DescontoDisponibilizado.ToString();
+                txtDescDisp.Text = value.ConfiguracaoDesconto.ToString();
                 txtValorTotal.Text = value.ValorTotal.ToString();
                 txtValorPagar.Text = value.ValorTotal.ToString();
             }
@@ -42,8 +41,8 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             this.repositorioAluguel = repositorioAluguel;
             this.aluguel = new Aluguel();
 
-            cmbEntrada.Items.Add(GetDescription(Aluguel.PorcentagemEntrada._40porcento));
-            cmbEntrada.Items.Add(GetDescription(Aluguel.PorcentagemEntrada._50porcento));
+            cmbEntrada.Items.Add(GetDescription(PorcentagemEntrada._40porcento));
+            cmbEntrada.Items.Add(GetDescription(PorcentagemEntrada._50porcento));
 
             txtDataFesta.ValueChanged += txtDataFesta_ValueChanged;
 
@@ -98,7 +97,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         {
             if (aluguel.Cliente != null && aluguel.Tema != null)
             {
-                decimal valorTotal = aluguel.CalcularValorTotal();
+                decimal valorTotal = aluguel.CalcularValorTotal(aluguel.ConfiguracaoDesconto);
                 txtValorTotal.Text = valorTotal.ToString();
 
                 decimal valorEntrada;
@@ -127,7 +126,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         {
             if (cmbCliente.SelectedItem != null && aluguel.Cliente != null && cmbTema.SelectedItem != null)
             {
-                decimal valorTotal = aluguel.CalcularValorTotal();
+                decimal valorTotal = aluguel.CalcularValorTotal(aluguel.ConfiguracaoDesconto);
                 txtValorTotal.Text = valorTotal.ToString();
 
                 decimal valorEntrada = valorTotal * (decimal)aluguel.Entrada / 100;
@@ -152,7 +151,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
             if (cmbTema.SelectedItem != null)
             {
-                decimal valorTotal = aluguel.CalcularValorTotal();
+                decimal valorTotal = aluguel.CalcularValorTotal(aluguel.ConfiguracaoDesconto);
                 txtValorTotal.Text = valorTotal.ToString();
 
                 decimal valorEntrada = valorTotal * (decimal)aluguel.Entrada / 100;
@@ -182,7 +181,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             decimal valorTotal;
             if (cmbCliente.SelectedItem != null && aluguel.Cliente != null)
             {
-                valorTotal = aluguel.CalcularValorTotal();
+                valorTotal = aluguel.CalcularValorTotal(aluguel.ConfiguracaoDesconto);
             }
             else
             {
@@ -247,7 +246,10 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
             valorTotal -= descontoDisponibilizado;
 
-            aluguel = new Aluguel(cliente, tema, porcentagemEntrada, quantidadeEmprestimos, descontoDisponibilizado, enderecoFesta, dataFesta, horaInicio, horaTermino, valorTotal, tema.Itens);
+            decimal valorEntrada = Aluguel.CalcularValorEntrada(valorTotal, porcentagemEntrada);
+            decimal debito = Aluguel.CalcularDebito(porcentagemEntrada, valorTotal);
+
+            aluguel = new Aluguel(cliente, tema, porcentagemEntrada, quantidadeEmprestimos, configuracaoDesconto, enderecoFesta, dataFesta, horaInicio, horaTermino, valorTotal, valorEntrada, debito, tema.Itens);
         }
     }
 }

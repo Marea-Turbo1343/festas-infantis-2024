@@ -100,7 +100,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             return Math.Round(ObterValorTotal(desconto), 2);
         }
 
-        private static decimal CalcularValorEntrada(decimal valorTotal, PorcentagemEntrada porcentagemDeEntrada)
+        public static decimal CalcularValorEntrada(decimal valorTotal, PorcentagemEntrada porcentagemDeEntrada)
         {
             decimal porcentagem = (int)porcentagemDeEntrada;
 
@@ -109,7 +109,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             return Math.Round(valorEntrada, 2);
         }
 
-        private decimal CalcularDebito(PorcentagemEntrada porcentagemDeEntrada, decimal valorTotal)
+        public static decimal CalcularDebito(PorcentagemEntrada porcentagemDeEntrada, decimal valorTotal)
         {
             decimal porcentagem = (int)porcentagemDeEntrada / 100m;
             decimal valorEntrada = valorTotal * porcentagem;
@@ -151,7 +151,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             Tema = atualizado.Tema;
             Entrada = atualizado.Entrada;
             QuantidadeEmprestimos = atualizado.QuantidadeEmprestimos;
-            DescontoDisponibilizado = atualizado.DescontoDisponibilizado;
+            ConfiguracaoDesconto = atualizado.ConfiguracaoDesconto;
             EnderecoFesta = atualizado.EnderecoFesta;
             DataFesta = atualizado.DataFesta;
             HoraInicio = atualizado.HoraInicio;
