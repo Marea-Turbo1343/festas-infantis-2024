@@ -1,10 +1,11 @@
-﻿using FestasInfantis.WinApp.ModuloCliente;
+﻿using FestasInfantis.WinApp.Compartilhado;
+using FestasInfantis.WinApp.ModuloCliente;
 using FestasInfantis.WinApp.ModuloItem;
 using FestasInfantis.WinApp.ModuloTema;
 
 namespace FestasInfantis.WinApp.ModuloAluguel
 {
-    public class ControladorAluguel : ControladorBase
+    public class ControladorAluguel : ControladorBase, IControladorFiltrar, IControladorVisualizarAlugueis, IControladorConcluirAluguel, IControladorConfigurarDescontos
     {
         private IRepositorioAluguel repositorioAluguel;
         private IRepositorioCliente repositorioCliente;
@@ -34,7 +35,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
         public string ToolTipConcluirAluguel => "Concluir aluguel";
 
-        public string ToolTipConfigurarDesconto => "Configurar desconto";
+        public string ToolTipConfigurarDescontos => "Configurar desconto";
 
         public void AtualizarListagem()
         {
@@ -335,25 +336,6 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             TelaPrincipalForm.Instancia.Temporizador($"O registro \"{aluguelSelecionado.Cliente.Nome}\" foi concluído com sucesso!");
         }
 
-        public void ConfigurarDesconto()
-        {
-            ConfiguracaoDesconto configuracaoDesconto = repositorioAluguel.SelecionarConfiguracaoDesconto();
-
-            TelaDescontoForm telaDesconto = new TelaDescontoForm(configuracaoDesconto)
-            {
-                Text = "Configurar Desconto"
-            };
-
-            DialogResult resultado = telaDesconto.ShowDialog();
-
-            if (resultado != DialogResult.OK)
-                return;
-
-            configuracaoDesconto.EditarDesconto(telaDesconto.configuracaoDesconto);
-
-            repositorioAluguel.SalvarDesconto(configuracaoDesconto);
-        }
-
         public override UserControl ObterListagem()
         {
             if (tabelaAluguel == null)
@@ -371,6 +353,32 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             List<Aluguel> alugueis = repositorioAluguel.SelecionarTodos();
 
             tabelaAluguel.AtualizarRegistros(alugueis);
+        }
+
+        public void VisualizarAlugueis()
+        {
+            List<Aluguel> alugueis = repositorioAluguel.SelecionarTodos();
+
+            foreach (var aluguel in alugueis)
+            {
+                Console.WriteLine($"Aluguel ID: {aluguel.Id}, Cliente: {aluguel.Cliente.Nome}, Data da Festa: {aluguel.DataFesta}");
+            }
+        }
+
+        public void ConfigurarDescontos()
+        {
+            ConfiguracaoDesconto configuracaoDescontoAtual = repositorioAluguel.SelecionarConfiguracaoDesconto();
+
+            TelaDescontoForm telaDesconto = new TelaDescontoForm(configuracaoDescontoAtual);
+
+            DialogResult resultado = telaDesconto.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                ConfiguracaoDesconto novaConfiguracaoDesconto = telaDesconto.ConfiguracaoDesconto;
+
+                repositorioAluguel.SalvarDesconto(novaConfiguracaoDesconto);
+            }
         }
     }
 }

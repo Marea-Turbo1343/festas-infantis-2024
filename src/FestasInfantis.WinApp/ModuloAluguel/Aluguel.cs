@@ -44,13 +44,13 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             decimal valorEntrada,
             decimal debito,
             List<Item> itensAlugueis
-        )
+)
         {
             Cliente = cliente;
             Tema = tema;
             Entrada = entrada;
             QuantidadeEmprestimos = quantidadeEmprestimos;
-            ConfiguracaoDesconto = configuracaoDesconto;
+            ConfiguracaoDesconto = configuracaoDesconto ?? new ConfiguracaoDesconto(); // Se configuracaoDesconto for null, crie um novo objeto ConfiguracaoDesconto
             EnderecoFesta = enderecoFesta;
             DataFesta = dataFesta;
             HoraInicio = horaInicio;
@@ -85,10 +85,13 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
         public decimal CalcularValorTotal(ConfiguracaoDesconto valorDesconto)
         {
+            if (valorDesconto == null)
+            {
+                valorDesconto = new ConfiguracaoDesconto();
+            }
+
             decimal valorDesc = valorDesconto.PorcentagemDesconto;
-
             decimal valorDescMaximo = valorDesconto.PorcentagemMaxima;
-
             decimal desconto = Cliente!.ContadorDeAlugueis * valorDesc;
 
             if (desconto >= valorDescMaximo)
@@ -122,6 +125,16 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             else
             {
                 throw new Exception("A porcentagem de entrada deve ser 40% ou 50%.");
+            }
+        }
+
+        public void CalcularValores()
+        {
+            if (Cliente != null && Tema != null && ConfiguracaoDesconto != null)
+            {
+                ValorTotal = CalcularValorTotal(ConfiguracaoDesconto);
+                ValorEntrada = CalcularValorEntrada(ValorTotal, Entrada);
+                Debito = CalcularDebito(Entrada, ValorTotal);
             }
         }
 

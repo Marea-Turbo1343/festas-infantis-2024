@@ -10,6 +10,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
     {
         private Aluguel aluguel;
         private IRepositorioAluguel repositorioAluguel;
+        private bool modoEdicao;
 
         public Aluguel Aluguel
         {
@@ -46,8 +47,15 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
             txtDataFesta.ValueChanged += txtDataFesta_ValueChanged;
 
-            int proximoId = repositorioAluguel.ObterProximoId();
-            txtId.Text = proximoId.ToString();
+            if (modoEdicao)
+            {
+                this.Text = "Editar Cliente";
+            }
+            else
+            {
+                int proximoId = repositorioAluguel.ObterProximoId();
+                txtId.Text = proximoId.ToString();
+            }
 
             cmbCliente.SelectedIndexChanged += cmbCliente_SelectedIndexChanged;
             cmbTema.SelectedIndexChanged += cmbTema_SelectedIndexChanged;
@@ -250,6 +258,8 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             decimal debito = Aluguel.CalcularDebito(porcentagemEntrada, valorTotal);
 
             aluguel = new Aluguel(cliente, tema, porcentagemEntrada, quantidadeEmprestimos, configuracaoDesconto, enderecoFesta, dataFesta, horaInicio, horaTermino, valorTotal, valorEntrada, debito, tema.Itens);
+
+            aluguel.CalcularValores();
         }
     }
 }
