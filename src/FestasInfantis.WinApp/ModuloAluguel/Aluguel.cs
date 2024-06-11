@@ -2,7 +2,6 @@
 using FestasInfantis.WinApp.ModuloCliente;
 using FestasInfantis.WinApp.ModuloItem;
 using FestasInfantis.WinApp.ModuloTema;
-using System.ComponentModel;
 
 namespace FestasInfantis.WinApp.ModuloAluguel
 {
@@ -12,13 +11,17 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         public Tema Tema { get; set; }
         public PorcentagemEntrada Entrada { get; set; }
         public int QuantidadeEmprestimos { get; set; }
-        public decimal DescontoDisponibilizado { get; set; }
+        public ConfiguracaoDesconto ConfiguracaoDesconto { get; set; }
         public string EnderecoFesta { get; set; }
         public DateTime DataFesta { get; set; }
         public DateTime HoraInicio { get; set; }
         public DateTime HoraTermino { get; set; }
         public DateTime DataPagamento { get; set; }
         public decimal ValorTotal { get; set; }
+        public decimal ValorEntrada { get; set; }
+        public decimal Debito { get; set; }
+        public decimal PorcentagemDesconto { get; set; }
+        public decimal ValorDesconto { get; set; }
         public List<Item> ItensAlugueis { get; set; }
         public bool PagamentoConcluido { get => DataPagamento != null; }
 
@@ -31,12 +34,14 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             Tema tema,
             PorcentagemEntrada entrada,
             int quantidadeEmprestimos,
-            decimal descontoDisponibilizado,
+            ConfiguracaoDesconto configuracaoDesconto,
             string enderecoFesta,
             DateTime dataFesta,
             DateTime horaInicio,
             DateTime horaTermino,
             decimal valorTotal,
+            decimal valorEntrada,
+            decimal debito,
             List<Item> itensAlugueis
         )
         {
@@ -44,13 +49,14 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             Tema = tema;
             Entrada = entrada;
             QuantidadeEmprestimos = quantidadeEmprestimos;
-            DescontoDisponibilizado = descontoDisponibilizado;
+            ConfiguracaoDesconto = configuracaoDesconto;
             EnderecoFesta = enderecoFesta;
             DataFesta = dataFesta;
             HoraInicio = horaInicio;
             HoraTermino = horaTermino;
-            decimal valorDoDesconto = (DescontoDisponibilizado / 100) * valorTotal;
-            ValorTotal = valorTotal - valorDoDesconto;
+            ValorTotal = CalcularValorTotal(ConfiguracaoDesconto);
+            ValorEntrada = CalcularValorEntrada(ValorTotal, Entrada);
+            Debito = CalcularDebito(Entrada, ValorTotal);
             ItensAlugueis = itensAlugueis;
         }
 
@@ -76,23 +82,65 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             return erros;
         }
 
-        public enum PorcentagemEntrada
+        public decimal CalcularValorTotal(ConfiguracaoDesconto valorDesconto)
         {
-            [Description("40%")] _40porcento = 40,
-            [Description("50%")] _50porcento = 50,
+            decimal valorDesc = valorDesconto.PorcentagemDesconto;
+
+            decimal valorDescMaximo = valorDesconto.PorcentagemMaxima;
+
+            decimal desconto = Cliente!.ContadorDeAlugueis * valorDesc;
+
+            if (desconto >= valorDescMaximo)
+            {
+                desconto = valorDescMaximo;
+            }
+
+            PorcentagemDesconto = desconto;
+
+            return Math.Round(ObterValorTotal(desconto), 2);
         }
 
-        public decimal CalcularValorTotal()
+        private static decimal CalcularValorEntrada(decimal valorTotal, PorcentagemEntrada porcentagemDeEntrada)
         {
-            if (Tema != null)
+            decimal porcentagem = (int)porcentagemDeEntrada;
+
+            decimal valorEntrada = valorTotal * (porcentagem / 100);
+
+            return Math.Round(valorEntrada, 2);
+        }
+
+        private decimal CalcularDebito(PorcentagemEntrada porcentagemDeEntrada, decimal valorTotal)
+        {
+            decimal porcentagem = (int)porcentagemDeEntrada / 100m;
+            decimal valorEntrada = valorTotal * porcentagem;
+
+            if (porcentagemDeEntrada == PorcentagemEntrada._40porcento || porcentagemDeEntrada == PorcentagemEntrada._50porcento)
             {
-                decimal valorDoDesconto = (DescontoDisponibilizado / 100) * Tema.ValorTotal;
-                return Tema.ValorTotal - valorDoDesconto;
+                return valorTotal - valorEntrada;
             }
             else
             {
-                return 0;
+                throw new Exception("A porcentagem de entrada deve ser 40% ou 50%.");
             }
+        }
+
+        public void ConcluirAluguel()
+        {
+            DataPagamento = DateTime.Now;
+            Debito = 0;
+        }
+
+        public decimal ObterValorTotal(decimal desconto)
+        {
+            if (Tema == null) return 0;
+
+            decimal valorTema = Tema.ValorTotal;
+
+            ValorDesconto = valorTema * (desconto / 100);
+
+            valorTema -= ValorDesconto;
+
+            return valorTema;
         }
 
         public override void AtualizarRegistro(EntidadeBase novoRegistro)

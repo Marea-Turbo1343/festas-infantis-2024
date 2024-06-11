@@ -21,19 +21,17 @@ namespace FestasInfantis.WinApp.ModuloCliente
         {
             List<Aluguel> alugueis = repositorioAluguel.SelecionarPorCliente(idCliente);
 
-            listViewAlugueis.Items.Clear(); // Limpa a lista antes de adicionar novos itens
+            listViewAlugueis.Items.Clear();
 
             foreach (Aluguel aluguel in alugueis)
             {
-                // Cria um novo item de lista com as informações do aluguel
                 ListViewItem item = new ListViewItem(new string[]
                 {
-            aluguel.Tema.Nome, // Substitua pelo campo correto do tema do aluguel
-            aluguel.DataFesta.ToString(), // Substitua pelo campo correto da data da festa
+            aluguel.Tema.Nome,
+            aluguel.DataFesta.ToString(),
             aluguel.PagamentoConcluido ? "Aluguel Concluido" : "Aluguel em Andamento"
                 });
 
-                // Adiciona o item à ListView
                 listViewAlugueis.Items.Add(item);
             }
         }

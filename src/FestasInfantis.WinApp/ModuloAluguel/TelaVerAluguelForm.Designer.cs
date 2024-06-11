@@ -38,7 +38,7 @@
             txtEmAberto = new TextBox();
             labelEmAberto = new Label();
             labelValorDesconto = new Label();
-            textValorDesconto = new TextBox();
+            txtValorDesconto = new TextBox();
             txtValorEntrada = new TextBox();
             labelValorEntrada = new Label();
             labelDebito = new Label();
@@ -80,7 +80,7 @@
             gpVerAluguel.Controls.Add(txtEmAberto);
             gpVerAluguel.Controls.Add(labelEmAberto);
             gpVerAluguel.Controls.Add(labelValorDesconto);
-            gpVerAluguel.Controls.Add(textValorDesconto);
+            gpVerAluguel.Controls.Add(txtValorDesconto);
             gpVerAluguel.Controls.Add(txtValorEntrada);
             gpVerAluguel.Controls.Add(labelValorEntrada);
             gpVerAluguel.Controls.Add(labelDebito);
@@ -203,14 +203,14 @@
             labelValorDesconto.TabIndex = 68;
             labelValorDesconto.Text = "Valor Desconto:";
             // 
-            // textValorDesconto
+            // txtValorDesconto
             // 
-            textValorDesconto.Enabled = false;
-            textValorDesconto.Location = new Point(128, 236);
-            textValorDesconto.Margin = new Padding(3, 2, 3, 2);
-            textValorDesconto.Name = "textValorDesconto";
-            textValorDesconto.Size = new Size(110, 23);
-            textValorDesconto.TabIndex = 67;
+            txtValorDesconto.Enabled = false;
+            txtValorDesconto.Location = new Point(128, 236);
+            txtValorDesconto.Margin = new Padding(3, 2, 3, 2);
+            txtValorDesconto.Name = "txtValorDesconto";
+            txtValorDesconto.Size = new Size(110, 23);
+            txtValorDesconto.TabIndex = 67;
             // 
             // txtValorEntrada
             // 
@@ -488,7 +488,7 @@
         private TextBox txtEmAberto;
         private Label labelEmAberto;
         private Label labelValorDesconto;
-        private TextBox textValorDesconto;
+        private TextBox txtValorDesconto;
         private TextBox txtValorEntrada;
         private Label labelValorEntrada;
         private Label labelDebito;

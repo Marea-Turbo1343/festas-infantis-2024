@@ -202,6 +202,156 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             TelaPrincipalForm.Instancia.Temporizador($"O registro \"{aluguelSelecionado.Cliente.Nome}\" foi excluído com sucesso!");
         }
 
+        public void Filtrar()
+        {
+            TelaFiltroAluguelForm telaFiltro = new()
+            {
+                Text = "Filtrar Aluguéis"
+            };
+
+            DialogResult opcao = telaFiltro.ShowDialog();
+
+            if (opcao == DialogResult.OK)
+            {
+                FiltroAluguelEnum status = telaFiltro.ObterStatus();
+
+                List<Aluguel> alugueis = null!;
+
+                bool verificarPorData = telaFiltro.FiltrarPorData();
+
+                if (verificarPorData == true)
+                {
+                    DateTime dataInicial = telaFiltro.ObterDataInicial();
+
+                    DateTime dataFinal = telaFiltro.ObterDataFinal();
+
+                    alugueis = repositorioAluguel.SelecionarAlugueisPorPeriodo(dataInicial, dataFinal);
+                }
+                else if (status == FiltroAluguelEnum.Todos)
+                {
+                    alugueis = repositorioAluguel.SelecionarTodos();
+                }
+                else if (status == FiltroAluguelEnum.Concluidos)
+                {
+                    alugueis = repositorioAluguel.SelecionarAlugueisConcluidos();
+                }
+                else if (status == FiltroAluguelEnum.Aberto)
+                {
+                    alugueis = repositorioAluguel.SelecionarAlugueisAberto();
+                }
+
+                tabelaAluguel?.AtualizarRegistros(alugueis);
+
+                TelaPrincipalForm.Instancia?.Temporizador($"Exibindo {alugueis.Count} aluguéis.");
+            }
+        }
+
+        public void VisualizarAlugueis()
+        {
+            TelaVerAlugueisForm telaVerAlugueis = new TelaVerAlugueisForm(repositorioAluguel);
+
+            DialogResult resultado = telaVerAlugueis.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            List<Aluguel> alugueis = repositorioAluguel.SelecionarTodos();
+
+            tabelaAluguel.AtualizarRegistros(alugueis);
+
+            TelaPrincipalForm.Instancia?.AtualizarRodape(ObterTextoRodape(alugueis));
+        }
+
+        public void ConcluirAluguel()
+        {
+            int idSelecionado = tabelaAluguel.ObterRegistroSelecionado();
+
+            Aluguel aluguelSelecionado =
+                repositorioAluguel.SelecionarPorId(idSelecionado);
+
+            if (aluguelSelecionado == null)
+            {
+                MessageBox.Show(
+                    "Não é possível realizar esta ação sem um registro selecionado.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            if (aluguelSelecionado.DataFesta < DateTime.Now)
+            {
+                MessageBox.Show(
+                    "Não é possível concluir um aluguel que já passou.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            if (aluguelSelecionado.DataFesta > DateTime.Now)
+            {
+                MessageBox.Show(
+                    "Não é possível concluir um aluguel que ainda não aconteceu.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            if (aluguelSelecionado.HoraTermino > DateTime.Now.TimeOfDay)
+            {
+                MessageBox.Show(
+                    "Não é possível concluir um aluguel que ainda não terminou.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            if (aluguelSelecionado.HoraTermino < DateTime.Now.TimeOfDay)
+            {
+                MessageBox.Show(
+                    "Não é possível concluir um aluguel que já terminou.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            aluguelSelecionado.QuantidadeEmprestimos++;
+
+            repositorioAluguel.Editar(aluguelSelecionado.Id, aluguelSelecionado);
+
+            CarregarAlugueis();
+
+            TelaPrincipalForm.Instancia.Temporizador($"O registro \"{aluguelSelecionado.Cliente.Nome}\" foi concluído com sucesso!");
+        }
+
+        public void ConfigurarDesconto()
+        {
+            ConfiguracaoDesconto configuracaoDesconto = repositorioAluguel.SelecionarConfiguracaoDesconto();
+
+            TelaDescontoForm telaDesconto = new TelaDescontoForm(configuracaoDesconto)
+            {
+                Text = "Configurar Desconto"
+            };
+
+            DialogResult resultado = telaDesconto.ShowDialog();
+
+            if (resultado != DialogResult.OK)
+                return;
+
+            configuracaoDesconto.EditarDesconto(telaDesconto.configuracaoDesconto);
+
+            repositorioAluguel.SalvarDesconto(configuracaoDesconto);
+        }
+
         public override UserControl ObterListagem()
         {
             if (tabelaAluguel == null)

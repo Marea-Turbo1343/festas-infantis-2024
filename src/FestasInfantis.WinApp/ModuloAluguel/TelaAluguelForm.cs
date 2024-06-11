@@ -27,6 +27,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
                 txtHoraTermino.Value = value.HoraTermino;
                 txtDescDisp.Text = value.DescontoDisponibilizado.ToString();
                 txtValorTotal.Text = value.ValorTotal.ToString();
+                txtValorPagar.Text = value.ValorTotal.ToString();
             }
             get
             {
