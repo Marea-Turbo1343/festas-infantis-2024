@@ -36,7 +36,7 @@
             txtPago = new TextBox();
             label1 = new Label();
             txtEmAberto = new TextBox();
-            labelEmAberto = new Label();
+            lblEmAberto = new Label();
             labelValorDesconto = new Label();
             txtValorDesconto = new TextBox();
             txtValorEntrada = new TextBox();
@@ -47,7 +47,6 @@
             txtDebito = new TextBox();
             txtEntrada = new TextBox();
             txtDesconto = new TextBox();
-            txtPagamento = new TextBox();
             txtTema = new TextBox();
             txtEndereco = new TextBox();
             txtHoraTermino = new TextBox();
@@ -56,7 +55,6 @@
             txtTelefone = new TextBox();
             txtCliente = new TextBox();
             txtId = new TextBox();
-            labelpgto = new Label();
             labelTema = new Label();
             label7 = new Label();
             labelTermino = new Label();
@@ -78,7 +76,7 @@
             gpVerAluguel.Controls.Add(txtPago);
             gpVerAluguel.Controls.Add(label1);
             gpVerAluguel.Controls.Add(txtEmAberto);
-            gpVerAluguel.Controls.Add(labelEmAberto);
+            gpVerAluguel.Controls.Add(lblEmAberto);
             gpVerAluguel.Controls.Add(labelValorDesconto);
             gpVerAluguel.Controls.Add(txtValorDesconto);
             gpVerAluguel.Controls.Add(txtValorEntrada);
@@ -89,7 +87,6 @@
             gpVerAluguel.Controls.Add(txtDebito);
             gpVerAluguel.Controls.Add(txtEntrada);
             gpVerAluguel.Controls.Add(txtDesconto);
-            gpVerAluguel.Controls.Add(txtPagamento);
             gpVerAluguel.Controls.Add(txtTema);
             gpVerAluguel.Controls.Add(txtEndereco);
             gpVerAluguel.Controls.Add(txtHoraTermino);
@@ -98,7 +95,6 @@
             gpVerAluguel.Controls.Add(txtTelefone);
             gpVerAluguel.Controls.Add(txtCliente);
             gpVerAluguel.Controls.Add(txtId);
-            gpVerAluguel.Controls.Add(labelpgto);
             gpVerAluguel.Controls.Add(labelTema);
             gpVerAluguel.Controls.Add(label7);
             gpVerAluguel.Controls.Add(labelTermino);
@@ -185,14 +181,14 @@
             txtEmAberto.Size = new Size(110, 23);
             txtEmAberto.TabIndex = 70;
             // 
-            // labelEmAberto
+            // lblEmAberto
             // 
-            labelEmAberto.AutoSize = true;
-            labelEmAberto.Location = new Point(44, 266);
-            labelEmAberto.Name = "labelEmAberto";
-            labelEmAberto.Size = new Size(78, 15);
-            labelEmAberto.TabIndex = 69;
-            labelEmAberto.Text = "Já aconteceu:";
+            lblEmAberto.AutoSize = true;
+            lblEmAberto.Location = new Point(44, 266);
+            lblEmAberto.Name = "lblEmAberto";
+            lblEmAberto.Size = new Size(78, 15);
+            lblEmAberto.TabIndex = 69;
+            lblEmAberto.Text = "Já aconteceu:";
             // 
             // labelValorDesconto
             // 
@@ -233,7 +229,7 @@
             // labelDebito
             // 
             labelDebito.AutoSize = true;
-            labelDebito.Location = new Point(77, 455);
+            labelDebito.Location = new Point(77, 428);
             labelDebito.Name = "labelDebito";
             labelDebito.Size = new Size(45, 15);
             labelDebito.TabIndex = 64;
@@ -260,7 +256,7 @@
             // txtDebito
             // 
             txtDebito.Enabled = false;
-            txtDebito.Location = new Point(128, 452);
+            txtDebito.Location = new Point(128, 425);
             txtDebito.Margin = new Padding(3, 2, 3, 2);
             txtDebito.Name = "txtDebito";
             txtDebito.Size = new Size(147, 23);
@@ -283,15 +279,6 @@
             txtDesconto.Name = "txtDesconto";
             txtDesconto.Size = new Size(110, 23);
             txtDesconto.TabIndex = 59;
-            // 
-            // txtPagamento
-            // 
-            txtPagamento.Enabled = false;
-            txtPagamento.Location = new Point(128, 425);
-            txtPagamento.Margin = new Padding(3, 2, 3, 2);
-            txtPagamento.Name = "txtPagamento";
-            txtPagamento.Size = new Size(147, 23);
-            txtPagamento.TabIndex = 58;
             // 
             // txtTema
             // 
@@ -364,15 +351,6 @@
             txtId.Name = "txtId";
             txtId.Size = new Size(80, 23);
             txtId.TabIndex = 50;
-            // 
-            // labelpgto
-            // 
-            labelpgto.AutoSize = true;
-            labelpgto.Location = new Point(51, 428);
-            labelpgto.Name = "labelpgto";
-            labelpgto.Size = new Size(71, 15);
-            labelpgto.TabIndex = 49;
-            labelpgto.Text = "Pagamento:";
             // 
             // labelTema
             // 
@@ -461,7 +439,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(580, 549);
+            ClientSize = new Size(580, 548);
             Controls.Add(btnOk);
             Controls.Add(gpVerAluguel);
             MaximizeBox = false;
@@ -486,7 +464,7 @@
         private TextBox txtPago;
         private Label label1;
         private TextBox txtEmAberto;
-        private Label labelEmAberto;
+        private Label lblEmAberto;
         private Label labelValorDesconto;
         private TextBox txtValorDesconto;
         private TextBox txtValorEntrada;
@@ -497,7 +475,6 @@
         private TextBox txtDebito;
         private TextBox txtEntrada;
         private TextBox txtDesconto;
-        private TextBox txtPagamento;
         private TextBox txtTema;
         private TextBox txtEndereco;
         private TextBox txtHoraTermino;
@@ -506,7 +483,6 @@
         private TextBox txtTelefone;
         private TextBox txtCliente;
         private TextBox txtId;
-        private Label labelpgto;
         private Label labelTema;
         private Label label7;
         private Label labelTermino;

@@ -23,6 +23,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         public decimal PorcentagemDesconto { get; set; }
         public decimal ValorDesconto { get; set; }
         public List<Item> ItensAlugueis { get; set; }
+        public bool FestaJaAconteceu { get { return DataFesta < DateTime.Now; } }
         public bool PagamentoConcluido { get => DataPagamento != null; }
 
         public Aluguel()
